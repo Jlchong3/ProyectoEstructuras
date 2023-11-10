@@ -24,6 +24,7 @@ public class DoubleCircularLinkedList<E> implements List<E>{
         if(element == null){
             return false;
         }
+
         Node<E> n = new Node<>(element);
         if(isEmpty()){
             last = n;
@@ -65,6 +66,7 @@ public class DoubleCircularLinkedList<E> implements List<E>{
     
     public ListIterator<E> CircularIterator() {
         ListIterator<E> it = new ListIterator<>(){
+            
             Node<E> cursor = last.getNext();
 
             @Override
@@ -94,11 +96,10 @@ public class DoubleCircularLinkedList<E> implements List<E>{
 
             @Override
             public void remove() {
-                Node<E> n = cursor.getNext();
-                Node<E> p = cursor.getPrevious();
-                n.setPrevious(p);
-                p.setNext(n);
-                cursor = n;
+                Node<E> pp = cursor.getPrevious().getPrevious();
+                pp.setNext(cursor);
+                cursor.setPrevious(pp);
+                next();
             }
 
             @Override
@@ -121,7 +122,7 @@ public class DoubleCircularLinkedList<E> implements List<E>{
                 throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         };
-        return it;      
+        return it; 
     }
 
     @Override
@@ -130,8 +131,8 @@ public class DoubleCircularLinkedList<E> implements List<E>{
     }
 
     @Override
-    public Iterator iterator() {
-        Iterator<E> it = new Iterator(){
+    public Iterator<E> iterator() {
+        Iterator<E> it = new Iterator<>(){
             Node<E> cursor = last.getNext();
             @Override
             public boolean hasNext() {
@@ -144,7 +145,6 @@ public class DoubleCircularLinkedList<E> implements List<E>{
                 cursor = cursor.getNext();
                 return temp;
             }
-            
         };
         return it;
     }
