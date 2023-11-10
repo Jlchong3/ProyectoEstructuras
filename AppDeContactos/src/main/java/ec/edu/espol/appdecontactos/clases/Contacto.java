@@ -15,9 +15,20 @@ public class Contacto{
     public Contacto contactoRelacionado;
     public String nota;
 
+    public Contacto(ArrayList<Integer> telefono, String redesSociales, DoubleCircularLinkedList<String> foto, String correoPersonal, String correoTrabajo, String correoProvisional, String fechas, Contacto contactoRelacionado, String nota) {
+        this.telefono = telefono;
+        this.redesSociales = redesSociales;
+        this.foto = foto;
+        this.correoPersonal = correoPersonal;
+        this.correoTrabajo = correoTrabajo;
+        this.correoProvisional = correoProvisional;
+        this.fechas = fechas;
+        this.contactoRelacionado = contactoRelacionado;
+        this.nota = nota;
+    }
+
     public void registrarContacto()
     {
-        
         
     }
 
