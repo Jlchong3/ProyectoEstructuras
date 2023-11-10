@@ -8,6 +8,15 @@ public class Persona extends Contacto{
         super(telefono,  redesSociales,  foto,  correoPersonal,  correoTrabajo,  correoProvisional,  fechas,  contactoRelacionado,  nota);
         this.nombre=nombre;
         this.apellido=apellido;
+        this.telefono = telefono;
+        this.redesSociales = redesSociales;
+        this.foto = foto;
+        this.correoPersonal = correoPersonal;
+        this.correoTrabajo = correoTrabajo;
+        this.correoProvisional = correoProvisional;
+        this.fechas = fechas;
+        this.contactoRelacionado = contactoRelacionado;
+        this.nota = nota;
     }
 
 
