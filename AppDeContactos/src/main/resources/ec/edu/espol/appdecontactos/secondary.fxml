@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane fx:id="contenedorContacto" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="292.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1" fx:controller="ec.edu.espol.appdecontactos.SecondaryController">
+<GridPane fx:id="contenedorContacto" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="292.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.appdecontactos.SecondaryController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -14,18 +13,4 @@
     <RowConstraints maxHeight="481.8000244140624" minHeight="10.0" prefHeight="481.8000244140624" vgrow="SOMETIMES" />
     <RowConstraints maxHeight="102.1999572753906" minHeight="10.0" prefHeight="25.799975585937545" vgrow="SOMETIMES" />
   </rowConstraints>
-   <children>
-      <GridPane GridPane.rowIndex="1">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="448.59999694824216" minHeight="10.0" prefHeight="415.00002136230466" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="235.79999389648438" minHeight="10.0" prefHeight="67.79997863769535" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
-         </children>
-      </GridPane>
-   </children>
 </GridPane>
