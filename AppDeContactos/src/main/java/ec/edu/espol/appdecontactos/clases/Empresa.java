@@ -8,7 +8,13 @@ public class Empresa extends Contacto{
         this.nombre=nombre;
     }
 
-    // public Empresa crearContacto(){}
+    public String getNombre() {
+        return nombre;
+    }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
 }
 

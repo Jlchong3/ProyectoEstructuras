@@ -9,6 +9,8 @@ public class ArrayList<E> implements List<E> {
     private int capacity = 10;
     private int effectiveSize;
 
+    
+    
     public ArrayList() { //Todas las TDA van a inicializar vacias
         //No se puede hacer new de E directamente, por ello tienes que hacer el casting 
         elements = (E[]) new Object[capacity];

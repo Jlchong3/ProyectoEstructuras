@@ -27,9 +27,78 @@ public class Contacto{
         this.nota = nota;
     }
 
-    public void registrarContacto()
-    {
-        
+    public ArrayList<Integer> getTelefono() {
+        return telefono;
     }
+
+    public void setTelefono(ArrayList<Integer> telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getRedesSociales() {
+        return redesSociales;
+    }
+
+    public void setRedesSociales(String redesSociales) {
+        this.redesSociales = redesSociales;
+    }
+
+    public DoubleCircularLinkedList<String> getFoto() {
+        return foto;
+    }
+
+    public void setFoto(DoubleCircularLinkedList<String> foto) {
+        this.foto = foto;
+    }
+
+    public String getCorreoPersonal() {
+        return correoPersonal;
+    }
+
+    public void setCorreoPersonal(String correoPersonal) {
+        this.correoPersonal = correoPersonal;
+    }
+
+    public String getCorreoTrabajo() {
+        return correoTrabajo;
+    }
+
+    public void setCorreoTrabajo(String correoTrabajo) {
+        this.correoTrabajo = correoTrabajo;
+    }
+
+    public String getCorreoProvisional() {
+        return correoProvisional;
+    }
+
+    public void setCorreoProvisional(String correoProvisional) {
+        this.correoProvisional = correoProvisional;
+    }
+
+    public String getFechas() {
+        return fechas;
+    }
+
+    public void setFechas(String fechas) {
+        this.fechas = fechas;
+    }
+
+    public Contacto getContactoRelacionado() {
+        return contactoRelacionado;
+    }
+
+    public void setContactoRelacionado(Contacto contactoRelacionado) {
+        this.contactoRelacionado = contactoRelacionado;
+    }
+
+    public String getNota() {
+        return nota;
+    }
+
+    public void setNota(String nota) {
+        this.nota = nota;
+    }
+
+    
 
 }
