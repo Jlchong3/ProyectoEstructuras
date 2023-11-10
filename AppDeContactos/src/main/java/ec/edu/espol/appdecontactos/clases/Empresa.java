@@ -3,8 +3,8 @@ package ec.edu.espol.appdecontactos.clases;
 public class Empresa extends Contacto{
     public String nombre;
 
-    public Empresa(ArrayList<Integer> telefono, String redesSociales, DoubleCircularLinkedList<String> foto, String correoPersonal, String correoTrabajo, String correoProvisional, String fechas, Contacto contactoRelacionado, String nota, String nombre) {
-        super(telefono,  redesSociales,  foto,  correoPersonal,  correoTrabajo,  correoProvisional,  fechas,  contactoRelacionado,  nota);
+    public Empresa(int telefono, String redesSociales, String foto, String correoPersonal, String correoTrabajo, String correoProvisional, String fechas, Contacto contactoRelacionado, String nota, String nombre) {
+        super(telefono,  redesSociales,  foto, correoPersonal,  correoTrabajo,  correoProvisional,  fechas,  contactoRelacionado,  nota);
         this.nombre=nombre;
     }
 
