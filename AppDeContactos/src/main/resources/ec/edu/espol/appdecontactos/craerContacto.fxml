@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.appdecontactos.CraerContactoController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.appdecontactos.CraerContactoController">
    <children>
       <HBox alignment="CENTER" prefHeight="60.0" prefWidth="400.0">
          <children>
@@ -23,6 +23,7 @@
             </ComboBox>
          </children>
       </HBox>
+      <HBox fx:id="cuadro1" alignment="CENTER" prefHeight="42.0" prefWidth="400.0" />
       <HBox alignment="CENTER" prefHeight="64.0" prefWidth="400.0">
          <children>
             <VBox fx:id="cuadro2" alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
@@ -37,12 +38,12 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="53.0" prefWidth="400.0">
          <children>
-            <Button fx:id="Agregar" mnemonicParsing="false" text="Agregar">
+            <Button fx:id="Agregar" mnemonicParsing="false" onMouseClicked="#confirmarContacto" text="Agregar">
                <HBox.margin>
                   <Insets right="50.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="Retroceder" mnemonicParsing="false" text="Retroceder" />
+            <Button fx:id="Retroceder" mnemonicParsing="false" onMouseClicked="#retrocederPantalla" text="Retroceder" />
          </children>
       </HBox>
    </children>

@@ -35,6 +35,8 @@ public class CraerContactoController implements Initializable {
     @FXML
     private ComboBox<String> tipoContacto;
     @FXML
+    private HBox cuadro1;
+    @FXML
     private VBox cuadro2;
     @FXML
     private VBox cuadro3;
@@ -44,7 +46,9 @@ public class CraerContactoController implements Initializable {
     private Button Retroceder;
 
     //yo cree ahorita
-    private TextField telefono;
+    private TextField telefonoPersonal;
+    private TextField telefonoTrabajo;
+    private TextField telefonoCasa;
     private TextField redesSociales;
     private TextField foto;
     private TextField contactos;
@@ -61,7 +65,7 @@ public class CraerContactoController implements Initializable {
     private String valor;    
 
     
-    
+
     
     /**
      * Initializes the controller class.
@@ -76,6 +80,7 @@ public class CraerContactoController implements Initializable {
     
     @FXML
     private void filtrarTipo(ActionEvent event) {
+        cuadro1.getChildren().clear();
         cuadro2.getChildren().clear();
         cuadro3.getChildren().clear();
         ComboBox cb = (ComboBox)event.getSource();
@@ -101,6 +106,7 @@ public class CraerContactoController implements Initializable {
         contacto.añadirContacto(contactoNuevo);
     }
     
+    @FXML
     private void confirmarContacto(MouseEvent event) {
         String correoTrabajo= null;
         String correoProvisional= null;
@@ -116,7 +122,6 @@ public class CraerContactoController implements Initializable {
                 switch (s) {
                     case "Empresa":
                     {
-//    (ArrayList<Integer> telefono, String redesSociales, DoubleCircularLinkedList<String> foto, String correoPersonal, String correoTrabajo, String correoProvisional, String fechas, Contacto contactoRelacionado, String nota, String nombre) {
                         Empresa e = new Empresa(Integer.parseInt(telefono.getText()), redesSociales.getText(), foto.getText(), correoPersonal.getText(),correoTrabajo,correoProvisional, fecha.getText(), contactoRelacionado, nota.getText(), nombre.getText());
                         registrarContacto(e);
                         
@@ -150,26 +155,25 @@ public class CraerContactoController implements Initializable {
         Nombre.setFont(new Font(16));
         VBox.setMargin(Nombre, new Insets(20, 0, 0, 0));
         TextField nombre = new TextField();
-        
         VBox.setMargin(nombre, new Insets(5, 0, 0, 0));
-        HBox cuaNomb= new HBox();
-        cuaNomb.setAlignment(Pos.CENTER);
-        cuaNomb.getChildren().addAll(Nombre,nombre);
         
         Text Apellido = new Text("Apellido:");
         Apellido.setFont(new Font(16));
         VBox.setMargin(Apellido, new Insets(20, 0, 0, 0));
         TextField apellido = new TextField();
         VBox.setMargin(apellido, new Insets(5, 0, 0, 0));
-        HBox cuaApe= new HBox();
-        cuaApe.setAlignment(Pos.CENTER);
-        cuaApe.getChildren().addAll(Apellido,apellido);
         
-        Text Telefono = new Text("Telefono:");
-        Telefono.setFont(new Font(16));
-        VBox.setMargin(Telefono, new Insets(20, 0, 0, 0));
-        TextField telefono = new TextField();
-        VBox.setMargin(telefono, new Insets(5, 0, 0, 0));
+        Text TelefonoPersonal = new Text("Telefono personal:");
+        TelefonoPersonal.setFont(new Font(16));
+        VBox.setMargin(TelefonoPersonal, new Insets(20, 0, 0, 0));
+        TextField telefonoPersonal = new TextField();
+        VBox.setMargin(telefonoPersonal, new Insets(5, 0, 0, 0));
+        
+        Text TelefonoTrabajo = new Text("Telefono Trabajo:");
+        TelefonoTrabajo.setFont(new Font(16));
+        VBox.setMargin(TelefonoTrabajo, new Insets(20, 0, 0, 0));
+        TextField telefonoTrabajo = new TextField();
+        VBox.setMargin(telefonoTrabajo, new Insets(5, 0, 0, 0));
         
         
         Text Correo = new Text("Correo:");
@@ -204,9 +208,9 @@ public class CraerContactoController implements Initializable {
         TextField nota = new TextField();
         VBox.setMargin(nota, new Insets(5, 0, 0, 0));
 
-        
-        cuadro2.getChildren().addAll(cuaNomb, Telefono,telefono,Correo,correoPersonal,RedSocial,redesSociales);
-        cuadro3.getChildren().addAll( cuaApe,Fecha,fecha,Foto, foto, Nota,nota);
+        cuadro1.getChildren().addAll(Nombre,nombre, Apellido,apellido);
+        cuadro2.getChildren().addAll( Telefono,telefono,Correo,correoPersonal,RedSocial,redesSociales);
+        cuadro3.getChildren().addAll( Fecha,fecha,Foto, foto, Nota,nota);
  
         this.nombre = nombre;
         this.apellido = apellido;
@@ -222,16 +226,12 @@ public class CraerContactoController implements Initializable {
         VBox.setMargin(Nombre, new Insets(20, 0, 0, 0));
         TextField nombre = new TextField();
         VBox.setMargin(nombre, new Insets(5, 0, 0, 0));
-        HBox cuaNomb= new HBox();
-        cuaNomb.setAlignment(Pos.CENTER);
-        cuaNomb.getChildren().addAll(Nombre,nombre);
         
         Text Telefono = new Text("Telefono:");
         Telefono.setFont(new Font(16));
         VBox.setMargin(Telefono, new Insets(20, 0, 0, 0));
         TextField telefono = new TextField();
         VBox.setMargin(telefono, new Insets(5, 0, 0, 0));
-        
         
         Text Correo = new Text("Correo:");
         Correo.setFont(new Font(16));
@@ -258,15 +258,14 @@ public class CraerContactoController implements Initializable {
         TextField foto = new TextField();
         VBox.setMargin(foto, new Insets(5, 0, 0, 0));
         
-        
         Text Nota = new Text("Nota:");
         Nota.setFont(new Font(16));
         VBox.setMargin(Nota, new Insets(20, 0, 0, 0));
         TextField nota = new TextField();
         VBox.setMargin(nota, new Insets(5, 0, 0, 0));
 
-
-        cuadro2.getChildren().addAll(cuaNomb, Telefono,telefono,Correo,correoPersonal);
+        cuadro1.getChildren().addAll(Nombre,nombre);
+        cuadro2.getChildren().addAll( Telefono,telefono,Correo,correoPersonal);
         cuadro3.getChildren().addAll(RedSocial,redesSociales, Fecha,fecha,Foto, foto, Nota,nota);
         this.nombre = nombre;
         this.apellido = apellido;
@@ -275,5 +274,8 @@ public class CraerContactoController implements Initializable {
         this.fecha = fecha;
         this.nota = nota;
     }
-    
+
+    @FXML
+    private void retrocederPantalla(MouseEvent event) {
+    } 
 }
