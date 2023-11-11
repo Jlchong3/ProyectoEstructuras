@@ -1,5 +1,10 @@
 package ec.edu.espol.appdecontactos.clases;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -116,6 +121,26 @@ public class Contacto{
 
     public void setNota(String nota) {
         this.nota = nota;
+    }
+    
+    public static void saveListSer(DoubleCircularLinkedList<Contacto> lista)
+    {
+        try(ObjectOutputStream output= new ObjectOutputStream(new FileOutputStream("ContactosSer.txt"))){
+            output.writeObject(lista);
+        } catch(IOException ioE){
+        }
+    }
+    
+    
+    public static DoubleCircularLinkedList<Contacto> readListSer()
+    {
+        DoubleCircularLinkedList<Contacto> lista= new DoubleCircularLinkedList<>();
+        try(ObjectInputStream input= new ObjectInputStream(new FileInputStream("UsuarioSer.txt"));){
+            lista = (DoubleCircularLinkedList<Contacto>)input.readObject();
+        } catch(IOException | ClassNotFoundException ioE){
+
+        }
+        return lista;
     }
     
 
