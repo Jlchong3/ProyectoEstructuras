@@ -113,7 +113,7 @@ public class CraerContactoController implements Initializable {
         Contacto contactoRelacionado= null;
         Button b = (Button)event.getSource();
         String s = valor;
-        if((nombre.getText().equals(""))||(apellido.getText().equals(""))||(telefono.getText().equals(""))){
+        if((nombre.getText().equals(""))&&(apellido.getText().equals(""))&&(telefonoPersonal.getText().equals(""))){
             Alert a = new Alert(Alert.AlertType.ERROR,"Datos Principales Incompletos");
             a.show();
         }
@@ -175,18 +175,23 @@ public class CraerContactoController implements Initializable {
         TextField telefonoTrabajo = new TextField();
         VBox.setMargin(telefonoTrabajo, new Insets(5, 0, 0, 0));
         
-        
-        Text Correo = new Text("Correo:");
-        Correo.setFont(new Font(16));
-        VBox.setMargin(Correo, new Insets(20, 0, 0, 0));
+        Text CorreoPersonal = new Text("Correo Personal:");
+        CorreoPersonal.setFont(new Font(16));
+        VBox.setMargin(CorreoPersonal, new Insets(20, 0, 0, 0));
         TextField correoPersonal = new TextField();
         VBox.setMargin(correoPersonal, new Insets(5, 0, 0, 0));
+
+        Text CorreoTrabajo = new Text("Correo Trabajo:");
+        CorreoTrabajo.setFont(new Font(16));
+        VBox.setMargin(CorreoTrabajo, new Insets(20, 0, 0, 0));
+        TextField correoTrabajo = new TextField();
+        VBox.setMargin(correoTrabajo, new Insets(5, 0, 0, 0));
         
         Text RedSocial = new Text("Red Social:");
         RedSocial.setFont(new Font(16));
         VBox.setMargin(RedSocial, new Insets(20, 0, 0, 0));
-        TextField redesSociales = new TextField();
-        VBox.setMargin(redesSociales, new Insets(5, 0, 0, 0));
+        TextField redSocial = new TextField();
+        VBox.setMargin(redSocial, new Insets(5, 0, 0, 0));
         
         
         Text Fecha = new Text("Fecha:");
@@ -209,14 +214,20 @@ public class CraerContactoController implements Initializable {
         VBox.setMargin(nota, new Insets(5, 0, 0, 0));
 
         cuadro1.getChildren().addAll(Nombre,nombre, Apellido,apellido);
-        cuadro2.getChildren().addAll( Telefono,telefono,Correo,correoPersonal,RedSocial,redesSociales);
-        cuadro3.getChildren().addAll( Fecha,fecha,Foto, foto, Nota,nota);
+        cuadro2.getChildren().addAll( TelefonoPersonal, telefonoPersonal, TelefonoTrabajo, telefonoTrabajo,CorreoPersonal,correoPersonal,CorreoTrabajo,correoTrabajo);
+        cuadro3.getChildren().addAll( RedSocial,redSocial,Fecha,fecha,Foto, foto, Nota,nota);
  
         this.nombre = nombre;
         this.apellido = apellido;
-        this.telefono = telefono;
+        this.telefonoPersonal = telefonoPersonal;
+        this.telefonoTrabajo = telefonoTrabajo;
         this.correoPersonal = correoPersonal;
-        this.fecha = fecha;
+        this.correoTrabajo=correoTrabajo;
+        this.correoTrabajo=correoTrabajo;
+        this.correoTrabajo=correoTrabajo;
+        this.correoTrabajo=correoTrabajo;
+        this.correoTrabajo=correoTrabajo;
+        this.correoTrabajo=correoTrabajo;
         this.nota = nota;
     }
     

@@ -20,7 +20,7 @@ public class Contacto{
         
     }
     
-    public Contacto(int telefono, int telefonoTrabajo,int telefonoCasa, String redesSociales, String foto, String correoPersonal, String correoTrabajo, String correoProvisional, String fechas, Contacto contactoRelacionado, String nota) {
+    public Contacto(int telefono, int telefonoTrabajo,int telefonoCasa, String correoPersonal, String correoTrabajo, String correoProvisional, String fechas, Contacto contactoRelacionado, String nota) {
         this.telefonoPersonal = telefono;
         this.telefonoTrabajo = telefonoTrabajo;
         this.telefonoCasa = telefonoCasa;
