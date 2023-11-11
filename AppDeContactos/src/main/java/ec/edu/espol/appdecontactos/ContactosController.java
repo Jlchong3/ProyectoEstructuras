@@ -66,7 +66,8 @@ public class ContactosController implements Initializable {
         // TODO
         String[] categorias = {"Empresa","Persona"};
         
-        tipoContacto.getItems().addAll(categorias);
+        tipoContacto.getItems();
+                //.addAll(categorias);
  
     }   
     
