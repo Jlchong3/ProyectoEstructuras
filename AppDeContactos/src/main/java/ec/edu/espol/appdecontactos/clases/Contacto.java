@@ -5,28 +5,27 @@ import java.util.Scanner;
 
 public class Contacto{
 
-    public int telefono;
-    public String foto;
-    
-    public DoubleCircularLinkedList<Contacto> contactos;
-
-    public String redesSociales;
+    public int telefonoPersonal;
+    public int telefonoTrabajo;
+    public int telefonoCasa;
+    public DoubleCircularLinkedList<String> foto;
+    public ArrayList<String> redesSociales;
     public String correoPersonal;
     public String correoTrabajo; 
     public String correoProvisional;
     public String fechas;
     public Contacto contactoRelacionado;
     public String nota;
-
     public Contacto(){
         
     }
     
-    public Contacto(int telefono, String redesSociales, String foto, String correoPersonal, String correoTrabajo, String correoProvisional, String fechas, Contacto contactoRelacionado, String nota) {
-        this.telefono = telefono;
-        this.redesSociales = redesSociales;
-        this.foto = foto;
-        this.contactos= new DoubleCircularLinkedList<>();
+    public Contacto(int telefono, int telefonoTrabajo,int telefonoCasa, String redesSociales, String foto, String correoPersonal, String correoTrabajo, String correoProvisional, String fechas, Contacto contactoRelacionado, String nota) {
+        this.telefonoPersonal = telefono;
+        this.telefonoTrabajo = telefonoTrabajo;
+        this.telefonoCasa = telefonoCasa;
+        this.redesSociales = new ArrayList<>();
+        this.foto = new DoubleCircularLinkedList<>();
         this.correoPersonal = correoPersonal;
         this.correoTrabajo = correoTrabajo;
         this.correoProvisional = correoProvisional;
@@ -34,35 +33,41 @@ public class Contacto{
         this.contactoRelacionado = contactoRelacionado;
         this.nota = nota;
     }
-
-    public void añadirContacto(Contacto contactoNuevo){
-        this.contactos.addLast(contactoNuevo);
+    
+    public int getTelefonoPersonal() {
+        return telefonoPersonal;
     }
-    
-    
-    
-    public int getTelefono() {
-        return telefono;
+    public int getTelefonoCasa() {
+        return telefonoCasa;
     }
-
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
+    public int getTelefonoTrabajo() {
+        return telefonoTrabajo;
     }
 
-    public String getRedesSociales() {
+    public void setTelefonoPersonal(int telefonoPersonal) {
+        this.telefonoPersonal = telefonoPersonal;
+    }
+    public void setTelefonoCasa(int telefonoCasa) {
+        this.telefonoCasa = telefonoCasa;
+    }
+    public void setTelefonoTrabajo(int telefono) {
+        this.telefonoTrabajo = telefonoTrabajo;
+    }
+
+    public ArrayList<String> getRedesSociales() {
         return redesSociales;
     }
 
-    public void setRedesSociales(String redesSociales) {
-        this.redesSociales = redesSociales;
+    public void addRedesSociales(String redesSociales) {
+        this.redesSociales.addLast(redesSociales);
     }
 
-    public String getFoto() {
-        return foto;
+    public String getFoto(int index) {
+        return foto.get(index);
     }
 
-    public void setFoto(String foto) {
-        this.foto = foto;
+    public void addFoto(String foto) {
+        this.foto.addLast(foto);
     }
 
     public String getCorreoPersonal() {
@@ -112,6 +117,7 @@ public class Contacto{
     public void setNota(String nota) {
         this.nota = nota;
     }
+    
 
 
     
