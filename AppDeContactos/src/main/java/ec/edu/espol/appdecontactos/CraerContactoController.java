@@ -7,18 +7,19 @@ package ec.edu.espol.appdecontactos;
 import ec.edu.espol.appdecontactos.clases.Contacto;
 import ec.edu.espol.appdecontactos.clases.Empresa;
 import ec.edu.espol.appdecontactos.clases.Persona;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -29,17 +30,20 @@ import javafx.stage.Stage;
  *
  * @author mariu
  */
-public class ContactosController implements Initializable {
-
+public class CraerContactoController implements Initializable {
+    // scenebuilder
     @FXML
     private ComboBox<String> tipoContacto;
     @FXML
-    private VBox cuadro1;
-    @FXML
     private VBox cuadro2;
     @FXML
-    private VBox cuadroTodo;
- 
+    private VBox cuadro3;
+    @FXML
+    private Button Agregar;
+    @FXML
+    private Button Retroceder;
+
+    //yo cree ahorita
     private TextField telefono;
     private TextField redesSociales;
     private TextField foto;
@@ -54,8 +58,8 @@ public class ContactosController implements Initializable {
     private TextField apellido;
     
     private Contacto contacto;
-    private String valor;
-    
+    private String valor;    
+
     
     
     
@@ -67,33 +71,29 @@ public class ContactosController implements Initializable {
         // TODO
         String[] categorias = {"Empresa" , "Persona"};
         
-        tipoContacto.getItems();
-                //.addAll(categorias);
- 
-    }   
+        tipoContacto.getItems().addAll(categorias);
+    }  
     
     @FXML
     private void filtrarTipo(ActionEvent event) {
-        cuadro1.getChildren().clear();
         cuadro2.getChildren().clear();
+        cuadro3.getChildren().clear();
         ComboBox cb = (ComboBox)event.getSource();
         String s = (String)cb.getValue();
         valor = s;
         
-        
         if(s.equals("Empresa")){
             Stage stage = (Stage) tipoContacto.getScene().getWindow();
-            stage.setHeight(600);
+            stage.setHeight(550);
             registroEmpresa();
             
         }
         else if(s.equals("Persona")){
             Stage stage = (Stage) tipoContacto.getScene().getWindow();
-            stage.setHeight(600);
+            stage.setHeight(550);
             registroPersona();
-            
+
         }
-        
         
     }
     
@@ -101,7 +101,6 @@ public class ContactosController implements Initializable {
         contacto.añadirContacto(contactoNuevo);
     }
     
-    @FXML
     private void confirmarContacto(MouseEvent event) {
         String correoTrabajo= null;
         String correoProvisional= null;
@@ -151,15 +150,20 @@ public class ContactosController implements Initializable {
         Nombre.setFont(new Font(16));
         VBox.setMargin(Nombre, new Insets(20, 0, 0, 0));
         TextField nombre = new TextField();
-        VBox.setMargin(nombre, new Insets(5, 0, 0, 0));
         
+        VBox.setMargin(nombre, new Insets(5, 0, 0, 0));
+        HBox cuaNomb= new HBox();
+        cuaNomb.setAlignment(Pos.CENTER);
+        cuaNomb.getChildren().addAll(Nombre,nombre);
         
         Text Apellido = new Text("Apellido:");
         Apellido.setFont(new Font(16));
         VBox.setMargin(Apellido, new Insets(20, 0, 0, 0));
         TextField apellido = new TextField();
         VBox.setMargin(apellido, new Insets(5, 0, 0, 0));
-        
+        HBox cuaApe= new HBox();
+        cuaApe.setAlignment(Pos.CENTER);
+        cuaApe.getChildren().addAll(Apellido,apellido);
         
         Text Telefono = new Text("Telefono:");
         Telefono.setFont(new Font(16));
@@ -201,8 +205,9 @@ public class ContactosController implements Initializable {
         VBox.setMargin(nota, new Insets(5, 0, 0, 0));
 
         
-        cuadro1.getChildren().addAll(Nombre,nombre,Apellido,apellido,Telefono,telefono,Correo,correoPersonal);
-        cuadro2.getChildren().addAll(RedSocial,redesSociales, Fecha,fecha,Foto, foto, Nota,nota);
+        cuadro2.getChildren().addAll(cuaNomb, Telefono,telefono,Correo,correoPersonal,RedSocial,redesSociales);
+        cuadro3.getChildren().addAll( cuaApe,Fecha,fecha,Foto, foto, Nota,nota);
+ 
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
@@ -217,6 +222,9 @@ public class ContactosController implements Initializable {
         VBox.setMargin(Nombre, new Insets(20, 0, 0, 0));
         TextField nombre = new TextField();
         VBox.setMargin(nombre, new Insets(5, 0, 0, 0));
+        HBox cuaNomb= new HBox();
+        cuaNomb.setAlignment(Pos.CENTER);
+        cuaNomb.getChildren().addAll(Nombre,nombre);
         
         Text Telefono = new Text("Telefono:");
         Telefono.setFont(new Font(16));
@@ -257,9 +265,9 @@ public class ContactosController implements Initializable {
         TextField nota = new TextField();
         VBox.setMargin(nota, new Insets(5, 0, 0, 0));
 
-        
-        cuadro1.getChildren().addAll(Nombre,nombre,apellido,Telefono,telefono,Correo,correoPersonal);
-        cuadro2.getChildren().addAll(RedSocial,redesSociales, Fecha,fecha,Foto, foto, Nota,nota);
+
+        cuadro2.getChildren().addAll(cuaNomb, Telefono,telefono,Correo,correoPersonal);
+        cuadro3.getChildren().addAll(RedSocial,redesSociales, Fecha,fecha,Foto, foto, Nota,nota);
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
@@ -267,7 +275,5 @@ public class ContactosController implements Initializable {
         this.fecha = fecha;
         this.nota = nota;
     }
-    
-    
     
 }
