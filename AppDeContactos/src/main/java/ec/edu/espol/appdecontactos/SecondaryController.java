@@ -56,10 +56,10 @@ public class SecondaryController implements Initializable {
         redes.addLast("@hola");
         redes.addLast("@holaFace");
         redes.addLast("@holaTiktok");
-        fotos.addLast("file:C:\\Users\\josel\\ProyectoEstructuras\\AppDeContactos\\src\\main\\resources\\ec\\edu\\espol\\appdecontactos\\imgs\\contactos\\Jose\\Jose.jpeg");
-        fotos.addLast("file:C:\\Users\\josel\\ProyectoEstructuras\\AppDeContactos\\src\\main\\resources\\ec\\edu\\espol\\appdecontactos\\imgs\\contactos\\Jose\\FotosAsociadas\\JoseAsociada1.jpeg");
-        fotos2.addLast("file:C:\\Users\\josel\\ProyectoEstructuras\\AppDeContactos\\src\\main\\resources\\ec\\edu\\espol\\appdecontactos\\imgs\\contactos\\Mariu\\MariuPerfil.jpeg");
-        fotos2.addLast("file:C:\\Users\\josel\\ProyectoEstructuras\\AppDeContactos\\src\\main\\resources\\ec\\edu\\espol\\appdecontactos\\imgs\\contactos\\Mariu\\FotosAsociadas\\MariuAsociada1.jpeg");
+        fotos.addLast("file:src/main/resources/ec/edu/espol/appdecontactos/imgs/contactos/Jose/Jose.jpeg");
+        fotos.addLast("file:src/main/resources/ec/edu/espol/appdecontactos/imgs/contactos/Jose/FotosAsociadas/JoseAsociada1.jpeg");
+        fotos2.addLast("file:src/main/resources/ec/edu/espol/appdecontactos/imgs/contactos/Mariu/MariuPerfil.jpeg");
+        fotos2.addLast("file:src/main/resources/ec/edu/espol/appdecontactos/imgs/contactos/Mariu/FotosAsociadas/MariuAsociada1.jpeg");
         redes2.addLast("@hela");
         redes2.addLast("@helaFace");
         redes2.addLast("@helaTiktok");
