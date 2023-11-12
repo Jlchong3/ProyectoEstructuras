@@ -1,9 +1,10 @@
 package ec.edu.espol.appdecontactos.clases;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Iterator;
 
-public class ArrayList<E> implements List<E> {
+public class ArrayList<E> implements List<E>,Serializable {
     
     private E[] elements;
     private int capacity = 10;

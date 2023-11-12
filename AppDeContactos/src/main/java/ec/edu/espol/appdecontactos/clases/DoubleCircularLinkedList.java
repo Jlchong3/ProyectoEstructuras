@@ -4,6 +4,7 @@
  */
 package ec.edu.espol.appdecontactos.clases;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.ListIterator;
@@ -12,7 +13,7 @@ import java.util.ListIterator;
  *
  * @author josel
  */
-public class DoubleCircularLinkedList<E> implements List<E>{
+public class DoubleCircularLinkedList<E> implements List<E>,Serializable{
     private Node<E> last;
 
     public DoubleCircularLinkedList(){
@@ -56,7 +57,7 @@ public class DoubleCircularLinkedList<E> implements List<E>{
     @Override
     public int size() {
         int i = 1;
-        for(Node<E> n = last.getNext(); n != last; n.getNext())
+        for(Node<E> n = last.getNext(); n != last;  n = n.getNext())
             i++;
         return i;
     }
@@ -189,7 +190,20 @@ public class DoubleCircularLinkedList<E> implements List<E>{
 
     @Override
     public E get(int index) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if(isEmpty()){
+            return null;
+        }
+        if(index < 0 || index >= size()){
+            return null;
+        }
+        Node<E> n = last.getNext();
+        for(int i = 0; i < index; i++){
+            n = n.getNext();
+        }
+        return n.getContent();
+        
+        
+        
     }
 
     @Override
