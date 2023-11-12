@@ -5,59 +5,42 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Iterator;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class Contacto{
 
-    public int telefonoPersonal;
-    public int telefonoTrabajo;
-    public int telefonoCasa;
-    public DoubleCircularLinkedList<String> foto;
+    public int telefonoPrincipal;
+    public DoubleCircularLinkedList<String> fotos;
     public ArrayList<String> redesSociales;
-    public String correoPersonal;
-    public String correoTrabajo; 
-    public String correoProvisional;
+    public String correoPrincipal;
     public String fechas;
     public Contacto contactoRelacionado;
     public String nota;
+    
     public Contacto(){
         
     }
     
-    public Contacto(int telefono, int telefonoTrabajo,int telefonoCasa, String correoPersonal, String correoTrabajo, String correoProvisional, String fechas, Contacto contactoRelacionado, String nota) {
-        this.telefonoPersonal = telefono;
-        this.telefonoTrabajo = telefonoTrabajo;
-        this.telefonoCasa = telefonoCasa;
-        this.redesSociales = new ArrayList<>();
-        this.foto = new DoubleCircularLinkedList<>();
-        this.correoPersonal = correoPersonal;
-        this.correoTrabajo = correoTrabajo;
-        this.correoProvisional = correoProvisional;
+    public Contacto(int telefonoPrincipal,ArrayList<String> redesSociales,DoubleCircularLinkedList<String> fotos, String correoPrincipal, String fechas, Contacto contactoRelacionado, String nota) {
+        this.telefonoPrincipal = telefonoPrincipal;
+        this.redesSociales = redesSociales;
+        this.fotos = fotos;
+        this.correoPrincipal = correoPrincipal;
         this.fechas = fechas;
         this.contactoRelacionado = contactoRelacionado;
         this.nota = nota;
     }
     
-    public int getTelefonoPersonal() {
-        return telefonoPersonal;
-    }
-    public int getTelefonoCasa() {
-        return telefonoCasa;
-    }
-    public int getTelefonoTrabajo() {
-        return telefonoTrabajo;
+    public int getTelefonoPrincipal() {
+        return telefonoPrincipal;
     }
 
-    public void setTelefonoPersonal(int telefonoPersonal) {
-        this.telefonoPersonal = telefonoPersonal;
+    public void setTelefonoPrincipal(int telefonoPrincipal) {
+        this.telefonoPrincipal = telefonoPrincipal;
     }
-    public void setTelefonoCasa(int telefonoCasa) {
-        this.telefonoCasa = telefonoCasa;
-    }
-    public void setTelefonoTrabajo(int telefono) {
-        this.telefonoTrabajo = telefonoTrabajo;
-    }
+
 
     public ArrayList<String> getRedesSociales() {
         return redesSociales;
@@ -68,35 +51,19 @@ public class Contacto{
     }
 
     public String getFoto(int index) {
-        return foto.get(index);
+        return fotos.get(index);
     }
 
     public void addFoto(String foto) {
-        this.foto.addLast(foto);
+        this.fotos.addLast(foto);
     }
 
-    public String getCorreoPersonal() {
-        return correoPersonal;
+    public String getCorreoPrincipal() {
+        return correoPrincipal;
     }
 
-    public void setCorreoPersonal(String correoPersonal) {
-        this.correoPersonal = correoPersonal;
-    }
-
-    public String getCorreoTrabajo() {
-        return correoTrabajo;
-    }
-
-    public void setCorreoTrabajo(String correoTrabajo) {
-        this.correoTrabajo = correoTrabajo;
-    }
-
-    public String getCorreoProvisional() {
-        return correoProvisional;
-    }
-
-    public void setCorreoProvisional(String correoProvisional) {
-        this.correoProvisional = correoProvisional;
+    public void setCorreoPrincipal(String correoPrincipal) {
+        this.correoPrincipal = correoPrincipal;
     }
 
     public String getFechas() {
@@ -131,7 +98,6 @@ public class Contacto{
         }
     }
     
-    
     public static DoubleCircularLinkedList<Contacto> readListSer()
     {
         DoubleCircularLinkedList<Contacto> lista= new DoubleCircularLinkedList<>();
@@ -142,9 +108,11 @@ public class Contacto{
         }
         return lista;
     }
-    
 
-
-    
+    public void updateFile(){
+        DoubleCircularLinkedList<Contacto> contactos =  Contacto.readListSer();
+        contactos.addLast(this);
+        Contacto.saveListSer(contactos);
+    }
 
 }
