@@ -101,10 +101,16 @@ public class DoubleCircularLinkedList<E> implements List<E>,Serializable{
 
             @Override
             public void remove() {
-                Node<E> pp = cursor.getPrevious().getPrevious();
-                pp.setNext(cursor);
-                cursor.setPrevious(pp);
+                if(size() == 1){
+                    last = null;
+                }
+                else{
+                    Node<E> pp = cursor.getPrevious().getPrevious();
+                    pp.setNext(cursor);
+                    cursor.setPrevious(pp);
+                }
             }
+            
 
             @Override
             public void set(E e) {
@@ -240,6 +246,18 @@ public class DoubleCircularLinkedList<E> implements List<E>,Serializable{
     public List<E> findBetween(E e1, E e2, Comparator<E> comp) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+    
+    public String toString(){
+        if(this.last == null)
+            return "[]";
+        StringBuilder sb = new StringBuilder();
+        sb.append("["+ last.getNext().getContent());
+        Node<E> n;
+        for(n = last.getNext().getNext(); n != last.getNext();n = n.getNext()){
+            sb.append(", "+ n.getContent());
+        }
+        sb.append("]");
+        return sb.toString();
+    }
 }
 
