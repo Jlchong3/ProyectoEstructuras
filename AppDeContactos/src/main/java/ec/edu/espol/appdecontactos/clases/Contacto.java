@@ -5,11 +5,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class Contacto{
+public class Contacto implements Serializable{
 
     public int telefonoPrincipal;
     public DoubleCircularLinkedList<String> fotos;
