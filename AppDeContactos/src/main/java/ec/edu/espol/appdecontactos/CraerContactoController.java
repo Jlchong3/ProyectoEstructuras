@@ -9,6 +9,8 @@ import ec.edu.espol.appdecontactos.clases.Contacto;
 import ec.edu.espol.appdecontactos.clases.DoubleCircularLinkedList;
 import ec.edu.espol.appdecontactos.clases.Empresa;
 import ec.edu.espol.appdecontactos.clases.Persona;
+import ec.edu.espol.appdecontactos.clases.SessionManager;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -110,7 +112,9 @@ public class CraerContactoController implements Initializable {
     }
     
     public void registrarContacto(Contacto contactoNuevo){
-        contacto.añadirContacto(contactoNuevo);
+        contactoNuevo.updateFile();
+        DoubleCircularLinkedList<Contacto> contactosActualizados = Contacto.readListSer();
+        SessionManager.getInstance().setContactosActuales(contactosActualizados);
     }
     
     @FXML
