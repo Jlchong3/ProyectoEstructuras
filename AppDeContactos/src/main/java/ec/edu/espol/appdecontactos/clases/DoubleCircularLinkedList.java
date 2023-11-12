@@ -30,11 +30,15 @@ public class DoubleCircularLinkedList<E> implements List<E>{
             last = n;
             last.setNext(last);
             last.setPrevious(last);
+            return true;
         }
         Node<E> first = last.getNext();
-        last.setNext(n);
         first.setPrevious(n);
+        last.setNext(n);
+        n.setPrevious(last);
+        n.setNext(first);
         last = n;
+        
         return true;
     }
 
@@ -99,7 +103,6 @@ public class DoubleCircularLinkedList<E> implements List<E>{
                 Node<E> pp = cursor.getPrevious().getPrevious();
                 pp.setNext(cursor);
                 cursor.setPrevious(pp);
-                next();
             }
 
             @Override

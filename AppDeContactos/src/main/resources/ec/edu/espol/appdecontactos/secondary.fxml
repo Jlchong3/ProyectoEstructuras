@@ -1,16 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-<GridPane fx:id="contenedorContacto" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="292.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.appdecontactos.SecondaryController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="673.0" prefWidth="318.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.appdecontactos.SecondaryController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints maxHeight="191.60001220703126" minHeight="2.8000029563903865" prefHeight="120.6" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="481.8000244140624" minHeight="10.0" prefHeight="481.8000244140624" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="102.1999572753906" minHeight="10.0" prefHeight="25.799975585937545" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="481.8000244140624" minHeight="10.0" prefHeight="462.3999999999999" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="102.1999572753906" minHeight="10.0" prefHeight="46.39999999999998" vgrow="SOMETIMES" />
   </rowConstraints>
+   <children>
+      <GridPane fx:id="gridTop">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="101.20001220703125" minWidth="10.0" prefWidth="67.19999618530274" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="209.60001525878909" minWidth="10.0" prefWidth="181.6000038146973" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.20001220703125" minWidth="10.0" prefWidth="70.20004882812498" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox fx:id="FotoPerfil" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" />
+         </children>
+      </GridPane>
+      <GridPane fx:id="gridMid" GridPane.rowIndex="1">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="140.79997787475585" minHeight="10.0" prefHeight="123.8" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="306.0" minHeight="10.0" prefHeight="126.19999999999999" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="306.0" minHeight="10.0" prefHeight="131.8" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="149.60001220703128" minHeight="10.0" prefHeight="112.00003662109378" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TitledPane fx:id="telefonos" prefHeight="200.0" prefWidth="200.0" />
+            <TitledPane animated="false" prefHeight="121.0" prefWidth="318.0" text="untitled" GridPane.rowIndex="1">
+              <content>
+                <AnchorPane fx:id="correos" minHeight="0.0" minWidth="0.0" prefHeight="79.0" prefWidth="317.0" />
+              </content>
+            </TitledPane>
+         </children>
+      </GridPane>
+   </children>
 </GridPane>
