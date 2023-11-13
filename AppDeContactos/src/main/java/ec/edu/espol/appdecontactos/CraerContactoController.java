@@ -114,6 +114,7 @@ public class CraerContactoController implements Initializable {
     public void registrarContacto(Contacto contactoNuevo){
         contactoNuevo.updateFile();
         DoubleCircularLinkedList<Contacto> contactosActualizados = Contacto.readListSer();
+        System.out.println(contactosActualizados);
         SessionManager.getInstance().setContactosActuales(contactosActualizados);
     }
     
@@ -146,7 +147,12 @@ public class CraerContactoController implements Initializable {
                         fotossssss.addLast(foto.getText());
 
                         Empresa e = new Empresa(i, redesSocialessssss , fotossssss , correoPrincipal.getText(), fecha.getText(), contactoRelacionado, nota.getText(), nombre.getText(),  j,   telefonoProvisional,  correoSecundario.getText(),  correoProvisional);
+                        
+                        System.out.println(e.toString());
                         registrarContacto(e);
+                        
+                        
+                        
                         
                         //RETROCEDER
                         break;
@@ -163,7 +169,9 @@ public class CraerContactoController implements Initializable {
                         fotossssss.addLast(foto.getText());
 
                         Persona p = new Persona(i,redesSocialessssss,fotossssss, correoPrincipal.getText() , fecha.getText() , contactoRelacionado, nota.getText(), nombre.getText(), apellido.getText(), j, telefonoCasa, correoTrabajo, correoProvisional);
+                        System.out.println(p.toString());
                         registrarContacto(p);
+                        
                         
                         //RETROCEDER
                         break;

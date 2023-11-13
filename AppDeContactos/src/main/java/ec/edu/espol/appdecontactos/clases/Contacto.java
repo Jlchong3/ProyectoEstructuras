@@ -1,5 +1,6 @@
 package ec.edu.espol.appdecontactos.clases;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -102,18 +103,34 @@ public class Contacto implements Serializable{
     public static DoubleCircularLinkedList<Contacto> readListSer()
     {
         DoubleCircularLinkedList<Contacto> lista= new DoubleCircularLinkedList<>();
-        try(ObjectInputStream input= new ObjectInputStream(new FileInputStream("UsuarioSer.txt"));){
+        try(ObjectInputStream input= new ObjectInputStream(new FileInputStream("ContactosSer.txt"));){
             lista = (DoubleCircularLinkedList<Contacto>)input.readObject();
         } catch(IOException | ClassNotFoundException ioE){
+            ioE.printStackTrace();
 
         }
         return lista;
     }
 
-    public void updateFile(){
-        DoubleCircularLinkedList<Contacto> contactos =  Contacto.readListSer();
+    public void updateFile()
+    {
+        File file = new File("ContactosSer.txt");
+        DoubleCircularLinkedList<Contacto> contactos = new DoubleCircularLinkedList<>();
+
+        if (file.exists()) {
+            contactos = Contacto.readListSer();
+        }
+
         contactos.addLast(this);
+
         Contacto.saveListSer(contactos);
     }
+
+    @Override
+    public String toString() {
+        return "Contacto{" + "telefonoPrincipal=" + telefonoPrincipal + ", fotos=" + fotos + ", redesSociales=" + redesSociales + ", correoPrincipal=" + correoPrincipal + ", fechas=" + fechas + ", contactoRelacionado=" + contactoRelacionado + ", nota=" + nota + '}';
+    }
+    
+    
 
 }
