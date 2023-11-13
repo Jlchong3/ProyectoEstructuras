@@ -109,7 +109,7 @@ public class CraerContactoController implements Initializable {
         nombresContactos.addFirst("Tia");
     }
 
-    public DoubleCircularLinkedList<String> obtenerDireccionImagenl()
+    public DoubleCircularLinkedList<String> obtenerDireccionImagen()
     {
         cargarNombres();
         String directorioImagenes = "src/main/resources/ec/edu/espol/appdecontactos/imgs/contactos/";
