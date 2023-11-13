@@ -56,7 +56,7 @@ public class SecondaryController implements Initializable {
         }
         else if(!contactos.isEmpty()){
             Contacto c = null;
-            while(it.hasNext() && c == primer){
+            while(it.hasNext() && c != primer){
                 c = it.next();
             }
             actualizarPagina(primer);
