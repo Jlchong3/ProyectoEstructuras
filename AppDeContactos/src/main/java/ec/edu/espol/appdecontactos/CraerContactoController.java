@@ -10,6 +10,7 @@ import ec.edu.espol.appdecontactos.clases.DoubleCircularLinkedList;
 import ec.edu.espol.appdecontactos.clases.Empresa;
 import ec.edu.espol.appdecontactos.clases.Persona;
 import ec.edu.espol.appdecontactos.clases.SessionManager;
+import java.io.IOException;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -112,6 +113,18 @@ public class CraerContactoController implements Initializable {
         
     }
     
+    public void regresarTContactos(){
+        Stage stage = (Stage) tipoContacto.getScene().getWindow();
+        stage.setHeight(550);
+        try {
+            
+            
+            App.setRoot("primary");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     public void registrarContacto(Contacto contactoNuevo){
         contactosActuales.addFirst(contactoNuevo);
         contactoNuevo.updateFile(contactosActuales);
@@ -155,6 +168,7 @@ public class CraerContactoController implements Initializable {
                         
                         
                         //RETROCEDER
+                        regresarTContactos();
                         break;
                     }
                     case "Persona":                    
@@ -174,6 +188,7 @@ public class CraerContactoController implements Initializable {
                         
                         
                         //RETROCEDER
+                        regresarTContactos();
                         break;
                     }
                     default:
@@ -243,8 +258,9 @@ public class CraerContactoController implements Initializable {
         Text Foto = new Text("Foto:");
         Foto.setFont(new Font(16));
         VBox.setMargin(Foto, new Insets(20, 0, 0, 0));
-        TextField foto = new TextField();
-        VBox.setMargin(foto, new Insets(5, 0, 0, 0));
+        //TextField foto = new TextField();
+        Button btn = new Button(" Agregar ");
+        VBox.setMargin(btn, new Insets(5, 0, 0, 0));  
         
         
         Text Nota = new Text("Nota:");
@@ -255,7 +271,7 @@ public class CraerContactoController implements Initializable {
 
         cuadro1.getChildren().addAll(Nombre,nombre, Apellido,apellido);
         cuadro2.getChildren().addAll( TelefonoPrincipal, telefonoPrincipal, TelefonoTrabajo, telefonoTrabajo,CorreoPrincipal,correoPrincipal,CorreoTrabajo,correoTrabajo);
-        cuadro3.getChildren().addAll( RedesSociales,redesSociales,Fecha,fecha,Foto, foto, Nota,nota);
+        cuadro3.getChildren().addAll( RedesSociales,redesSociales,Fecha,fecha,Foto, btn, Nota,nota);
  
         this.nombre = nombre;
         this.apellido = apellido;
@@ -320,8 +336,9 @@ public class CraerContactoController implements Initializable {
         Text Foto = new Text("Foto:");
         Foto.setFont(new Font(16));
         VBox.setMargin(Foto, new Insets(20, 0, 0, 0));
-        TextField foto = new TextField();
-        VBox.setMargin(foto, new Insets(5, 0, 0, 0));
+        //TextField foto = new TextField();
+        Button btn = new Button(" Agregar ");
+        VBox.setMargin(btn, new Insets(5, 0, 0, 0));  
         
         
         Text Nota = new Text("Nota:");
@@ -332,7 +349,7 @@ public class CraerContactoController implements Initializable {
 
         cuadro1.getChildren().addAll(Nombre,nombre);
         cuadro2.getChildren().addAll( TelefonoPrincipal, telefonoPrincipal, TelefonoWha, telefonoWha,CorreoPrincipal,correoPrincipal,CorreoSecundario, correoSecundario);
-        cuadro3.getChildren().addAll( RedesSociales,redesSociales,Fecha,fecha,Foto, foto, Nota,nota);
+        cuadro3.getChildren().addAll( RedesSociales,redesSociales,Fecha,fecha,Foto, btn, Nota,nota);
  
         this.nombre = nombre;
 
@@ -352,5 +369,6 @@ public class CraerContactoController implements Initializable {
 
     @FXML
     private void retrocederPantalla(MouseEvent event) {
+        regresarTContactos();
     } 
 }
