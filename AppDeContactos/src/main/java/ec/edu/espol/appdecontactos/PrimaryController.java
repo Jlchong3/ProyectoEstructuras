@@ -1,5 +1,6 @@
 package ec.edu.espol.appdecontactos;
 
+import ec.edu.espol.appdecontactos.clases.ButtonContacto;
 import ec.edu.espol.appdecontactos.clases.ArrayList;
 import ec.edu.espol.appdecontactos.clases.Contacto;
 import ec.edu.espol.appdecontactos.clases.DoubleCircularLinkedList;
@@ -11,6 +12,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -41,15 +43,14 @@ public class PrimaryController implements Initializable {
         if(!contactos.isEmpty()){
             for(int i = 0; i < contactos.size(); i++){
                 Contacto c = contactos.get(i);
-                Button b = new Button();
-                if(c instanceof Empresa){
-                    Empresa e = (Empresa) c;
-                    b.setText(e.getNombre());
-                }
-                else{
-                    Persona p = (Persona) c;
-                    b.setText(p.getNombre() + " "+ p.getApellido());
-                }
+                ButtonContacto b = new ButtonContacto(c);
+                b.addEventHandler(MouseEvent.MOUSE_CLICKED, (Event t) -> {
+                    SessionManager.getInstance().setContacto(c);
+                    try {
+                        App.setRoot("secondary");
+                    }
+                    catch (IOException ex) {}
+                });
                 listaDeContactos.getChildren().add(b);
             }
         }
@@ -71,6 +72,7 @@ public class PrimaryController implements Initializable {
 
     @FXML
     private void recorrerContactos(MouseEvent event) {
+        SessionManager.getInstance().setContacto(null);
         try {
             App.setRoot("secondary");
         } catch (IOException ex) {
