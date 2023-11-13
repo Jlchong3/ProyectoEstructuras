@@ -40,6 +40,8 @@ public class SecondaryController implements Initializable {
     private AnchorPane notas;
     @FXML
     private AnchorPane redesSociales;
+    @FXML
+    private Button volver;
 
     private void switchToPrimary() throws IOException {
         App.setRoot("primary");
@@ -136,5 +138,14 @@ public class SecondaryController implements Initializable {
         correos.getChildren().add(corrs);
         redesSociales.getChildren().add(reds);
         notas.getChildren().add(new Text(c.getNota()));
+    }
+
+    @FXML
+    private void volverPrincipal(MouseEvent event) {
+        try {
+            App.setRoot("primary");
+        } catch (IOException ex) {
+           
+        }
     }
 }
