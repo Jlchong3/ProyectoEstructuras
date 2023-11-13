@@ -13,7 +13,7 @@ import java.util.ListIterator;
  *
  * @author josel
  */
-public class DoubleCircularLinkedList<E> implements List<E>,Serializable{
+public class DoubleCircularLinkedList<E> implements List<E>, java.io.Serializable{
     private Node<E> last;
 
     public DoubleCircularLinkedList(){

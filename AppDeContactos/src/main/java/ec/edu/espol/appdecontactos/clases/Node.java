@@ -4,11 +4,14 @@
  */
 package ec.edu.espol.appdecontactos.clases;
 
+import java.io.Serializable;
+
 /**
  *
  * @author josel
  */
-public class Node<E> {
+public class Node<E> implements Serializable {
+    private static final long serialVersionUID = 4896852673725173717L;
     private Node<E> next;
     private Node<E> previous;
     private E content;
