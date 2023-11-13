@@ -9,6 +9,7 @@ import ec.edu.espol.appdecontactos.clases.SessionManager;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,6 +30,8 @@ public class PrimaryController implements Initializable {
     private Button agregarContacto;
     @FXML
     private Button recorrer;
+    @FXML
+    private Button salir;
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
     }
@@ -73,5 +76,10 @@ public class PrimaryController implements Initializable {
         } catch (IOException ex) {
            
         }
+    }
+
+    @FXML
+    private void cerrarAplicacion(MouseEvent event) {
+        Platform.exit();
     }
 }

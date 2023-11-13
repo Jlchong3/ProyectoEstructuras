@@ -33,7 +33,7 @@
             <Insets right="15.0" />
          </GridPane.margin>
       </Button>
-      <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" text="Salir" GridPane.rowIndex="2">
+      <Button fx:id="salir" mnemonicParsing="false" onMouseClicked="#cerrarAplicacion" prefHeight="25.0" prefWidth="52.0" text="Salir" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets left="10.0" />
          </GridPane.margin>
