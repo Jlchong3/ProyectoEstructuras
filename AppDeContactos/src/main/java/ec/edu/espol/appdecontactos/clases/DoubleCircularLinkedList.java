@@ -110,8 +110,9 @@ public class DoubleCircularLinkedList<E> implements List<E>, java.io.Serializabl
                 else{
                     Node<E> pp = cursor.getPrevious().getPrevious();
                     if (pp == cursor && size() == 2){
-                        last.setNext(last);
-                        last.setPrevious(last);
+                        pp.setNext(pp);
+                        pp.setPrevious(pp);
+                        last = pp.getPrevious();
                     }
                     else{   
                         cursor.getPrevious().setNext(null);

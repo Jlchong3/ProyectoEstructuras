@@ -131,7 +131,7 @@ public class SecondaryController implements Initializable {
              Persona p = (Persona) c;
              FotoPerfil.getChildren().add(new Text(p.getNombre()+" "+p.getApellido()));
              tels.getChildren().addAll(new Text("Personal: " + p.getTelefonoPrincipal()),new Text("Trabajo: " + p.getTelefonoTrabajo()),new Text("Casa: " + p.getTelefonoCasa()));
-             corrs.getChildren().addAll(new Text("Principal: " + p.getCorreoPrincipal()),new Text("Trabajo: " + p.getCorreoTrabajo()),new Text("Provisional" + p.getCorreoProvisional()));
+             corrs.getChildren().addAll(new Text("Principal: " + p.getCorreoPrincipal()),new Text("Trabajo: " + p.getCorreoTrabajo()),new Text("Provisional: " + p.getCorreoProvisional()));
         }
         else{
             Empresa e = (Empresa) c;
