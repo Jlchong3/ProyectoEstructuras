@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="279.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.appdecontactos.PrimaryController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="279.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.appdecontactos.PrimaryController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -21,9 +21,9 @@
    <children>
       <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
         <content>
-          <AnchorPane fx:id="pane" minHeight="0.0" minWidth="0.0" prefHeight="554.0" prefWidth="263.0">
+          <AnchorPane fx:id="pane" minHeight="0.0" minWidth="0.0" prefHeight="523.0" prefWidth="263.0">
                <children>
-                  <VBox fx:id="listaDeContactos" layoutX="4.0" prefHeight="552.0" prefWidth="260.0" />
+                  <VBox fx:id="listaDeContactos" layoutX="4.0" layoutY="4.0" prefHeight="534.0" prefWidth="260.0" />
                </children>
             </AnchorPane>
         </content>
@@ -38,7 +38,7 @@
             <Insets left="10.0" />
          </GridPane.margin>
       </Button>
-      <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" text="Ver Todos" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+      <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" text="Recorrer Contactos" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets right="15.0" />
          </GridPane.margin>
