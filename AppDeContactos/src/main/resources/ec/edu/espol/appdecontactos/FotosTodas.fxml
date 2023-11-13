@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="279.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="51.0" prefWidth="279.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="103.0">
+               <children>
+                  <Button mnemonicParsing="false" text="Retroceder" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="159.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fotos Agregadas" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <VBox prefHeight="202.0" prefWidth="279.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="1.0" prefWidth="279.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Foto Pincipal" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="115.0" prefWidth="279.0">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="23.0" prefWidth="279.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Foto Asociada" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" />
+         </children>
+      </VBox>
+   </children>
+</VBox>
