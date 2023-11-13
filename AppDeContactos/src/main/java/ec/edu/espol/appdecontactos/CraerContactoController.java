@@ -111,6 +111,7 @@ public class CraerContactoController implements Initializable {
 
     public DoubleCircularLinkedList<String> obtenerDireccionImagen()
     {
+        
         cargarNombres();
         String directorioImagenes = "src/main/resources/ec/edu/espol/appdecontactos/imgs/contactos/";
         DoubleCircularLinkedList<String> fotosDelContacto = new DoubleCircularLinkedList<>();
@@ -226,13 +227,13 @@ public class CraerContactoController implements Initializable {
                         int i = Integer.parseInt(telefonoPrincipal.getText());
                         int j = Integer.parseInt(telefonoWha.getText());
 
-                        ArrayList<String> redesSocialessssss = new ArrayList<>();
-                        redesSocialessssss.addLast(redesSociales.getText());
+                        ArrayList<String> redesSocialesContacto = new ArrayList<>();
+                        redesSocialesContacto.addLast(redesSociales.getText());
 
-                        DoubleCircularLinkedList<String> fotossssss = new DoubleCircularLinkedList<>();
-                        fotossssss.addLast("file:src/main/resources/ec/edu/espol/appdecontactos/imgs/contactos/JosePerfil.jpeg");
+                        DoubleCircularLinkedList<String> fotosContacto = obtenerDireccionImagen();
+                        
 
-                        Empresa e = new Empresa(i, redesSocialessssss , fotossssss , correoPrincipal.getText(), fecha.getText(), contactoRelacionado, nota.getText(), nombre.getText(),  j,   telefonoProvisional,  correoSecundario.getText(),  correoProvisional);
+                        Empresa e = new Empresa(i, redesSocialesContacto , fotosContacto , correoPrincipal.getText(), fecha.getText(), contactoRelacionado, nota.getText(), nombre.getText(),  j,   telefonoProvisional,  correoSecundario.getText(),  correoProvisional);
                         
                         System.out.println(e.toString());
                         registrarContacto(e);
@@ -249,13 +250,13 @@ public class CraerContactoController implements Initializable {
                         int i = Integer.parseInt(telefonoPrincipal.getText());
                         int j = Integer.parseInt(telefonoTrabajo.getText());
 
-                        ArrayList<String> redesSocialessssss = new ArrayList<>();
-                        redesSocialessssss.addLast(redesSociales.getText());
+                        ArrayList<String> redesSocialesContacto = new ArrayList<>();
+                        redesSocialesContacto.addLast(redesSociales.getText());
 
-                        DoubleCircularLinkedList<String> fotossssss = new DoubleCircularLinkedList<>();
-                        fotossssss.addLast("file:src/main/resources/ec/edu/espol/appdecontactos/imgs/contactos/JosePerfil.jpeg");
+                        DoubleCircularLinkedList<String> fotosContacto = obtenerDireccionImagen();
+                        
 
-                        Persona p = new Persona(i,redesSocialessssss,fotossssss, correoPrincipal.getText() , fecha.getText() , contactoRelacionado, nota.getText(), nombre.getText(), apellido.getText(), j, telefonoCasa, correoTrabajo, correoProvisional);
+                        Persona p = new Persona(i,redesSocialesContacto,fotosContacto, correoPrincipal.getText() , fecha.getText() , contactoRelacionado, nota.getText(), nombre.getText(), apellido.getText(), j, telefonoCasa, correoTrabajo, correoProvisional);
                         System.out.println(p.toString());
                         registrarContacto(p);
                         
