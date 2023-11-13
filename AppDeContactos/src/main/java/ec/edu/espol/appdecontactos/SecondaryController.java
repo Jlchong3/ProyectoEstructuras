@@ -23,7 +23,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 public class SecondaryController implements Initializable {
-
+    Contacto primer;
     ListIterator<Contacto> it;
     private DoubleCircularLinkedList<Contacto> contactos = new DoubleCircularLinkedList<>();
     @FXML
@@ -68,28 +68,10 @@ public class SecondaryController implements Initializable {
         contactos.addLast(p1);
         contactos.addLast(p2);
         
-        if(!contactos.isEmpty()){
+        if(!contactos.isEmpty() && primer == null){
             it = contactos.CircularIterator();
-            Persona primer = (Persona)it.next();
-            StackPane sp = new StackPane();
-            sp.addEventHandler(MouseEvent.MOUSE_CLICKED, (Event t) -> {
-            });
-            Image img = new Image(primer.getFoto(0),100,100,true,true);
-            ImageView imv = new ImageView(img);
-            sp.getChildren().add(imv);
-            FotoPerfil.setAlignment(Pos.CENTER);
-            FotoPerfil.getChildren().add(sp);
-            FotoPerfil.getChildren().add(new Text(primer.getNombre()+" "+primer.getApellido()));
-            VBox tels = new VBox();
-            VBox corrs = new VBox();
-            VBox reds = new VBox();
-            tels.getChildren().addAll(new Text("Personal: " + primer.getTelefonoPrincipal()),new Text("Trabajo: " + primer.getTelefonoTrabajo()),new Text("Casa: " + primer.getTelefonoCasa()));
-            corrs.getChildren().addAll(new Text("Principal: " + primer.getCorreoPrincipal()),new Text("Trabajo: " + primer.getCorreoTrabajo()),new Text("Provisional" + primer.getCorreoProvisional()));
-            reds.getChildren().addAll(new Text("X: " + primer.getRedesSociales().get(0)),new Text("Face: " + primer.getRedesSociales().get(1)),new Text("Tiktok: " + primer.getRedesSociales().get(2)));
-            telefonos.getChildren().add(tels);
-            correos.getChildren().add(corrs);
-            redesSociales.getChildren().add(reds);
-            notas.getChildren().add(new Text(primer.getNota()));
+            Contacto primer = it.next();
+            actualizarPagina(primer);
             
         }
         else{
@@ -103,41 +85,18 @@ public class SecondaryController implements Initializable {
         }
     }
     
-    public void actualizaPagina(Contacto c){
-        
-    }
 
     @FXML
     private void previous(MouseEvent event) {
         Contacto c = it.previous();
         clear();
-        Persona cont = (Persona)c;
-        StackPane sp = new StackPane();
-        sp.addEventHandler(MouseEvent.MOUSE_CLICKED, (Event t) -> {
-        });
-        Image img = new Image(cont.getFoto(0),100,100,true,true);
-        ImageView imv = new ImageView(img);
-        sp.getChildren().add(imv);
-        FotoPerfil.setAlignment(Pos.CENTER);
-        FotoPerfil.getChildren().add(sp);
-        FotoPerfil.getChildren().add(new Text(cont.getNombre()+" "+cont.getApellido()));
-        VBox tels = new VBox();
-        VBox corrs = new VBox();
-        VBox reds = new VBox();
-        tels.getChildren().addAll(new Text("Personal: " + cont.getTelefonoPrincipal()),new Text("Trabajo: " + cont.getTelefonoTrabajo()),new Text("Casa: " + cont.getTelefonoCasa()));
-        corrs.getChildren().addAll(new Text("Principal: " + cont.getCorreoPrincipal()),new Text("Trabajo: " + cont.getCorreoTrabajo()),new Text("Provisional" + cont.getCorreoProvisional()));
-        reds.getChildren().addAll(new Text("X: " + cont.getRedesSociales().get(0)),new Text("Face: " + cont.getRedesSociales().get(1)),new Text("Tiktok: " + cont.getRedesSociales().get(2)));
-        telefonos.getChildren().add(tels);
-        correos.getChildren().add(corrs);
-        redesSociales.getChildren().add(reds);
-        notas.getChildren().add(new Text(cont.getNota()));
+        actualizarPagina(c);
     }
 
     @FXML
     private void delete(MouseEvent event) {
         it.remove();
         clear();
-        System.out.println(contactos);
         if(contactos.isEmpty()){
             gridTop.getChildren().clear();
             gridMid.getChildren().clear();
@@ -147,26 +106,7 @@ public class SecondaryController implements Initializable {
         }
         else{
             Contacto c = it.next();
-            Persona cont = (Persona)c;
-            StackPane sp = new StackPane();
-            sp.addEventHandler(MouseEvent.MOUSE_CLICKED, (Event t) -> {
-            });
-            Image img = new Image(cont.getFoto(0),100,100,true,true);
-            ImageView imv = new ImageView(img);
-            sp.getChildren().add(imv);
-            FotoPerfil.setAlignment(Pos.CENTER);
-            FotoPerfil.getChildren().add(sp);
-            FotoPerfil.getChildren().add(new Text(cont.getNombre()+" "+cont.getApellido()));
-            VBox tels = new VBox();
-            VBox corrs = new VBox();
-            VBox reds = new VBox();
-            tels.getChildren().addAll(new Text("Personal: " + cont.getTelefonoPrincipal()),new Text("Trabajo: " + cont.getTelefonoTrabajo()),new Text("Casa: " + cont.getTelefonoCasa()));
-            corrs.getChildren().addAll(new Text("Principal: " + cont.getCorreoPrincipal()),new Text("Trabajo: " + cont.getCorreoTrabajo()),new Text("Provisional" + cont.getCorreoProvisional()));
-            reds.getChildren().addAll(new Text("X: " + cont.getRedesSociales().get(0)),new Text("Face: " + cont.getRedesSociales().get(1)),new Text("Tiktok: " + cont.getRedesSociales().get(2)));
-            telefonos.getChildren().add(tels);
-            correos.getChildren().add(corrs);
-            redesSociales.getChildren().add(reds);
-            notas.getChildren().add(new Text(cont.getNota()));
+            actualizarPagina(c);
         }
     }
 
@@ -174,26 +114,7 @@ public class SecondaryController implements Initializable {
     private void next(MouseEvent event) {
         Contacto c = it.next();
         clear();
-        Persona cont = (Persona)c;
-        StackPane sp = new StackPane();
-        sp.addEventHandler(MouseEvent.MOUSE_CLICKED, (Event t) -> {
-        });
-        Image img = new Image(cont.getFoto(0),100,100,true,true);
-        ImageView imv = new ImageView(img);
-        sp.getChildren().add(imv);
-        FotoPerfil.setAlignment(Pos.CENTER);
-        FotoPerfil.getChildren().add(sp);
-        FotoPerfil.getChildren().add(new Text(cont.getNombre()+" "+cont.getApellido()));
-        VBox tels = new VBox();
-        VBox corrs = new VBox();
-        VBox reds = new VBox();
-        tels.getChildren().addAll(new Text("Personal: " + cont.getTelefonoPrincipal()),new Text("Trabajo: " + cont.getTelefonoTrabajo()),new Text("Casa: " + cont.getTelefonoCasa()));
-        corrs.getChildren().addAll(new Text("Principal: " + cont.getCorreoPrincipal()),new Text("Trabajo: " + cont.getCorreoTrabajo()),new Text("Provisional" + cont.getCorreoProvisional()));
-        reds.getChildren().addAll(new Text("X: " + cont.getRedesSociales().get(0)),new Text("Face: " + cont.getRedesSociales().get(1)),new Text("Tiktok: " + cont.getRedesSociales().get(2)));
-        telefonos.getChildren().add(tels);
-        correos.getChildren().add(corrs);
-        redesSociales.getChildren().add(reds);
-        notas.getChildren().add(new Text(cont.getNota()));
+        actualizarPagina(c);
     }
     
     public void clear(){
@@ -202,5 +123,37 @@ public class SecondaryController implements Initializable {
         correos.getChildren().clear();
         redesSociales.getChildren().clear();
         notas.getChildren().clear();
+    }
+    
+    public void actualizarPagina(Contacto c){
+        StackPane sp = new StackPane();
+        sp.addEventHandler(MouseEvent.MOUSE_CLICKED, (Event t) -> {
+        });
+        
+        Image img = new Image(c.getFoto(0),100,100,true,true);
+        ImageView imv = new ImageView(img);
+        sp.getChildren().add(imv);
+        FotoPerfil.setAlignment(Pos.CENTER);
+        FotoPerfil.getChildren().add(sp);
+        VBox tels = new VBox();
+        VBox corrs = new VBox();
+        VBox reds = new VBox();
+        if(c instanceof Persona){
+             Persona p = (Persona) c;
+             FotoPerfil.getChildren().add(new Text(p.getNombre()+" "+p.getApellido()));
+             tels.getChildren().addAll(new Text("Personal: " + p.getTelefonoPrincipal()),new Text("Trabajo: " + p.getTelefonoTrabajo()),new Text("Casa: " + p.getTelefonoCasa()));
+             corrs.getChildren().addAll(new Text("Principal: " + p.getCorreoPrincipal()),new Text("Trabajo: " + p.getCorreoTrabajo()),new Text("Provisional" + p.getCorreoProvisional()));
+        }
+        else{
+            Empresa e = (Empresa) c;
+            FotoPerfil.getChildren().add(new Text(e.getNombre()));
+            tels.getChildren().addAll(new Text("Principal: " + e.getTelefonoPrincipal()),new Text("Whatsapp: " + e.getTelefonoWha()),new Text("Provicisonal: " + e.getCorreoProvisional()));
+            corrs.getChildren().addAll(new Text("Principal: " + e.getCorreoPrincipal()),new Text("Secundario: " + e.getCorreoSecundario()),new Text("Provisional" + e.getCorreoProvisional()));
+        }
+        reds.getChildren().addAll(new Text("X: " + c.getRedesSociales().get(0)),new Text("Face: " + c.getRedesSociales().get(1)),new Text("Tiktok: " + c.getRedesSociales().get(2)));
+        telefonos.getChildren().add(tels);
+        correos.getChildren().add(corrs);
+        redesSociales.getChildren().add(reds);
+        notas.getChildren().add(new Text(c.getNota()));
     }
 }
