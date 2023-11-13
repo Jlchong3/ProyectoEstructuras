@@ -94,56 +94,52 @@ public class CraerContactoController implements Initializable {
     }
     
     private void cargarNombres(){
-        nombresContactos.addFirst("Alexandre");
-        nombresContactos.addFirst("Duolingo");
-        nombresContactos.addFirst("Jaime");
-        nombresContactos.addFirst("Jose");
-        nombresContactos.addFirst("Josedeodo");
-        nombresContactos.addFirst("Mariu");
-        nombresContactos.addFirst("Nahin");
-        nombresContactos.addFirst("Nini");
-        nombresContactos.addFirst("Patricio");
-        nombresContactos.addFirst("PedidosYa");
-        nombresContactos.addFirst("Raul");
-        nombresContactos.addFirst("Smash");
-        nombresContactos.addFirst("Tia");
+        nombresContactos.addLast("Alexandre");
+        nombresContactos.addLast("Duolingo");
+        nombresContactos.addLast("Jaime");
+        nombresContactos.addLast("Jose");
+        nombresContactos.addLast("Josedeodo");
+        nombresContactos.addLast("Mariu");
+        nombresContactos.addLast("Nahin");
+        nombresContactos.addLast("Nini");
+        nombresContactos.addLast("Patricio");
+        nombresContactos.addLast("PedidosYa");
+        nombresContactos.addLast("Raul");
+        nombresContactos.addLast("Smash");
+        nombresContactos.addLast("Tia");
     }
 
     public DoubleCircularLinkedList<String> obtenerDireccionImagen()
     {
-        
         cargarNombres();
-        String directorioImagenes = "src/main/resources/ec/edu/espol/appdecontactos/imgs/contactos/";
+        String directorioImagenes = "file:src/main/resources/ec/edu/espol/appdecontactos/imgs/contactos/";
         DoubleCircularLinkedList<String> fotosDelContacto = new DoubleCircularLinkedList<>();
         
         for(String nombreContacto: nombresContactos)
         {
-            if(nombre.getText() != null){
-                if(nombreContacto.equals(nombre.getText())){
-                    String fotoPerfil = directorioImagenes + nombreContacto + "Perfil.jpeg"; //Si el nombre del contacto es alguno de los predeterminados, se accede a su direccion de memoria
-                    fotosDelContacto.addLast(fotoPerfil); //añade la foto de perfil del contacto en la posición 0
-                    
-                    for(int i = 1; i < 5; i++){
-                        String fotoAsociada = directorioImagenes + "/FotosAsociadas/" + nombreContacto + "Asociada" + i + ".jepg";
-                        fotosDelContacto.addLast(fotoAsociada);
-                    }
-                     
-                }else{
-                    String extra = "ExtraX";
-                    Random random = new Random();
-                    String numero = ""+random.nextInt(4)+1;
-                    String fotoPerfil = directorioImagenes + extra + numero + ".jpeg"; //Si el nombre no es de los predeterminados, se escoge una foto aleatoria para ese contacto
-                    fotosDelContacto.addLast(fotoPerfil); //añade la foto de perfil del contacto en la posición 0
-                    
-                    for(int i = 1; i < 5; i++){
-                        String numeroA = ""+random.nextInt(14)+1;
-                        String fotoAsociada = directorioImagenes + "/Extras/FotosAsociadas/" + "Asociada" + numeroA + ".jepg";
-                        fotosDelContacto.addLast(fotoAsociada);
-                    }
-                }           
-            }  
+            if(nombreContacto.compareTo(nombre.getText()) == 0){
+                String fotoPerfil = directorioImagenes + nombreContacto + "Perfil.jpeg"; //Si el nombre del contacto es alguno de los predeterminados, se accede a su direccion de memoria
+                fotosDelContacto.addLast(fotoPerfil); //añade la foto de perfil del contacto en la posición 0
+
+                for(int i = 1; i < 5; i++){
+                    String fotoAsociada = directorioImagenes + "/FotosAsociadas/" + nombreContacto + "Asociada" + i + ".jpeg";
+                    fotosDelContacto.addLast(fotoAsociada);
+                }
+                return fotosDelContacto;
+            }
         }
-        return null;
+
+        Random random = new Random();
+        String numero = ""+(random.nextInt(4)+1);
+        String fotoPerfil = directorioImagenes + "Extras/Perfil/X/ExtraX" + numero + ".jpeg"; //Si el nombre no es de los predeterminados, se escoge una foto aleatoria para ese contacto
+        fotosDelContacto.addLast(fotoPerfil); //añade la foto de perfil del contacto en la posición 0
+
+        for(int i = 1; i < 5; i++){
+            String numeroA = ""+(random.nextInt(14)+1);
+            String fotoAsociada = directorioImagenes + "Extras/FotosAsociadas/" + "Asociada" + numeroA + ".jpeg";
+            fotosDelContacto.addLast(fotoAsociada);
+        }
+        return fotosDelContacto;
     }
     
     
@@ -201,7 +197,7 @@ public class CraerContactoController implements Initializable {
     
     public void registrarContacto(Contacto contactoNuevo){
         contactosActuales.addLast(contactoNuevo);
-        contactoNuevo.updateFile(contactosActuales);
+        Contacto.updateFile(contactosActuales);
         SessionManager.getInstance().setContactosActuales(contactosActuales);
     }
     

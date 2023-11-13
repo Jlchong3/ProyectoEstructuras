@@ -75,6 +75,8 @@ public class SecondaryController implements Initializable {
     @FXML
     private void delete(MouseEvent event) {
         it.remove();
+        Contacto.updateFile(contactos);
+        SessionManager.getInstance().setContactosActuales(contactos);
         clear();
         if(contactos.isEmpty()){
             gridTop.getChildren().clear();

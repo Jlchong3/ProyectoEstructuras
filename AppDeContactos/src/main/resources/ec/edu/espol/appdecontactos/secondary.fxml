@@ -73,5 +73,10 @@
             </ScrollPane>
          </children>
       </GridPane>
+      <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="60.0" text="Volver" GridPane.rowIndex="2">
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin>
+      </Button>
    </children>
 </GridPane>

@@ -124,7 +124,7 @@ public class Contacto implements Serializable{
         return lista;
     }
 
-    public void updateFile(DoubleCircularLinkedList<Contacto> contactos)
+    public static void updateFile(DoubleCircularLinkedList<Contacto> contactos)
     {
         Contacto.saveListSer(contactos);
     }
