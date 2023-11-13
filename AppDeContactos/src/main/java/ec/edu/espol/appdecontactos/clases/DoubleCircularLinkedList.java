@@ -93,7 +93,7 @@ public class DoubleCircularLinkedList<E> implements List<E>, java.io.Serializabl
 
             @Override
             public E previous() {
-                E temp = cursor.getContent();
+                E temp = cursor.getPrevious().getPrevious().getContent();
                 cursor = cursor.getPrevious();
                 return temp;
             }
