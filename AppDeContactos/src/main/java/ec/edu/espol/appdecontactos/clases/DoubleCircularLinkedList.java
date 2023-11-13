@@ -101,25 +101,18 @@ public class DoubleCircularLinkedList<E> implements List<E>, java.io.Serializabl
 
             @Override
             public void remove() {
-                if(size() == 1){
-                    last.setNext(null);
-                    last.setPrevious(null);
+                Node<E> pp = cursor.getPrevious().getPrevious(); 
+                if(cursor.getPrevious() == last){
+                    last = pp;
+                }
+                if(cursor == cursor.getPrevious()){
+                    cursor.setNext(null);
+                    cursor.setPrevious(null);
                     last = null;
-                    
                 }
                 else{
-                    Node<E> pp = cursor.getPrevious().getPrevious();
-                    if (pp == cursor && size() == 2){
-                        pp.setNext(pp);
-                        pp.setPrevious(pp);
-                        last = pp.getPrevious();
-                    }
-                    else{   
-                        cursor.getPrevious().setNext(null);
-                        cursor.getPrevious().setPrevious(null);
-                        pp.setNext(cursor);
-                        cursor.setPrevious(pp);
-                    }
+                    pp.setNext(cursor);
+                    cursor.setPrevious(pp);
                 }
             }
             
