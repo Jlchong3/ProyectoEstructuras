@@ -23,7 +23,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 public class SecondaryController implements Initializable {
-    Contacto primer;
+    Contacto primer = SessionManager.getInstance().getContacto();
     ListIterator<Contacto> it;
     private DoubleCircularLinkedList<Contacto> contactos = SessionManager.getInstance().getContactosActuales();;
     @FXML
@@ -52,8 +52,11 @@ public class SecondaryController implements Initializable {
         if(!contactos.isEmpty() && primer == null){
             it = contactos.CircularIterator();
             Contacto primer = it.next();
-            actualizarPagina(primer);
+            actualizarPagina(primer);   
             
+        }
+        else if(!contactos.isEmpty()){
+            actualizarPagina(primer);
         }
         else{
             gridTop.getChildren().clear();
