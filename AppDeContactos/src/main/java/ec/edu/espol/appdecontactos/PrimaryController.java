@@ -40,6 +40,7 @@ public class PrimaryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         if(!contactos.isEmpty()){
             for(int i = 0; i < contactos.size(); i++){
                 Contacto c = contactos.get(i);

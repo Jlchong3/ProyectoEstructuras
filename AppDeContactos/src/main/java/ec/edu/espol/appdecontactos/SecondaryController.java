@@ -13,13 +13,19 @@ import ec.edu.espol.appdecontactos.clases.*;
 import java.util.ListIterator;
 import javafx.event.Event;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 public class SecondaryController implements Initializable {
@@ -114,13 +120,24 @@ public class SecondaryController implements Initializable {
         notas.getChildren().clear();
     }
     
+    private void aplicarEstiloTexto(Text texto){
+        texto.setFont(Font.font("Century Gothic", 13));
+        texto.setTranslateX(10);
+        texto.setTranslateY(10);
+    }
+    
     public void actualizarPagina(Contacto c){
         StackPane sp = new StackPane();
         sp.addEventHandler(MouseEvent.MOUSE_CLICKED, (Event t) -> {
         });
-        
+        gridTop.setBackground(new Background(new BackgroundFill(Color.rgb(255, 156, 156), CornerRadii.EMPTY, Insets.EMPTY)));
+        telefonos.setBackground(new Background(new BackgroundFill(Color.rgb(255, 227, 227), CornerRadii.EMPTY, Insets.EMPTY)));
+        correos.setBackground(new Background(new BackgroundFill(Color.rgb(255, 227, 227), CornerRadii.EMPTY, Insets.EMPTY)));
+        redesSociales.setBackground(new Background(new BackgroundFill(Color.rgb(255, 227, 227), CornerRadii.EMPTY, Insets.EMPTY)));
+        notas.setBackground(new Background(new BackgroundFill(Color.rgb(255, 242, 242), CornerRadii.EMPTY, Insets.EMPTY)));
         Image img = new Image(c.getFoto(0),100,100,true,true);
         ImageView imv = new ImageView(img);
+        imv.setTranslateY(5);
         sp.getChildren().add(imv);
         FotoPerfil.setAlignment(Pos.CENTER);
         FotoPerfil.getChildren().add(sp);
@@ -129,17 +146,70 @@ public class SecondaryController implements Initializable {
         VBox reds = new VBox();
         if(c instanceof Persona){
              Persona p = (Persona) c;
-             FotoPerfil.getChildren().add(new Text(p.getNombre()+" "+p.getApellido()));
-             tels.getChildren().addAll(new Text("Personal: " + p.getTelefonoPrincipal()),new Text("Trabajo: " + p.getTelefonoTrabajo()),new Text("Casa: " + p.getTelefonoCasa()));
-             corrs.getChildren().addAll(new Text("Principal: " + p.getCorreoPrincipal()),new Text("Trabajo: " + p.getCorreoTrabajo()),new Text("Provisional: " + p.getCorreoProvisional()));
+             Text contacto = new Text(p.getNombre()+" "+p.getApellido());
+             contacto.setTranslateY(3);
+             contacto.setFont(Font.font("Century Gothic",15));
+             FotoPerfil.getChildren().add(contacto);
+             
+             Text personal = new Text("Personal: " + p.getTelefonoPrincipal());
+             Text trabajo = new Text("Trabajo: " + p.getTelefonoTrabajo());
+             Text casa = new Text("Casa: " + p.getTelefonoCasa()); 
+             
+            aplicarEstiloTexto(personal);
+            aplicarEstiloTexto(trabajo);
+            aplicarEstiloTexto(casa);
+                     
+            tels.getChildren().addAll(personal, trabajo , casa);
+             
+                         
+            Text principal = new Text("Principal: " + p.getCorreoPrincipal());
+            Text trabajoTelf = new Text("Trabajo: " + p.getCorreoTrabajo());
+            Text provisional = new Text("Provisional: " + p.getCorreoProvisional());
+            
+            aplicarEstiloTexto(principal);
+            aplicarEstiloTexto(trabajoTelf);
+            aplicarEstiloTexto(provisional);
+             
+            corrs.getChildren().addAll(principal, trabajoTelf ,provisional);
         }
         else{
             Empresa e = (Empresa) c;
-            FotoPerfil.getChildren().add(new Text(e.getNombre()));
-            tels.getChildren().addAll(new Text("Principal: " + e.getTelefonoPrincipal()),new Text("Whatsapp: " + e.getTelefonoWha()),new Text("Provicisonal: " + e.getCorreoProvisional()));
-            corrs.getChildren().addAll(new Text("Principal: " + e.getCorreoPrincipal()),new Text("Secundario: " + e.getCorreoSecundario()),new Text("Provisional" + e.getCorreoProvisional()));
+            Text contactoEmpresa = new Text(e.getNombre());
+            contactoEmpresa.setTranslateY(3);
+            contactoEmpresa.setFont(Font.font("Century Gothic",15));
+            FotoPerfil.getChildren().add(contactoEmpresa);
+            
+            Text principal = new Text("Principal: " + e.getTelefonoPrincipal());
+            Text whatsApp =  new Text("Whatsapp: " + e.getTelefonoWha());
+            Text provisional = new Text("Provisional: " + e.getCorreoProvisional());
+            
+            aplicarEstiloTexto(principal);
+            aplicarEstiloTexto(whatsApp);
+            aplicarEstiloTexto(provisional);
+
+            tels.getChildren().addAll(principal, whatsApp, provisional);
+            
+            
+            Text principalEmpresa = new Text("Principal: " + e.getCorreoPrincipal());
+            Text secundarioEmpresa = new Text("Secundario: " + e.getCorreoSecundario());
+            Text provisionalEmpresa =  new Text("Provisional: " + e.getCorreoProvisional());    
+            
+            aplicarEstiloTexto(principalEmpresa);
+            aplicarEstiloTexto(secundarioEmpresa);
+            aplicarEstiloTexto(provisionalEmpresa);            
+            
+            corrs.getChildren().addAll(principalEmpresa, secundarioEmpresa, provisionalEmpresa);
         }
-        reds.getChildren().addAll(new Text("X: " + c.getRedesSociales().get(0)),new Text("Face: " + c.getRedesSociales().get(1)),new Text("Tiktok: " + c.getRedesSociales().get(2)));
+        
+        Text x = new Text("X: " + c.getRedesSociales().get(0));
+        Text facebook = new Text("Facebook: " + c.getRedesSociales().get(1));
+        Text tiktok = new Text("Tiktok: " + c.getRedesSociales().get(2));
+        
+        aplicarEstiloTexto(x);
+        aplicarEstiloTexto(facebook);
+        aplicarEstiloTexto(tiktok);        
+
+        reds.getChildren().addAll(x, facebook, tiktok);
         telefonos.getChildren().add(tels);
         correos.getChildren().add(corrs);
         redesSociales.getChildren().add(reds);
