@@ -20,6 +20,7 @@ public class Contacto implements Serializable{
     public String fechas;
     public Contacto contactoRelacionado;
     public String nota;
+    private static final long serialVersionUID = 3499549809924434319L;
     
     public Contacto(){
         
@@ -106,7 +107,18 @@ public class Contacto implements Serializable{
         try(ObjectInputStream input= new ObjectInputStream(new FileInputStream("ContactosSer.txt"));){
             lista = (DoubleCircularLinkedList<Contacto>)input.readObject();
         } catch(IOException | ClassNotFoundException ioE){
-            ioE.printStackTrace();
+            File file = new File("Contacto.ser");
+
+            if (!file.exists()) {
+                try {
+                    // Crear el archivo si no existe
+                    file.createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+
+                    throw new RuntimeException("No se pudo crear el archivo Contacto.ser");
+                }
+            }
 
         }
         return lista;

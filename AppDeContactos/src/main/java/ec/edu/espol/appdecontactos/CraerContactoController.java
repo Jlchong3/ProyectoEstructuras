@@ -126,7 +126,7 @@ public class CraerContactoController implements Initializable {
     }
     
     public void registrarContacto(Contacto contactoNuevo){
-        contactosActuales.addFirst(contactoNuevo);
+        contactosActuales.addLast(contactoNuevo);
         contactoNuevo.updateFile(contactosActuales);
         SessionManager.getInstance().setContactosActuales(contactosActuales);
     }
@@ -157,7 +157,7 @@ public class CraerContactoController implements Initializable {
                         redesSocialessssss.addLast(redesSociales.getText());
 
                         DoubleCircularLinkedList<String> fotossssss = new DoubleCircularLinkedList<>();
-                        fotossssss.addLast(foto.getText());
+                        fotossssss.addLast("file:src/main/resources/ec/edu/espol/appdecontactos/imgs/contactos/JosePerfil.jpeg");
 
                         Empresa e = new Empresa(i, redesSocialessssss , fotossssss , correoPrincipal.getText(), fecha.getText(), contactoRelacionado, nota.getText(), nombre.getText(),  j,   telefonoProvisional,  correoSecundario.getText(),  correoProvisional);
                         
@@ -180,7 +180,7 @@ public class CraerContactoController implements Initializable {
                         redesSocialessssss.addLast(redesSociales.getText());
 
                         DoubleCircularLinkedList<String> fotossssss = new DoubleCircularLinkedList<>();
-                        fotossssss.addLast(foto.getText());
+                        fotossssss.addLast("file:src/main/resources/ec/edu/espol/appdecontactos/imgs/contactos/JosePerfil.jpeg");
 
                         Persona p = new Persona(i,redesSocialessssss,fotossssss, correoPrincipal.getText() , fecha.getText() , contactoRelacionado, nota.getText(), nombre.getText(), apellido.getText(), j, telefonoCasa, correoTrabajo, correoProvisional);
                         System.out.println(p.toString());

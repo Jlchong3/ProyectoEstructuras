@@ -3,7 +3,7 @@ package ec.edu.espol.appdecontactos.clases;
 public class SessionManager {
 
     private static SessionManager instance = null;
-    private DoubleCircularLinkedList<Contacto> contactosActuales;
+    private DoubleCircularLinkedList<Contacto> contactosActuales = new DoubleCircularLinkedList<>();
     
     private SessionManager(){
     }

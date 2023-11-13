@@ -13,6 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -24,6 +25,8 @@ public class PrimaryController implements Initializable {
     private VBox listaDeContactos;
     @FXML
     private AnchorPane pane;
+    @FXML
+    private Button agregarContacto;
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
     }
@@ -49,6 +52,15 @@ public class PrimaryController implements Initializable {
             pane.getChildren().clear();
             Text t = new Text("No tienes contactos");
             pane.getChildren().add(t);
+        }
+    }
+
+    @FXML
+    private void agregarNuevoContacto(MouseEvent event) {
+        try {
+            App.setRoot("craerContacto");
+        } catch (IOException ex) {
+           
         }
     }
 }
