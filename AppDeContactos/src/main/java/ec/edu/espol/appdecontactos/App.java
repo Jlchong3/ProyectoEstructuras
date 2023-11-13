@@ -20,7 +20,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         SessionManager.getInstance().setContactosActuales(Contacto.readListSer());
-        scene = new Scene(loadFXML("primary"), 318, 673);
+        scene = new Scene(loadFXML("primary"), 350, 650);
         stage.setScene(scene);
         stage.show();
     }

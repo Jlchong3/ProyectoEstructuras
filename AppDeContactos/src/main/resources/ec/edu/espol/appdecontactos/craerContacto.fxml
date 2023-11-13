@@ -6,15 +6,19 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="279.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.appdecontactos.CraerContactoController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.appdecontactos.CraerContactoController">
    <children>
-      <HBox alignment="CENTER" prefHeight="60.0" prefWidth="400.0">
+      <HBox alignment="CENTER" prefHeight="60.0" prefWidth="300.0">
          <children>
             <Label text="Crear nuevo contacto:">
                <HBox.margin>
                   <Insets right="25.0" />
                </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
             </Label>
             <ComboBox fx:id="tipoContacto" onAction="#filtrarTipo" prefWidth="120.0" promptText="Tipo Contacto">
                <opaqueInsets>
@@ -23,26 +27,26 @@
             </ComboBox>
          </children>
       </HBox>
-      <HBox fx:id="cuadro1" alignment="CENTER" prefHeight="50.0" prefWidth="279.0">
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding></HBox>
-      <HBox alignment="CENTER" prefHeight="526.0" prefWidth="279.0">
+      <VBox fx:id="cuadro1" alignment="CENTER" prefHeight="127.0" prefWidth="330.0">
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" />
+         </VBox.margin></VBox>
+      <HBox alignment="CENTER" prefHeight="422.0" prefWidth="350.0">
          <children>
-            <VBox fx:id="cuadr2" alignment="CENTER" prefHeight="139.5" prefWidth="139.5">
+            <VBox fx:id="cuadr2" alignment="CENTER" prefHeight="139.5" prefWidth="175.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding></VBox>
-            <VBox fx:id="cuad3" alignment="CENTER" prefHeight="200.0" prefWidth="139.5">
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding></VBox>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></VBox>
+            <VBox fx:id="cuad3" alignment="CENTER" prefHeight="200.0" prefWidth="175.0">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></VBox>
          </children>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="53.0" prefWidth="400.0">
+      <HBox alignment="CENTER" prefHeight="53.0" prefWidth="300.0">
          <children>
             <Button fx:id="Agregar" mnemonicParsing="false" onMouseClicked="#confirmarContacto" text="Agregar">
                <HBox.margin>
