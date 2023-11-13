@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="734.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.appdecontactos.CraerContactoController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="279.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.appdecontactos.CraerContactoController">
    <children>
       <HBox alignment="CENTER" prefHeight="60.0" prefWidth="400.0">
          <children>
@@ -23,16 +23,22 @@
             </ComboBox>
          </children>
       </HBox>
-      <HBox fx:id="cuadro1" alignment="CENTER" prefHeight="42.0" prefWidth="400.0" />
-      <HBox alignment="CENTER" prefHeight="64.0" prefWidth="400.0">
+      <HBox fx:id="cuadro1" alignment="CENTER" prefHeight="50.0" prefWidth="279.0">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding></HBox>
+      <HBox alignment="CENTER" prefHeight="526.0" prefWidth="279.0">
          <children>
-            <VBox fx:id="cuadro2" alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+            <VBox fx:id="cuadr2" alignment="CENTER" prefHeight="139.5" prefWidth="139.5">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
                <padding>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding></VBox>
-            <VBox fx:id="cuadro3" alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+            <VBox fx:id="cuad3" alignment="CENTER" prefHeight="200.0" prefWidth="139.5">
                <padding>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding></VBox>
          </children>
       </HBox>
@@ -45,6 +51,9 @@
             </Button>
             <Button fx:id="Retroceder" mnemonicParsing="false" onMouseClicked="#retrocederPantalla" text="Retroceder" />
          </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
       </HBox>
    </children>
 </VBox>

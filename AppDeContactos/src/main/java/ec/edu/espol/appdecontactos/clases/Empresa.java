@@ -62,6 +62,10 @@ public class Empresa extends Contacto{
         this.correoProvisional = correoProvisional;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Empresa{" + "nombre=" + nombre + ", telefonoWha=" + telefonoWha + ", telefonoProvisional=" + telefonoProvisional + ", correoSecundario=" + correoSecundario + ", correoProvisional=" + correoProvisional + '}';
+    }
+
 }
 

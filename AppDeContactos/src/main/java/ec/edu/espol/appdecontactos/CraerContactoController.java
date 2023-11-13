@@ -44,10 +44,7 @@ public class CraerContactoController implements Initializable {
     private ComboBox<String> tipoContacto;
     @FXML
     private HBox cuadro1;
-    @FXML
-    private VBox cuadro2;
-    @FXML
-    private VBox cuadro3;
+
     @FXML
     private Button Agregar;
     @FXML
@@ -61,8 +58,10 @@ public class CraerContactoController implements Initializable {
     private TextField telefonoCasa;
 
     private TextField contactos;
-    private TextField redesSociales;
-    private TextField foto;
+    private TextField facebook;
+    private TextField instagram;
+    private TextField tiktok;
+    private TextField x;
 
     private TextField correoPrincipal;
     private TextField correoSecundario;
@@ -80,6 +79,12 @@ public class CraerContactoController implements Initializable {
     private String valor; 
     
     private ArrayList<String> nombresContactos = new ArrayList<>(); 
+    
+
+    @FXML
+    private VBox cuadr2;
+    @FXML
+    private VBox cuad3;
 
 
     /**
@@ -109,15 +114,18 @@ public class CraerContactoController implements Initializable {
         nombresContactos.addLast("Tia");
     }
 
-    public DoubleCircularLinkedList<String> obtenerDireccionImagen()
-    {
+    public DoubleCircularLinkedList<String> obtenerDireccionImagen(){
+        System.out.println("NOMBRE QUE SALE");
+        System.out.println(nombre.getText());
         cargarNombres();
         String directorioImagenes = "file:src/main/resources/ec/edu/espol/appdecontactos/imgs/contactos/";
         DoubleCircularLinkedList<String> fotosDelContacto = new DoubleCircularLinkedList<>();
         
         for(String nombreContacto: nombresContactos)
         {
+            System.out.println(nombre.getText()+" == "+nombreContacto);
             if(nombreContacto.compareTo(nombre.getText()) == 0){
+                
                 String fotoPerfil = directorioImagenes + nombreContacto + "Perfil.jpeg"; //Si el nombre del contacto es alguno de los predeterminados, se accede a su direccion de memoria
                 fotosDelContacto.addLast(fotoPerfil); //añade la foto de perfil del contacto en la posición 0
 
@@ -146,21 +154,21 @@ public class CraerContactoController implements Initializable {
     @FXML
     private void filtrarTipo(ActionEvent event) {
         cuadro1.getChildren().clear();
-        cuadro2.getChildren().clear();
-        cuadro3.getChildren().clear();
+        cuadr2.getChildren().clear();
+        cuad3.getChildren().clear();
         ComboBox cb = (ComboBox)event.getSource();
         String s = (String)cb.getValue();
         valor = s;
         
         if(s.equals("Empresa")){
             Stage stage = (Stage) tipoContacto.getScene().getWindow();
-            stage.setHeight(550);
+            stage.setHeight(650);
             registroEmpresa();
             
         }
         else if(s.equals("Persona")){
             Stage stage = (Stage) tipoContacto.getScene().getWindow();
-            stage.setHeight(550);
+            stage.setHeight(650);
             registroPersona();
 
         }
@@ -169,7 +177,7 @@ public class CraerContactoController implements Initializable {
     
     public void regresarTContactos(){
         Stage stage = (Stage) tipoContacto.getScene().getWindow();
-        stage.setHeight(550);
+        stage.setHeight(650);
         try {
             
             
@@ -180,21 +188,7 @@ public class CraerContactoController implements Initializable {
     }
     
       
-    public void llevaFotosTodas(){
-        Stage stage = (Stage) tipoContacto.getScene().getWindow();
-        stage.setHeight(550);
-        try {
-            
-            
-            App.setRoot("FotosTodas");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-    
-    
-    
-    
+   
     public void registrarContacto(Contacto contactoNuevo){
         contactosActuales.addLast(contactoNuevo);
         Contacto.updateFile(contactosActuales);
@@ -203,13 +197,9 @@ public class CraerContactoController implements Initializable {
     
     @FXML
     private void confirmarContacto(MouseEvent event) {
-        String correoTrabajo=null;
-        int telefonoProvisional=0;
-        int telefonoCasa=0;
-        String correoProvisional=null;
         Contacto contactoRelacionado=null;
         
-        Button b = (Button)event.getSource();
+        
         String s = valor;
         if((nombre.getText().equals(""))&&(apellido.getText().equals(""))&&(telefonoPrincipal.getText().equals(""))){
             Alert a = new Alert(Alert.AlertType.ERROR,"Datos Principales Incompletos");
@@ -220,43 +210,41 @@ public class CraerContactoController implements Initializable {
                 switch (s) {
                     case "Empresa":
                     {
+                        DoubleCircularLinkedList<String> listaFotos= obtenerDireccionImagen();
                         int i = Integer.parseInt(telefonoPrincipal.getText());
                         int j = Integer.parseInt(telefonoWha.getText());
+                        int k = Integer.parseInt(telefonoProvisional.getText());
 
-                        ArrayList<String> redesSocialesContacto = new ArrayList<>();
-                        redesSocialesContacto.addLast(redesSociales.getText());
+                        ArrayList<String> redesSo= new ArrayList<>();
+                        redesSo.addLast(facebook.getText());
+                        redesSo.addLast(instagram.getText());
+                        redesSo.addLast(tiktok.getText());
+                        redesSo.addLast(x.getText());
 
-                        DoubleCircularLinkedList<String> fotosContacto = obtenerDireccionImagen();
-                        
-
-                        Empresa e = new Empresa(i, redesSocialesContacto , fotosContacto , correoPrincipal.getText(), fecha.getText(), contactoRelacionado, nota.getText(), nombre.getText(),  j,   telefonoProvisional,  correoSecundario.getText(),  correoProvisional);
+                        Empresa e = new Empresa(i, redesSo , listaFotos , correoPrincipal.getText(), fecha.getText(), contactoRelacionado, nota.getText(), nombre.getText(),  j,   k,  correoSecundario.getText(),  correoProvisional.getText());
                         
                         System.out.println(e.toString());
                         registrarContacto(e);
-                        
-                        
-                        
-                        
                         //RETROCEDER
                         regresarTContactos();
                         break;
                     }
                     case "Persona":                    
                     {
+                        DoubleCircularLinkedList<String> listaFotos= obtenerDireccionImagen();
                         int i = Integer.parseInt(telefonoPrincipal.getText());
                         int j = Integer.parseInt(telefonoTrabajo.getText());
+                        int k = Integer.parseInt(telefonoCasa.getText());
 
-                        ArrayList<String> redesSocialesContacto = new ArrayList<>();
-                        redesSocialesContacto.addLast(redesSociales.getText());
+                        ArrayList<String> redesSo= new ArrayList<>();
+                        redesSo.addLast(facebook.getText());
+                        redesSo.addLast(instagram.getText());
+                        redesSo.addLast(tiktok.getText());
+                        redesSo.addLast(x.getText());
 
-                        DoubleCircularLinkedList<String> fotosContacto = obtenerDireccionImagen();
-                        
-
-                        Persona p = new Persona(i,redesSocialesContacto,fotosContacto, correoPrincipal.getText() , fecha.getText() , contactoRelacionado, nota.getText(), nombre.getText(), apellido.getText(), j, telefonoCasa, correoTrabajo, correoProvisional);
+                        Persona p = new Persona(i,redesSo,listaFotos, correoPrincipal.getText() , fecha.getText() , contactoRelacionado, nota.getText(), nombre.getText(), apellido.getText(), j, k, correoTrabajo.getText(), correoProvisional.getText());
                         System.out.println(p.toString());
                         registrarContacto(p);
-                        
-                        
                         //RETROCEDER
                         regresarTContactos();
                         break;
@@ -288,6 +276,8 @@ public class CraerContactoController implements Initializable {
         TextField apellido = new TextField();
         VBox.setMargin(apellido, new Insets(5, 0, 0, 0));
         
+        //cuadro2
+        //telf
         Text TelefonoPrincipal = new Text("Telefono personal:");
         TelefonoPrincipal.setFont(new Font(16));
         VBox.setMargin(TelefonoPrincipal, new Insets(20, 0, 0, 0));
@@ -300,6 +290,13 @@ public class CraerContactoController implements Initializable {
         TextField telefonoTrabajo = new TextField();
         VBox.setMargin(telefonoTrabajo, new Insets(5, 0, 0, 0));
         
+        Text TelefonoCasa = new Text("Telefono Trabajo:");
+        TelefonoCasa.setFont(new Font(16));
+        VBox.setMargin(TelefonoCasa, new Insets(20, 0, 0, 0));
+        TextField telefonoCasa = new TextField();
+        VBox.setMargin(telefonoCasa, new Insets(5, 0, 0, 0));
+        
+        //correo
         Text CorreoPrincipal = new Text("Correo Personal:");
         CorreoPrincipal.setFont(new Font(16));
         VBox.setMargin(CorreoPrincipal, new Insets(20, 0, 0, 0));
@@ -312,32 +309,42 @@ public class CraerContactoController implements Initializable {
         TextField correoTrabajo = new TextField();
         VBox.setMargin(correoTrabajo, new Insets(5, 0, 0, 0));
         
-        Text RedesSociales = new Text("Red Social:");
-        RedesSociales.setFont(new Font(16));
-        VBox.setMargin(RedesSociales, new Insets(20, 0, 0, 0));
-        TextField redesSociales = new TextField();
-        VBox.setMargin(redesSociales, new Insets(5, 0, 0, 0));
+        Text CorreoProvisional = new Text("Correo Trabajo:");
+        CorreoProvisional.setFont(new Font(16));
+        VBox.setMargin(CorreoProvisional, new Insets(20, 0, 0, 0));
+        TextField correoProvisional = new TextField();
+        VBox.setMargin(correoProvisional, new Insets(5, 0, 0, 0));
         
+        //redesSociales
+        Text Facebook = new Text("Facebook:");
+        Facebook.setFont(new Font(16));
+        VBox.setMargin(Facebook, new Insets(20, 0, 0, 0));
+        TextField facebook = new TextField();
+        VBox.setMargin(facebook, new Insets(5, 0, 0, 0));
+        
+        Text Instagram = new Text("Instagram:");
+        Instagram.setFont(new Font(16));
+        VBox.setMargin(Instagram, new Insets(20, 0, 0, 0));
+        TextField instagram = new TextField();
+        VBox.setMargin(instagram, new Insets(5, 0, 0, 0));
+        
+        Text TikTok = new Text("Red Social:");
+        TikTok.setFont(new Font(16));
+        VBox.setMargin(TikTok, new Insets(20, 0, 0, 0));
+        TextField tiktok = new TextField();
+        VBox.setMargin(tiktok, new Insets(5, 0, 0, 0));
+        
+        Text X = new Text("Red Social:");
+        X.setFont(new Font(16));
+        VBox.setMargin(X, new Insets(20, 0, 0, 0));
+        TextField x = new TextField();
+        VBox.setMargin(x, new Insets(5, 0, 0, 0));
         
         Text Fecha = new Text("Fecha:");
         Fecha.setFont(new Font(16));
         VBox.setMargin(Fecha, new Insets(20, 0, 0, 0));
         TextField fecha = new TextField();
         VBox.setMargin(fecha, new Insets(5, 0, 0, 0));
-        
-        Text Foto = new Text("Foto:");
-        Foto.setFont(new Font(16));
-        VBox.setMargin(Foto, new Insets(20, 0, 0, 0));
-        //TextField foto = new TextField();
-        Button btn = new Button(" Ver ");
-        VBox.setMargin(btn, new Insets(5, 0, 0, 0));  
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                llevaFotosTodas();
-            }
-        });
-        
         
         Text Nota = new Text("Nota:");
         Nota.setFont(new Font(16));
@@ -346,12 +353,12 @@ public class CraerContactoController implements Initializable {
         VBox.setMargin(nota, new Insets(5, 0, 0, 0));
 
         cuadro1.getChildren().addAll(Nombre,nombre, Apellido,apellido);
-        cuadro2.getChildren().addAll( TelefonoPrincipal, telefonoPrincipal, TelefonoTrabajo, telefonoTrabajo,CorreoPrincipal,correoPrincipal,CorreoTrabajo,correoTrabajo);
-        cuadro3.getChildren().addAll( RedesSociales,redesSociales,Fecha,fecha,Foto, btn, Nota,nota);
- 
+        cuadr2.getChildren().addAll(TelefonoPrincipal,telefonoPrincipal,TelefonoTrabajo,telefonoTrabajo,TelefonoCasa,telefonoCasa,Facebook,facebook,Instagram,instagram,TikTok,tiktok);
+        cuad3.getChildren().addAll(CorreoPrincipal,correoPrincipal,CorreoTrabajo,correoTrabajo,CorreoProvisional,correoProvisional,Fecha,fecha,Nota,nota, X,x);
+
         this.nombre = nombre;
         this.apellido = apellido;
-
+        
         this.telefonoPrincipal = telefonoPrincipal;
         this.telefonoTrabajo = telefonoTrabajo;
         this.telefonoCasa = telefonoCasa;
@@ -359,11 +366,14 @@ public class CraerContactoController implements Initializable {
         this.correoPrincipal = correoPrincipal;
         this.correoTrabajo=correoTrabajo;
         this.correoProvisional=correoProvisional;
-  
-        this.redesSociales=redesSociales;
+        
+        this.facebook=facebook;
+        this.instagram=instagram;
+        this.tiktok=tiktok;
+        this.x=x;
+        
         this.fecha = fecha;
-        this.foto = foto;
-        this.nota =nota ;
+        this.nota =nota;
     }
     
     private void registroEmpresa(){
@@ -373,7 +383,9 @@ public class CraerContactoController implements Initializable {
         TextField nombre = new TextField();
         VBox.setMargin(nombre, new Insets(5, 0, 0, 0));
         
-        Text TelefonoPrincipal = new Text("Telefono Principal:");
+        //cuadro2
+        //telf
+        Text TelefonoPrincipal = new Text("Telefono personal:");
         TelefonoPrincipal.setFont(new Font(16));
         VBox.setMargin(TelefonoPrincipal, new Insets(20, 0, 0, 0));
         TextField telefonoPrincipal = new TextField();
@@ -385,6 +397,13 @@ public class CraerContactoController implements Initializable {
         TextField telefonoWha = new TextField();
         VBox.setMargin(telefonoWha, new Insets(5, 0, 0, 0));
         
+        Text TelefonoProvisional = new Text("Telefono Provisional:");
+        TelefonoProvisional.setFont(new Font(16));
+        VBox.setMargin(TelefonoProvisional, new Insets(20, 0, 0, 0));
+        TextField telefonoProvisional = new TextField();
+        VBox.setMargin(telefonoProvisional, new Insets(5, 0, 0, 0));
+        
+        //correo
         Text CorreoPrincipal = new Text("Correo Personal:");
         CorreoPrincipal.setFont(new Font(16));
         VBox.setMargin(CorreoPrincipal, new Insets(20, 0, 0, 0));
@@ -397,11 +416,36 @@ public class CraerContactoController implements Initializable {
         TextField correoSecundario = new TextField();
         VBox.setMargin(correoSecundario, new Insets(5, 0, 0, 0));
         
-        Text RedesSociales = new Text("Red Social:");
-        RedesSociales.setFont(new Font(16));
-        VBox.setMargin(RedesSociales, new Insets(20, 0, 0, 0));
-        TextField redesSociales = new TextField();
-        VBox.setMargin(redesSociales, new Insets(5, 0, 0, 0));
+        Text CorreoProvisional = new Text("Correo Provisional:");
+        CorreoProvisional.setFont(new Font(16));
+        VBox.setMargin(CorreoProvisional, new Insets(20, 0, 0, 0));
+        TextField correoProvisional = new TextField();
+        VBox.setMargin(correoProvisional, new Insets(5, 0, 0, 0));
+        
+        //redesSociales
+        Text Facebook = new Text("Facebook:");
+        Facebook.setFont(new Font(16));
+        VBox.setMargin(Facebook, new Insets(20, 0, 0, 0));
+        TextField facebook = new TextField();
+        VBox.setMargin(facebook, new Insets(5, 0, 0, 0));
+        
+        Text Instagram = new Text("Instagram:");
+        Instagram.setFont(new Font(16));
+        VBox.setMargin(Instagram, new Insets(20, 0, 0, 0));
+        TextField instagram = new TextField();
+        VBox.setMargin(instagram, new Insets(5, 0, 0, 0));
+        
+        Text TikTok = new Text("TikTok:");
+        TikTok.setFont(new Font(16));
+        VBox.setMargin(TikTok, new Insets(20, 0, 0, 0));
+        TextField tiktok = new TextField();
+        VBox.setMargin(tiktok, new Insets(5, 0, 0, 0));
+        
+        Text X = new Text("X:");
+        X.setFont(new Font(16));
+        VBox.setMargin(X, new Insets(20, 0, 0, 0));
+        TextField x = new TextField();
+        VBox.setMargin(x, new Insets(5, 0, 0, 0));
         
         Text Fecha = new Text("Fecha:");
         Fecha.setFont(new Font(16));
@@ -409,31 +453,19 @@ public class CraerContactoController implements Initializable {
         TextField fecha = new TextField();
         VBox.setMargin(fecha, new Insets(5, 0, 0, 0));
         
-        Text Foto = new Text("Foto:");
-        Foto.setFont(new Font(16));
-        VBox.setMargin(Foto, new Insets(20, 0, 0, 0));
-        //TextField foto = new TextField();
-        Button btn = new Button(" Ver ");
-        VBox.setMargin(btn, new Insets(5, 0, 0, 0));  
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                llevaFotosTodas();
-            }
-        }); 
-        
-        
         Text Nota = new Text("Nota:");
         Nota.setFont(new Font(16));
         VBox.setMargin(Nota, new Insets(20, 0, 0, 0));
         TextField nota = new TextField();
         VBox.setMargin(nota, new Insets(5, 0, 0, 0));
+        
 
+        
         cuadro1.getChildren().addAll(Nombre,nombre);
-        cuadro2.getChildren().addAll( TelefonoPrincipal, telefonoPrincipal, TelefonoWha, telefonoWha,CorreoPrincipal,correoPrincipal,CorreoSecundario, correoSecundario);
-        cuadro3.getChildren().addAll( RedesSociales,redesSociales,Fecha,fecha,Foto, btn, Nota,nota);
- 
-        this.nombre = nombre;
+        cuadr2.getChildren().addAll(TelefonoPrincipal,telefonoPrincipal,TelefonoWha,telefonoWha,TelefonoProvisional,telefonoProvisional,Fecha,fecha,Facebook,facebook,TikTok,tiktok);
+        cuad3.getChildren().addAll(CorreoPrincipal,correoPrincipal,CorreoSecundario,correoSecundario,CorreoProvisional,correoProvisional,Nota,nota,Instagram,instagram,X,x);
+
+        this.nombre=nombre;
 
         this.telefonoPrincipal = telefonoPrincipal;
         this.telefonoWha = telefonoWha;
@@ -442,10 +474,13 @@ public class CraerContactoController implements Initializable {
         this.correoPrincipal = correoPrincipal;
         this.correoSecundario=correoSecundario;
         this.correoProvisional=correoProvisional;
-  
-        this.redesSociales=redesSociales;
+        
+        this.facebook=facebook;
+        this.instagram=instagram;
+        this.tiktok=tiktok;
+        this.x=x;
+        
         this.fecha = fecha;
-        this.foto = foto;
         this.nota =nota;
     }
 

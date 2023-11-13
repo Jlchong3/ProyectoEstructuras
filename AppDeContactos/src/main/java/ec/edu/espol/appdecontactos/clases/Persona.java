@@ -71,5 +71,10 @@ public class Persona extends Contacto{
         this.correoProvisional = correoProvisional;
     }
 
+    @Override
+    public String toString() {
+        return "Persona{" + "nombre=" + nombre + ", apellido=" + apellido + ", telefonoTrabajo=" + telefonoTrabajo + ", telefonoCasa=" + telefonoCasa + ", correoTrabajo=" + correoTrabajo + ", correoProvisional=" + correoProvisional + '}';
+    }
+
 
 }
