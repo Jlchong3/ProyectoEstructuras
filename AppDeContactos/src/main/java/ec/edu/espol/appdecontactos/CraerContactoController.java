@@ -16,6 +16,7 @@ import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -168,6 +169,22 @@ public class CraerContactoController implements Initializable {
         }
     }
     
+      
+    public void llevaFotosTodas(){
+        Stage stage = (Stage) tipoContacto.getScene().getWindow();
+        stage.setHeight(550);
+        try {
+            
+            
+            App.setRoot("FotosTodas");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    
+    
+    
     public void registrarContacto(Contacto contactoNuevo){
         contactosActuales.addLast(contactoNuevo);
         contactoNuevo.updateFile(contactosActuales);
@@ -302,8 +319,14 @@ public class CraerContactoController implements Initializable {
         Foto.setFont(new Font(16));
         VBox.setMargin(Foto, new Insets(20, 0, 0, 0));
         //TextField foto = new TextField();
-        Button btn = new Button(" Agregar ");
+        Button btn = new Button(" Ver ");
         VBox.setMargin(btn, new Insets(5, 0, 0, 0));  
+        btn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                llevaFotosTodas();
+            }
+        });
         
         
         Text Nota = new Text("Nota:");
@@ -380,8 +403,14 @@ public class CraerContactoController implements Initializable {
         Foto.setFont(new Font(16));
         VBox.setMargin(Foto, new Insets(20, 0, 0, 0));
         //TextField foto = new TextField();
-        Button btn = new Button(" Agregar ");
+        Button btn = new Button(" Ver ");
         VBox.setMargin(btn, new Insets(5, 0, 0, 0));  
+        btn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                llevaFotosTodas();
+            }
+        }); 
         
         
         Text Nota = new Text("Nota:");
