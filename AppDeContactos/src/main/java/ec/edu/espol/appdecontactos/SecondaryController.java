@@ -15,6 +15,7 @@ import javafx.event.Event;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -48,6 +49,8 @@ public class SecondaryController implements Initializable {
     private AnchorPane redesSociales;
     @FXML
     private Button volver;
+    @FXML
+    private ScrollPane scrollPane;
 
     private void switchToPrimary() throws IOException {
         App.setRoot("primary");
@@ -130,11 +133,14 @@ public class SecondaryController implements Initializable {
         StackPane sp = new StackPane();
         sp.addEventHandler(MouseEvent.MOUSE_CLICKED, (Event t) -> {
         });
-        gridTop.setBackground(new Background(new BackgroundFill(Color.rgb(255, 156, 156), CornerRadii.EMPTY, Insets.EMPTY)));
-        telefonos.setBackground(new Background(new BackgroundFill(Color.rgb(255, 227, 227), CornerRadii.EMPTY, Insets.EMPTY)));
-        correos.setBackground(new Background(new BackgroundFill(Color.rgb(255, 227, 227), CornerRadii.EMPTY, Insets.EMPTY)));
-        redesSociales.setBackground(new Background(new BackgroundFill(Color.rgb(255, 227, 227), CornerRadii.EMPTY, Insets.EMPTY)));
-        notas.setBackground(new Background(new BackgroundFill(Color.rgb(255, 242, 242), CornerRadii.EMPTY, Insets.EMPTY)));
+        gridTop.setBackground(new Background(new BackgroundFill(Color.rgb(223, 223, 223), CornerRadii.EMPTY, Insets.EMPTY)));
+        telefonos.setBackground(new Background(new BackgroundFill(Color.rgb(234, 234, 234), CornerRadii.EMPTY, Insets.EMPTY)));
+        correos.setBackground(new Background(new BackgroundFill(Color.rgb(234, 234, 234), CornerRadii.EMPTY, Insets.EMPTY)));
+        redesSociales.setBackground(new Background(new BackgroundFill(Color.rgb(234, 234, 234), CornerRadii.EMPTY, Insets.EMPTY)));
+        scrollPane.setBackground(new Background(new BackgroundFill(Color.rgb(255, 254, 206), CornerRadii.EMPTY, Insets.EMPTY)));
+        gridMid.setBackground(new Background(new BackgroundFill(Color.rgb(255, 254, 206), CornerRadii.EMPTY, Insets.EMPTY)));
+        notas.setBackground(new Background(new BackgroundFill(Color.rgb(255, 254, 206), CornerRadii.EMPTY, Insets.EMPTY)));
+        
         Image img = new Image(c.getFoto(0),100,100,true,true);
         ImageView imv = new ImageView(img);
         imv.setTranslateY(5);

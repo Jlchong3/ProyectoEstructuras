@@ -2,14 +2,16 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.appdecontactos.PrimaryController">
+<GridPane fx:id="gridPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.appdecontactos.PrimaryController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -28,20 +30,37 @@
             </AnchorPane>
         </content>
       </ScrollPane>
-      <Button fx:id="agregarContacto" mnemonicParsing="false" onMouseClicked="#agregarNuevoContacto" prefHeight="34.0" prefWidth="63.0" text="Agregar" GridPane.halignment="RIGHT">
+      <Button fx:id="agregarContacto" mnemonicParsing="false" onMouseClicked="#agregarNuevoContacto" prefHeight="34.0" prefWidth="86.0" text="Agregar" GridPane.halignment="RIGHT">
          <GridPane.margin>
             <Insets right="15.0" />
          </GridPane.margin>
+         <font>
+            <Font name="Century Gothic" size="15.0" />
+         </font>
       </Button>
       <Button fx:id="salir" mnemonicParsing="false" onMouseClicked="#cerrarAplicacion" prefHeight="25.0" prefWidth="52.0" text="Salir" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets left="10.0" />
          </GridPane.margin>
+         <font>
+            <Font name="Century Gothic" size="15.0" />
+         </font>
       </Button>
-      <Button fx:id="recorrer" mnemonicParsing="false" onMouseClicked="#recorrerContactos" prefHeight="25.0" prefWidth="118.0" text="Recorrer Contactos" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+      <Button fx:id="recorrer" mnemonicParsing="false" onMouseClicked="#recorrerContactos" prefHeight="29.0" prefWidth="174.0" text="Recorrer Contactos" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets right="15.0" />
          </GridPane.margin>
+         <font>
+            <Font name="Century Gothic" size="15.0" />
+         </font>
       </Button>
+      <Label prefHeight="42.0" prefWidth="185.0" text="Lista de Contactos">
+         <padding>
+            <Insets left="20.0" top="20.0" />
+         </padding>
+         <font>
+            <Font name="Century Gothic Bold" size="17.0" />
+         </font>
+      </Label>
    </children>
 </GridPane>

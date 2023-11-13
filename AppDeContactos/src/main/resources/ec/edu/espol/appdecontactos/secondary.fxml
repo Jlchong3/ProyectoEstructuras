@@ -85,9 +85,9 @@
                   <Font name="Century Gothic" size="15.0" />
                </font>
             </TitledPane>
-            <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+            <ScrollPane fx:id="scrollPane" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
               <content>
-                <AnchorPane fx:id="notas" minHeight="0.0" minWidth="0.0" prefHeight="98.0" prefWidth="285.0" />
+                <AnchorPane fx:id="notas" minHeight="0.0" minWidth="0.0" prefHeight="105.0" prefWidth="350.0" />
               </content>
             </ScrollPane>
          </children>
