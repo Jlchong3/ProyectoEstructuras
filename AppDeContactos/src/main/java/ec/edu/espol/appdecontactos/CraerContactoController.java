@@ -13,6 +13,7 @@ import ec.edu.espol.appdecontactos.clases.SessionManager;
 import java.io.IOException;
 
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -76,6 +77,8 @@ public class CraerContactoController implements Initializable {
     
     private Contacto contacto;
     private String valor; 
+    
+    private ArrayList<String> nombresContactos = new ArrayList<>(); 
 
 
     /**
@@ -87,7 +90,47 @@ public class CraerContactoController implements Initializable {
         String[] categorias = {"Empresa" , "Persona"};
         
         tipoContacto.getItems().addAll(categorias);
-    }  
+    }
+    
+    private void cargarNombres(){
+        nombresContactos.addFirst("Alexandre");
+        nombresContactos.addFirst("Duolingo");
+        nombresContactos.addFirst("Jaime");
+        nombresContactos.addFirst("Jose");
+        nombresContactos.addFirst("Josedeodo");
+        nombresContactos.addFirst("Mariu");
+        nombresContactos.addFirst("Nahin");
+        nombresContactos.addFirst("Nini");
+        nombresContactos.addFirst("Patricio");
+        nombresContactos.addFirst("PedidosYa");
+        nombresContactos.addFirst("Raul");
+        nombresContactos.addFirst("Smash");
+        nombresContactos.addFirst("Tia");
+    }
+
+    public String obtenerDireccionImagenPerfil()
+    {
+        cargarNombres();
+        String directorioImagenes = "src/main/resources/ec/edu/espol/appdecontactos/imgs/contactos/";
+        
+        for(String nombreContacto: nombresContactos)
+        {
+            if(nombre.getText() != null){
+                if(nombreContacto.equals(nombre.getText())){
+                    String direccion = directorioImagenes + nombreContacto + "Perfil.jpeg"; //Si el nombre del contacto es alguno de los predeterminados, se accede a su direccion de memoria
+                    return direccion; 
+                }else{
+                    String extra = "ExtraX";
+                    Random random = new Random();
+                    String numero = ""+random.nextInt(4)+1;
+                    String direccion = directorioImagenes + extra + numero + ".jpeg"; //Si el nombre no es de los predeterminados, se escoge una foto aleatoria para ese contacto
+                    return direccion;   
+                }           
+            }  
+        }
+        return null;
+    }
+    
     
     @FXML
     private void filtrarTipo(ActionEvent event) {
