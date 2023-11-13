@@ -46,14 +46,17 @@ public class SecondaryController implements Initializable {
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {  
+    public void initialize(URL url, ResourceBundle rb) {
+        it = contactos.CircularIterator();
         if(!contactos.isEmpty() && primer == null){
-            it = contactos.CircularIterator();
             Contacto primer = it.next();
-            actualizarPagina(primer);   
-            
+            actualizarPagina(primer);
         }
         else if(!contactos.isEmpty()){
+            Contacto c = null;
+            while(it.hasNext() && c == primer){
+                c = it.next();
+            }
             actualizarPagina(primer);
         }
         else{
@@ -78,9 +81,9 @@ public class SecondaryController implements Initializable {
     @FXML
     private void delete(MouseEvent event) {
         it.remove();
+        clear();
         Contacto.updateFile(contactos);
         SessionManager.getInstance().setContactosActuales(contactos);
-        clear();
         if(contactos.isEmpty()){
             gridTop.getChildren().clear();
             gridMid.getChildren().clear();
