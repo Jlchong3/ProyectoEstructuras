@@ -46,7 +46,7 @@ public class PrimaryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        gridPane.setStyle("-fx-background-color: linear-gradient(to bottom, #B1CFFF, #B1CFFF);");
         listaDeContactos.setStyle("-fx-spacing: 10; -fx-padding: 10;");
         if(!contactos.isEmpty()){
             for(int i = 0; i < contactos.size(); i++){
@@ -64,9 +64,6 @@ public class PrimaryController implements Initializable {
                
             }
         //gridPane.add(new Region(), 0, 0);
-        gridPane.setStyle("-fx-background-color: linear-gradient(to bottom, #B1CFFF, #B1CFFF);");
-
-
         }
         else{
             pane.getChildren().clear();
