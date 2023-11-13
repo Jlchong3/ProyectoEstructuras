@@ -27,6 +27,8 @@ public class PrimaryController implements Initializable {
     private AnchorPane pane;
     @FXML
     private Button agregarContacto;
+    @FXML
+    private Button recorrer;
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
     }
@@ -59,6 +61,15 @@ public class PrimaryController implements Initializable {
     private void agregarNuevoContacto(MouseEvent event) {
         try {
             App.setRoot("craerContacto");
+        } catch (IOException ex) {
+           
+        }
+    }
+
+    @FXML
+    private void recorrerContactos(MouseEvent event) {
+        try {
+            App.setRoot("secondary");
         } catch (IOException ex) {
            
         }
