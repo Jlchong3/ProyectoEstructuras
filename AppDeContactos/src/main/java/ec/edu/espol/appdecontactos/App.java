@@ -1,5 +1,7 @@
 package ec.edu.espol.appdecontactos;
 
+import ec.edu.espol.appdecontactos.clases.Contacto;
+import ec.edu.espol.appdecontactos.clases.SessionManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,6 +19,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        SessionManager.getInstance().setContactosActuales(Contacto.readListSer());
         scene = new Scene(loadFXML("primary"), 318, 673);
         stage.setScene(scene);
         stage.show();

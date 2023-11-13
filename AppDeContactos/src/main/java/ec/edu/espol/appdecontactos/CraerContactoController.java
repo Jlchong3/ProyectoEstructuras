@@ -36,6 +36,7 @@ import javafx.stage.Stage;
  */
 public class CraerContactoController implements Initializable {
     // scenebuilder
+    DoubleCircularLinkedList<Contacto> contactosActuales = SessionManager.getInstance().getContactosActuales();
     @FXML
     private ComboBox<String> tipoContacto;
     @FXML
@@ -112,10 +113,9 @@ public class CraerContactoController implements Initializable {
     }
     
     public void registrarContacto(Contacto contactoNuevo){
-        contactoNuevo.updateFile();
-        DoubleCircularLinkedList<Contacto> contactosActualizados = Contacto.readListSer();
-        System.out.println(contactosActualizados);
-        SessionManager.getInstance().setContactosActuales(contactosActualizados);
+        contactosActuales.addFirst(contactoNuevo);
+        contactoNuevo.updateFile(contactosActuales);
+        SessionManager.getInstance().setContactosActuales(contactosActuales);
     }
     
     @FXML

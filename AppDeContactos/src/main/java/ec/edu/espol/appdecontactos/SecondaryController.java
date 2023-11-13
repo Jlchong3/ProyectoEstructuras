@@ -25,7 +25,7 @@ import javafx.scene.text.Text;
 public class SecondaryController implements Initializable {
     Contacto primer;
     ListIterator<Contacto> it;
-    private DoubleCircularLinkedList<Contacto> contactos = new DoubleCircularLinkedList<>();
+    private DoubleCircularLinkedList<Contacto> contactos = SessionManager.getInstance().getContactosActuales();;
     @FXML
     private GridPane gridTop;
     @FXML
@@ -46,28 +46,7 @@ public class SecondaryController implements Initializable {
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        ArrayList<String> redes = new ArrayList<>();
-        ArrayList<String> redes2 = new ArrayList<>();
-        Contacto c1 = new Contacto(); 
-        Contacto c2 = new Contacto(); 
-        DoubleCircularLinkedList<String> fotos = new DoubleCircularLinkedList<>();
-        DoubleCircularLinkedList<String> fotos2 = new DoubleCircularLinkedList<>();
-        redes.addLast("@hola");
-        redes.addLast("@holaFace");
-        redes.addLast("@holaTiktok");
-        fotos.addLast("file:src/main/resources/ec/edu/espol/appdecontactos/imgs/contactos/JosePerfil.jpeg");
-        fotos.addLast("file:src/main/resources/ec/edu/espol/appdecontactos/imgs/contactos/FotosAsociadas/JoseAsociada1.jpeg");
-        fotos2.addLast("file:src/main/resources/ec/edu/espol/appdecontactos/imgs/contactos/MariuPerfil.jpeg");
-        fotos2.addLast("file:src/main/resources/ec/edu/espol/appdecontactos/imgs/contactos/FotosAsociadas/MariuAsociada1.jpeg");
-        redes2.addLast("@hela");
-        redes2.addLast("@helaFace");
-        redes2.addLast("@helaTiktok");
-        Persona p1 = new Persona(34253245,redes, fotos, "correo@Principal", "Aniversario: 11", c1, "helo", "jose", "chong", 1324234, 4234324, "correo@tabjajo1", "correo@prov2");
-        Persona p2 = new Persona(234532345,redes2,fotos2, "correo@Pricipal2", "Aniversario: 11", c2, "hola","alex", "chong", 2343242, 234324324, "correo@tabjajo1", "correo@prov2");
-        contactos.addLast(p1);
-        contactos.addLast(p2);
-        
+    public void initialize(URL url, ResourceBundle rb) {  
         if(!contactos.isEmpty() && primer == null){
             it = contactos.CircularIterator();
             Contacto primer = it.next();

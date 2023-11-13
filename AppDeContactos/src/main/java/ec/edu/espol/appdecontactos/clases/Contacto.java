@@ -112,17 +112,8 @@ public class Contacto implements Serializable{
         return lista;
     }
 
-    public void updateFile()
+    public void updateFile(DoubleCircularLinkedList<Contacto> contactos)
     {
-        File file = new File("ContactosSer.txt");
-        DoubleCircularLinkedList<Contacto> contactos = new DoubleCircularLinkedList<>();
-
-        if (file.exists()) {
-            contactos = Contacto.readListSer();
-        }
-
-        contactos.addLast(this);
-
         Contacto.saveListSer(contactos);
     }
 
