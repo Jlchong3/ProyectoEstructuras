@@ -63,7 +63,7 @@ public class PrimaryController implements Initializable {
                 listaDeContactos.getChildren().add(b);
                
             }
-        gridPane.add(new Region(), 0, 0);
+        //gridPane.add(new Region(), 0, 0);
         gridPane.setStyle("-fx-background-color: linear-gradient(to bottom, #B1CFFF, #B1CFFF);");
 
 

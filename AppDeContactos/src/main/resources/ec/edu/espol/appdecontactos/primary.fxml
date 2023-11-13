@@ -21,6 +21,14 @@
     <RowConstraints maxHeight="288.1999877929687" minHeight="9.000006103515602" prefHeight="30.199975585937523" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
+      <Button fx:id="agregarContacto" mnemonicParsing="false" onMouseClicked="#agregarNuevoContacto" prefHeight="34.0" prefWidth="86.0" text="Agregar" GridPane.halignment="RIGHT">
+         <GridPane.margin>
+            <Insets right="15.0" />
+         </GridPane.margin>
+         <font>
+            <Font name="Century Gothic" size="15.0" />
+         </font>
+      </Button>
       <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
         <content>
           <AnchorPane fx:id="pane" minHeight="0.0" minWidth="0.0" prefHeight="523.0" prefWidth="263.0">
@@ -30,14 +38,6 @@
             </AnchorPane>
         </content>
       </ScrollPane>
-      <Button fx:id="agregarContacto" mnemonicParsing="false" onMouseClicked="#agregarNuevoContacto" prefHeight="34.0" prefWidth="86.0" text="Agregar" GridPane.halignment="RIGHT">
-         <GridPane.margin>
-            <Insets right="15.0" />
-         </GridPane.margin>
-         <font>
-            <Font name="Century Gothic" size="15.0" />
-         </font>
-      </Button>
       <Button fx:id="salir" mnemonicParsing="false" onMouseClicked="#cerrarAplicacion" prefHeight="25.0" prefWidth="52.0" text="Salir" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets left="10.0" />
