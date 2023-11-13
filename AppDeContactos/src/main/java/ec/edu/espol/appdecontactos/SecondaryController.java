@@ -48,8 +48,6 @@ public class SecondaryController implements Initializable {
     @FXML
     private AnchorPane redesSociales;
     @FXML
-    private Button volver;
-    @FXML
     private ScrollPane scrollPane;
 
     private void switchToPrimary() throws IOException {
@@ -58,26 +56,25 @@ public class SecondaryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        it = contactos.CircularIterator();
         if(!contactos.isEmpty() && primer == null){
-            Contacto primer = it.next();
+            it = contactos.CircularIterator();
+            primer = it.next();
             actualizarPagina(primer);
         }
         else if(!contactos.isEmpty()){
+            it = contactos.CircularIterator();
             Contacto c = null;
             while(it.hasNext() && c != primer){
                 c = it.next();
-            }
+            };
             actualizarPagina(primer);
         }
         else{
             gridTop.getChildren().clear();
             gridMid.getChildren().clear();
             Text text = new Text("No hay contactos");
-            gridMid.setGridLinesVisible(true);
             GridPane.setHalignment(text, HPos.CENTER);
             gridMid.add(text,0,1);
-            
         }
     }
     
@@ -103,16 +100,16 @@ public class SecondaryController implements Initializable {
             gridMid.add(text,0,1);
         }
         else{
-            Contacto c = it.next();
-            actualizarPagina(c);
+            primer = it.next();
+            actualizarPagina(primer);
         }
     }
 
     @FXML
     private void next(MouseEvent event) {
-        Contacto c = it.next();
+        primer = it.next();
         clear();
-        actualizarPagina(c);
+        actualizarPagina(primer);
     }
     
     public void clear(){
@@ -228,6 +225,17 @@ public class SecondaryController implements Initializable {
             App.setRoot("primary");
         } catch (IOException ex) {
            
+        }
+    }
+
+    @FXML
+    private void verFotos(MouseEvent event) {
+        SessionManager.getInstance().setContacto(primer);
+        try{
+            App.setRoot("verFotos");
+        }
+        catch(IOException e){
+            
         }
     }
 }

@@ -121,7 +121,7 @@ public class CraerContactoController implements Initializable {
                 fotosDelContacto.addLast(fotoPerfil); //añade la foto de perfil del contacto en la posición 0
 
                 for(int i = 1; i < 5; i++){
-                    String fotoAsociada = directorioImagenes + "/FotosAsociadas/" + nombreContacto + "Asociada" + i + ".jpeg";
+                    String fotoAsociada = directorioImagenes + "FotosAsociadas/" + nombreContacto + "Asociada" + i + ".jpeg";
                     fotosDelContacto.addLast(fotoAsociada);
                 }
                 return fotosDelContacto;

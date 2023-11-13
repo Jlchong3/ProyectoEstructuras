@@ -43,7 +43,10 @@ public class Contacto implements Serializable{
     public void setTelefonoPrincipal(int telefonoPrincipal) {
         this.telefonoPrincipal = telefonoPrincipal;
     }
-
+    
+    public DoubleCircularLinkedList<String> getFotos(){
+        return this.fotos;
+    }
 
     public ArrayList<String> getRedesSociales() {
         return redesSociales;

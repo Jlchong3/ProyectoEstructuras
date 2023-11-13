@@ -115,9 +115,14 @@
             </ScrollPane>
          </children>
       </GridPane>
-      <Button fx:id="volver" mnemonicParsing="false" onMouseClicked="#volverPrincipal" prefHeight="26.0" prefWidth="60.0" text="Volver" GridPane.rowIndex="2">
+      <Button mnemonicParsing="false" onMouseClicked="#volverPrincipal" prefHeight="26.0" prefWidth="60.0" text="Volver" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets left="10.0" />
+         </GridPane.margin>
+      </Button>
+      <Button mnemonicParsing="false" onMouseClicked="#verFotos" prefHeight="26.0" prefWidth="100.0" text="VerFotos" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+         <GridPane.margin>
+            <Insets right="10.0" />
          </GridPane.margin>
       </Button>
    </children>
