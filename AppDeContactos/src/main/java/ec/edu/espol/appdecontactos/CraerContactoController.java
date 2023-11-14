@@ -268,7 +268,7 @@ public class CraerContactoController implements Initializable {
         TextField telefonoTrabajo = new TextField();
         VBox.setMargin(telefonoTrabajo, new Insets(5, 0, 0, 0));
         
-        Text TelefonoCasa = new Text("Telefono Trabajo:");
+        Text TelefonoCasa = new Text("Telefono Casa:");
         TelefonoCasa.setFont(new Font(16));
         VBox.setMargin(TelefonoCasa, new Insets(20, 0, 0, 0));
         TextField telefonoCasa = new TextField();
@@ -287,7 +287,7 @@ public class CraerContactoController implements Initializable {
         TextField correoTrabajo = new TextField();
         VBox.setMargin(correoTrabajo, new Insets(5, 0, 0, 0));
         
-        Text CorreoProvisional = new Text("Correo Trabajo:");
+        Text CorreoProvisional = new Text("Correo Provisional:");
         CorreoProvisional.setFont(new Font(16));
         VBox.setMargin(CorreoProvisional, new Insets(20, 0, 0, 0));
         TextField correoProvisional = new TextField();
@@ -306,7 +306,7 @@ public class CraerContactoController implements Initializable {
         TextField instagram = new TextField();
         VBox.setMargin(instagram, new Insets(5, 0, 0, 0));
         
-        Text TikTok = new Text("TIkTok:");
+        Text TikTok = new Text("TikTok:");
         TikTok.setFont(new Font(16));
         VBox.setMargin(TikTok, new Insets(20, 0, 0, 0));
         TextField tiktok = new TextField();
