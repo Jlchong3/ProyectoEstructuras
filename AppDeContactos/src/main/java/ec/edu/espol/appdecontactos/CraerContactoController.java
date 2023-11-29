@@ -150,19 +150,9 @@ public class CraerContactoController implements Initializable {
         String s = (String)cb.getValue();
         valor = s;
         
-        if(s.equals("Empresa")){
-            Stage stage = (Stage) tipoContacto.getScene().getWindow();
-            stage.setHeight(650);
-            registroEmpresa();
-            
-        }
-        else if(s.equals("Persona")){
-            Stage stage = (Stage) tipoContacto.getScene().getWindow();
-            stage.setHeight(650);
-            registroPersona();
-
-        }
-        
+        Stage stage = (Stage) tipoContacto.getScene().getWindow();
+        stage.setHeight(650);
+        registroGeneral();
     }
     
     public void regresarTContactos(){
@@ -232,216 +222,72 @@ public class CraerContactoController implements Initializable {
         }
     }
 
-    private void registroPersona(){
-        Text Nombre = new Text("Nombre:");
-        Nombre.setFont(new Font(16));
-        HBox.setMargin(Nombre, new Insets(5, 5, 5, 5));
-        TextField nombre = new TextField();
-        HBox.setMargin(nombre, new Insets(0, 0, 0, 5));
-        
-        Text Apellido = new Text("Apellido:");
-        Apellido.setFont(new Font(16));
-        HBox.setMargin(Apellido, new Insets(5, 5, 5, 5));
-        TextField apellido = new TextField();
-        HBox.setMargin(apellido, new Insets(0, 0, 0, 5));
-        
-        //cuadro2
-        //telf
-        Text TelefonoPrincipal = new Text("Telefono personal:");
-        TelefonoPrincipal.setFont(new Font(16));
-        VBox.setMargin(TelefonoPrincipal, new Insets(20, 0, 0, 0));
-        TextField telefonoPrincipal = new TextField();
-        VBox.setMargin(telefonoPrincipal, new Insets(5, 0, 0, 0));
-        
-        Text TelefonoTrabajo = new Text("Telefono Trabajo:");
-        TelefonoTrabajo.setFont(new Font(16));
-        VBox.setMargin(TelefonoTrabajo, new Insets(20, 0, 0, 0));
-        TextField telefonoTrabajo = new TextField();
-        VBox.setMargin(telefonoTrabajo, new Insets(5, 0, 0, 0));
-        
-        Text TelefonoCasa = new Text("Telefono Casa:");
-        TelefonoCasa.setFont(new Font(16));
-        VBox.setMargin(TelefonoCasa, new Insets(20, 0, 0, 0));
-        TextField telefonoCasa = new TextField();
-        VBox.setMargin(telefonoCasa, new Insets(5, 0, 0, 0));
-        
-        //correo
-        Text CorreoPrincipal = new Text("Correo Personal:");
-        CorreoPrincipal.setFont(new Font(16));
-        VBox.setMargin(CorreoPrincipal, new Insets(20, 0, 0, 0));
-        TextField correoPrincipal = new TextField();
-        VBox.setMargin(correoPrincipal, new Insets(5, 0, 0, 0));
-
-        Text CorreoTrabajo = new Text("Correo Trabajo:");
-        CorreoTrabajo.setFont(new Font(16));
-        VBox.setMargin(CorreoTrabajo, new Insets(20, 0, 0, 0));
-        TextField correoTrabajo = new TextField();
-        VBox.setMargin(correoTrabajo, new Insets(5, 0, 0, 0));
-        
-        Text CorreoProvisional = new Text("Correo Provisional:");
-        CorreoProvisional.setFont(new Font(16));
-        VBox.setMargin(CorreoProvisional, new Insets(20, 0, 0, 0));
-        TextField correoProvisional = new TextField();
-        VBox.setMargin(correoProvisional, new Insets(5, 0, 0, 0));
-        
-        //redesSociales
-        Text Facebook = new Text("Facebook:");
-        Facebook.setFont(new Font(16));
-        VBox.setMargin(Facebook, new Insets(20, 0, 0, 0));
-        TextField facebook = new TextField();
-        VBox.setMargin(facebook, new Insets(5, 0, 0, 0));
-        
-        Text Instagram = new Text("Instagram:");
-        Instagram.setFont(new Font(16));
-        VBox.setMargin(Instagram, new Insets(20, 0, 0, 0));
-        TextField instagram = new TextField();
-        VBox.setMargin(instagram, new Insets(5, 0, 0, 0));
-        
-        Text TikTok = new Text("TikTok:");
-        TikTok.setFont(new Font(16));
-        VBox.setMargin(TikTok, new Insets(20, 0, 0, 0));
-        TextField tiktok = new TextField();
-        VBox.setMargin(tiktok, new Insets(5, 0, 0, 0));
-        
-        Text X = new Text("X:");
-        X.setFont(new Font(16));
-        VBox.setMargin(X, new Insets(20, 0, 0, 0));
-        TextField x = new TextField();
-        VBox.setMargin(x, new Insets(5, 0, 0, 0));
-        
-        Text Fecha = new Text("Fecha:");
-        Fecha.setFont(new Font(16));
-        VBox.setMargin(Fecha, new Insets(20, 0, 0, 0));
-        TextField fecha = new TextField();
-        VBox.setMargin(fecha, new Insets(5, 0, 0, 0));
-        
-        Text Nota = new Text("Nota:");
-        Nota.setFont(new Font(16));
-        VBox.setMargin(Nota, new Insets(20, 0, 0, 0));
-        TextField nota = new TextField();
-        VBox.setMargin(nota, new Insets(5, 0, 0, 0));
-
-        cuadro1.getChildren().addAll(Nombre,nombre, Apellido,apellido);
-        cuadr2.getChildren().addAll(TelefonoPrincipal,telefonoPrincipal,TelefonoTrabajo,telefonoTrabajo,TelefonoCasa,telefonoCasa,Facebook,facebook,Instagram,instagram,Fecha,fecha);
-        cuad3.getChildren().addAll(CorreoPrincipal,correoPrincipal,CorreoTrabajo,correoTrabajo,CorreoProvisional,correoProvisional,TikTok,tiktok, X,x,Nota,nota);
-
-        this.nombre = nombre;
-        this.apellido = apellido;
-        
-        this.telefonoPrincipal = telefonoPrincipal;
-        this.telefonoTrabajo = telefonoTrabajo;
-        this.telefonoCasa = telefonoCasa;
-
-        this.correoPrincipal = correoPrincipal;
-        this.correoTrabajo=correoTrabajo;
-        this.correoProvisional=correoProvisional;
-        
-        this.facebook=facebook;
-        this.instagram=instagram;
-        this.tiktok=tiktok;
-        this.x=x;
-        
-        this.fecha = fecha;
-        this.nota =nota;
-    }
     
-    private void registroEmpresa(){
+     public void registroGeneral(){
+//         
         Text Nombre = new Text("Nombre:");
         Nombre.setFont(new Font(16));
         HBox.setMargin(Nombre, new Insets(5, 5, 5, 5));
         TextField nombre = new TextField();
         HBox.setMargin(nombre, new Insets(0, 0, 0, 5));
-        
-        //cuadro2
-        //telf
-        Text TelefonoPrincipal = new Text("Telefono Principal:");
-        TelefonoPrincipal.setFont(new Font(16));
+//    public String telefonoPrincipal;
+        Text TelefonoPrincipal = new Text("Telefono:");
         VBox.setMargin(TelefonoPrincipal, new Insets(20, 0, 0, 0));
         TextField telefonoPrincipal = new TextField();
         VBox.setMargin(telefonoPrincipal, new Insets(5, 0, 0, 0));
-        
-        Text TelefonoWha = new Text("Telefono WhatsApp:");
-        TelefonoWha.setFont(new Font(16));
-        VBox.setMargin(TelefonoWha, new Insets(20, 0, 0, 0));
-        TextField telefonoWha = new TextField();
-        VBox.setMargin(telefonoWha, new Insets(5, 0, 0, 0));
-        
-        Text TelefonoProvisional = new Text("Telefono Provisional:");
-        TelefonoProvisional.setFont(new Font(16));
-        VBox.setMargin(TelefonoProvisional, new Insets(20, 0, 0, 0));
-        TextField telefonoProvisional = new TextField();
-        VBox.setMargin(telefonoProvisional, new Insets(5, 0, 0, 0));
-        
-        //correo
-        Text CorreoPrincipal = new Text("Correo Principal:");
-        CorreoPrincipal.setFont(new Font(16));
-        VBox.setMargin(CorreoPrincipal, new Insets(20, 0, 0, 0));
-        TextField correoPrincipal = new TextField();
-        VBox.setMargin(correoPrincipal, new Insets(5, 0, 0, 0));
 
-        Text CorreoSecundario = new Text("Correo Secundario:");
-        CorreoSecundario.setFont(new Font(16));
-        VBox.setMargin(CorreoSecundario, new Insets(20, 0, 0, 0));
-        TextField correoSecundario = new TextField();
-        VBox.setMargin(correoSecundario, new Insets(5, 0, 0, 0));
-        
-        Text CorreoProvisional = new Text("Correo Provisional:");
-        CorreoProvisional.setFont(new Font(16));
-        VBox.setMargin(CorreoProvisional, new Insets(20, 0, 0, 0));
-        TextField correoProvisional = new TextField();
-        VBox.setMargin(correoProvisional, new Insets(5, 0, 0, 0));
-        
-        //redesSociales
+//    public DoubleCircularLinkedList<String> fotos;
+
+//    public ArrayList<String> redesSociales;
         Text Facebook = new Text("Facebook:");
         Facebook.setFont(new Font(16));
         VBox.setMargin(Facebook, new Insets(20, 0, 0, 0));
         TextField facebook = new TextField();
         VBox.setMargin(facebook, new Insets(5, 0, 0, 0));
-        
+
         Text Instagram = new Text("Instagram:");
         Instagram.setFont(new Font(16));
         VBox.setMargin(Instagram, new Insets(20, 0, 0, 0));
         TextField instagram = new TextField();
         VBox.setMargin(instagram, new Insets(5, 0, 0, 0));
-        
+
         Text TikTok = new Text("TikTok:");
         TikTok.setFont(new Font(16));
         VBox.setMargin(TikTok, new Insets(20, 0, 0, 0));
         TextField tiktok = new TextField();
         VBox.setMargin(tiktok, new Insets(5, 0, 0, 0));
-        
+
         Text X = new Text("X:");
         X.setFont(new Font(16));
         VBox.setMargin(X, new Insets(20, 0, 0, 0));
         TextField x = new TextField();
         VBox.setMargin(x, new Insets(5, 0, 0, 0));
-        
+
+//    public String correoPrincipal;
+        Text CorreoPrincipal = new Text("Correo:");
+        CorreoPrincipal.setFont(new Font(16));
+        VBox.setMargin(CorreoPrincipal, new Insets(20, 0, 0, 0));
+        TextField correoPrincipal = new TextField();
+        VBox.setMargin(correoPrincipal, new Insets(5, 0, 0, 0));
+
+//    public String fechas;
         Text Fecha = new Text("Fecha:");
         Fecha.setFont(new Font(16));
         VBox.setMargin(Fecha, new Insets(20, 0, 0, 0));
         TextField fecha = new TextField();
         VBox.setMargin(fecha, new Insets(5, 0, 0, 0));
-        
+
+//    public Contacto contactoRelacionado;
+//    public String nota;
         Text Nota = new Text("Nota:");
         Nota.setFont(new Font(16));
         VBox.setMargin(Nota, new Insets(20, 0, 0, 0));
         TextField nota = new TextField();
         VBox.setMargin(nota, new Insets(5, 0, 0, 0));
-
-        cuadro1.getChildren().addAll(Nombre,nombre);
-        cuadr2.getChildren().addAll(TelefonoPrincipal,telefonoPrincipal,TelefonoWha,telefonoWha,TelefonoProvisional,telefonoProvisional,Facebook,facebook,Instagram,instagram,Fecha,fecha);
-        cuad3.getChildren().addAll(CorreoPrincipal,correoPrincipal,CorreoSecundario,correoSecundario,CorreoProvisional,correoProvisional,TikTok,tiktok, X,x,Nota,nota);
 
         this.nombre=nombre;
-
         this.telefonoPrincipal = telefonoPrincipal;
-        this.telefonoWha = telefonoWha;
-        this.telefonoProvisional = telefonoProvisional;
-
         this.correoPrincipal = correoPrincipal;
-        this.correoSecundario=correoSecundario;
-        this.correoProvisional=correoProvisional;
-        
         this.facebook=facebook;
         this.instagram=instagram;
         this.tiktok=tiktok;
@@ -449,7 +295,123 @@ public class CraerContactoController implements Initializable {
         
         this.fecha = fecha;
         this.nota =nota;
-    }
+        
+        
+        String s = valor;
+        switch (s) {
+            case "Empresa":
+            {
+                //cuadro2
+                //telf
+                TelefonoPrincipal = new Text("Telefono Principal:");
+                TelefonoPrincipal.setFont(new Font(16));
+
+                Text TelefonoWha = new Text("Telefono WhatsApp:");
+                TelefonoWha.setFont(new Font(16));
+                VBox.setMargin(TelefonoWha, new Insets(20, 0, 0, 0));
+                TextField telefonoWha = new TextField();
+                VBox.setMargin(telefonoWha, new Insets(5, 0, 0, 0));
+
+                Text TelefonoProvisional = new Text("Telefono Provisional:");
+                TelefonoProvisional.setFont(new Font(16));
+                VBox.setMargin(TelefonoProvisional, new Insets(20, 0, 0, 0));
+                TextField telefonoProvisional = new TextField();
+                VBox.setMargin(telefonoProvisional, new Insets(5, 0, 0, 0));
+
+                //correo
+                CorreoPrincipal = new Text("Correo Principal:");
+                CorreoPrincipal.setFont(new Font(16));
+                
+                Text CorreoSecundario = new Text("Correo Secundario:");
+                CorreoSecundario.setFont(new Font(16));
+                VBox.setMargin(CorreoSecundario, new Insets(20, 0, 0, 0));
+                TextField correoSecundario = new TextField();
+                VBox.setMargin(correoSecundario, new Insets(5, 0, 0, 0));
+
+                Text CorreoProvisional = new Text("Correo Provisional:");
+                CorreoProvisional.setFont(new Font(16));
+                VBox.setMargin(CorreoProvisional, new Insets(20, 0, 0, 0));
+                TextField correoProvisional = new TextField();
+                VBox.setMargin(correoProvisional, new Insets(5, 0, 0, 0));
+
+                cuadro1.getChildren().addAll(Nombre,nombre);
+                cuadr2.getChildren().addAll(TelefonoPrincipal,telefonoPrincipal,TelefonoWha,telefonoWha,TelefonoProvisional,telefonoProvisional,Facebook,facebook,Instagram,instagram,Fecha,fecha);
+                cuad3.getChildren().addAll(CorreoPrincipal,correoPrincipal,CorreoSecundario,correoSecundario,CorreoProvisional,correoProvisional,TikTok,tiktok, X,x,Nota,nota);
+
+                this.telefonoWha = telefonoWha;
+                this.telefonoProvisional = telefonoProvisional;
+
+                this.correoSecundario=correoSecundario;
+                this.correoProvisional=correoProvisional;
+
+                break;
+            }
+            case "Persona":                    
+            {
+//                Text Nombre = new Text("Nombre:");
+//                Nombre.setFont(new Font(16));
+//                HBox.setMargin(Nombre, new Insets(5, 5, 5, 5));
+//                TextField nombre = new TextField();
+//                HBox.setMargin(nombre, new Insets(0, 0, 0, 5));
+
+                Text Apellido = new Text("Apellido:");
+                Apellido.setFont(new Font(16));
+                HBox.setMargin(Apellido, new Insets(5, 5, 5, 5));
+                TextField apellido = new TextField();
+                HBox.setMargin(apellido, new Insets(0, 0, 0, 5));
+
+                //cuadro2
+                //telf
+                TelefonoPrincipal = new Text("Telefono personal:");
+                TelefonoPrincipal.setFont(new Font(16));
+
+                Text TelefonoTrabajo = new Text("Telefono Trabajo:");
+                TelefonoTrabajo.setFont(new Font(16));
+                VBox.setMargin(TelefonoTrabajo, new Insets(20, 0, 0, 0));
+                TextField telefonoTrabajo = new TextField();
+                VBox.setMargin(telefonoTrabajo, new Insets(5, 0, 0, 0));
+
+                Text TelefonoCasa = new Text("Telefono Casa:");
+                TelefonoCasa.setFont(new Font(16));
+                VBox.setMargin(TelefonoCasa, new Insets(20, 0, 0, 0));
+                TextField telefonoCasa = new TextField();
+                VBox.setMargin(telefonoCasa, new Insets(5, 0, 0, 0));
+
+                //correo
+                CorreoPrincipal = new Text("Correo Personal:");
+                CorreoPrincipal.setFont(new Font(16));
+                
+                Text CorreoTrabajo = new Text("Correo Trabajo:");
+                CorreoTrabajo.setFont(new Font(16));
+                VBox.setMargin(CorreoTrabajo, new Insets(20, 0, 0, 0));
+                TextField correoTrabajo = new TextField();
+                VBox.setMargin(correoTrabajo, new Insets(5, 0, 0, 0));
+
+                Text CorreoProvisional = new Text("Correo Provisional:");
+                CorreoProvisional.setFont(new Font(16));
+                VBox.setMargin(CorreoProvisional, new Insets(20, 0, 0, 0));
+                TextField correoProvisional = new TextField();
+                VBox.setMargin(correoProvisional, new Insets(5, 0, 0, 0));
+
+                cuadro1.getChildren().addAll(Nombre,nombre, Apellido,apellido);
+                cuadr2.getChildren().addAll(TelefonoPrincipal,telefonoPrincipal,TelefonoTrabajo,telefonoTrabajo,TelefonoCasa,telefonoCasa,Facebook,facebook,Instagram,instagram,Fecha,fecha);
+                cuad3.getChildren().addAll(CorreoPrincipal,correoPrincipal,CorreoTrabajo,correoTrabajo,CorreoProvisional,correoProvisional,TikTok,tiktok, X,x,Nota,nota);
+
+                this.apellido = apellido;
+
+                this.telefonoTrabajo = telefonoTrabajo;
+                this.telefonoCasa = telefonoCasa;
+
+                this.correoTrabajo=correoTrabajo;
+                this.correoProvisional=correoProvisional;
+
+                break;
+            }
+            default:
+                break;
+        }  
+     }
+    
 
     @FXML
     private void retrocederPantalla(MouseEvent event) {
