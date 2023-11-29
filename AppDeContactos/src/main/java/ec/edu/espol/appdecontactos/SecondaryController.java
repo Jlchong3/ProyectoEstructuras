@@ -254,6 +254,7 @@ public class SecondaryController implements Initializable {
             }
     }
 
+    @FXML
     private void editarContacto(MouseEvent event) {
         try {
             App.setRoot("craerContacto");
@@ -262,4 +263,5 @@ public class SecondaryController implements Initializable {
         }
     }
     
+
 }
