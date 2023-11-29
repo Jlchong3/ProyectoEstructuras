@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.appdecontactos.SecondaryController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.appdecontactos.SecondaryController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -147,5 +147,6 @@
             <Insets right="10.0" />
          </GridPane.margin>
       </Button>
+      <Button mnemonicParsing="false" onMouseClicked="#verContactosAsociados" prefHeight="31.0" prefWidth="111.0" text="ContacosAsociados" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
    </children>
 </GridPane>

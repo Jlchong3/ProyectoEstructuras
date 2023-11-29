@@ -244,6 +244,16 @@ public class SecondaryController implements Initializable {
     }
 
     @FXML
+
+    private void verContactosAsociados(MouseEvent event) {
+        try{
+                App.setRoot("contactosAsociados");
+            }
+            catch(IOException e){
+
+            }
+    }
+
     private void editarContacto(MouseEvent event) {
         try {
             App.setRoot("editarPersona");
