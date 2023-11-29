@@ -49,7 +49,7 @@
                         <Insets right="5.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false">
+                  <Button fx:id="editarBoton" mnemonicParsing="false" onMouseClicked="#editarContacto">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                            <image>

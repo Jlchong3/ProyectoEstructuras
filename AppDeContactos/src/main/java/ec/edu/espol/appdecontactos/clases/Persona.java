@@ -3,15 +3,15 @@ package ec.edu.espol.appdecontactos.clases;
 public class Persona extends Contacto{
     public String nombre;
     public String apellido;
-    public int telefonoTrabajo;
-    public int telefonoCasa;
+    public String telefonoTrabajo;
+    public String telefonoCasa;
     public String correoTrabajo; 
     public String correoProvisional;
 
     public Persona() {
     }
 
-    public Persona(int telefonoPrincipal,ArrayList<String> redesSociales,DoubleCircularLinkedList<String> fotos, String correoPrincipal, String fechas, Contacto contactoRelacionado, String nota, String nombre, String apellido, int telefonoTrabajo, int telefonoCasa, String correoTrabajo, String correoProvisional) {
+    public Persona(String telefonoPrincipal,ArrayList<String> redesSociales,DoubleCircularLinkedList<String> fotos, String correoPrincipal, String fechas, Contacto contactoRelacionado, String nota, String nombre, String apellido, String telefonoTrabajo, String telefonoCasa, String correoTrabajo, String correoProvisional) {
         super( telefonoPrincipal, redesSociales, fotos,  correoPrincipal,  fechas,  contactoRelacionado,  nota);
         this.nombre = nombre;
         this.apellido = apellido;
@@ -39,19 +39,19 @@ public class Persona extends Contacto{
         this.apellido = apellido;
     }
 
-    public int getTelefonoTrabajo() {
+    public String getTelefonoTrabajo() {
         return this.telefonoTrabajo;
     }
 
-    public void setTelefonoTrabajo(int telefonoTrabajo) {
+    public void setTelefonoTrabajo(String telefonoTrabajo) {
         this.telefonoTrabajo = telefonoTrabajo;
     }
 
-    public int getTelefonoCasa() {
+    public String getTelefonoCasa() {
         return this.telefonoCasa;
     }
 
-    public void setTelefonoCasa(int telefonoCasa) {
+    public void setTelefonoCasa(String telefonoCasa) {
         this.telefonoCasa = telefonoCasa;
     }
 
