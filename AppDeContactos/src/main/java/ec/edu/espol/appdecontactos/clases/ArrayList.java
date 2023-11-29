@@ -18,6 +18,10 @@ public class ArrayList<E> implements List<E>,Serializable {
         effectiveSize = 0;
     }
 
+    public ArrayList<E> sorted(Comparator<E> cmp){
+        throw new UnsupportedOperationException("Unimplemented method 'sort'");
+    }
+
     @Override
     public boolean addFirst(E element) {
         if (element == null) {

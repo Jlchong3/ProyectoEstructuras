@@ -15,6 +15,8 @@ public interface List<E> extends Iterable<E> {
     
     boolean sort(Comparator<E> comp);
 
+    List<E> sorted(Comparator<E> comp);
+
     boolean addFirst(E element);
 
     boolean addLast(E element);

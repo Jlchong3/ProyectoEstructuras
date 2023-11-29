@@ -52,7 +52,6 @@ public class CraerContactoController implements Initializable {
     @FXML
     private Button Retroceder;
 
-    //yo cree ahorita
     private TextField telefonoPrincipal;
     private TextField telefonoWha;
     private TextField telefonoProvisional;
@@ -190,7 +189,6 @@ public class CraerContactoController implements Initializable {
     private void confirmarContacto(MouseEvent event) {
         Contacto contactoRelacionado=null;
         DoubleCircularLinkedList<String> listaFotos= obtenerDireccionImagen();
-        int i = Integer.parseInt(telefonoPrincipal.getText());
         
         ArrayList<String> redesSo= new ArrayList<>();
         redesSo.addLast(facebook.getText());
@@ -200,29 +198,24 @@ public class CraerContactoController implements Initializable {
         
         
         String s = valor;
-        if((nombre.getText().equals(""))&&(apellido.getText().equals(""))&&(telefonoPrincipal.getText().equals(""))){
+        if(((nombre.getText().equals(""))||(telefonoPrincipal.getText().equals("")))){
             Alert a = new Alert(Alert.AlertType.ERROR,"Datos Principales Incompletos");
             a.show();
         }
         else{
+
             try{
                 switch (s) {
                     case "Empresa":
                     {
-                        int j = Integer.parseInt(telefonoWha.getText());
-                        int k = Integer.parseInt(telefonoProvisional.getText());
-
-                        Empresa e = new Empresa(i, redesSo , listaFotos , correoPrincipal.getText(), fecha.getText(), contactoRelacionado, nota.getText(), nombre.getText(),  j,   k,  correoSecundario.getText(),  correoProvisional.getText());
+                        Empresa e = new Empresa(telefonoPrincipal.getText(), redesSo , listaFotos , correoPrincipal.getText(), fecha.getText(), contactoRelacionado, nota.getText(), nombre.getText(),  telefonoWha.getText(),   telefonoProvisional.getText(),  correoSecundario.getText(),  correoProvisional.getText());
                         registrarContacto(e);
                         regresarTContactos();
                         break;
                     }
                     case "Persona":                    
                     {
-                        int j = Integer.parseInt(telefonoTrabajo.getText());
-                        int k = Integer.parseInt(telefonoCasa.getText());
-
-                        Persona p = new Persona(i,redesSo,listaFotos, correoPrincipal.getText() , fecha.getText() , contactoRelacionado, nota.getText(), nombre.getText(), apellido.getText(), j, k, correoTrabajo.getText(), correoProvisional.getText());
+                        Persona p = new Persona(telefonoPrincipal.getText(),redesSo,listaFotos, correoPrincipal.getText() , fecha.getText() , contactoRelacionado, nota.getText(), nombre.getText(), apellido.getText(), telefonoTrabajo.getText(), telefonoCasa.getText(), correoTrabajo.getText(), correoProvisional.getText());
                         registrarContacto(p);
                         regresarTContactos();
                         break;
@@ -235,10 +228,8 @@ public class CraerContactoController implements Initializable {
             catch(NumberFormatException e){
                 Alert a = new Alert(Alert.AlertType.ERROR,"ERROR DE NO SE QUE CONTACTOS CONTROLLER");
                 a.show();
-                
             }
         }
-        
     }
 
     private void registroPersona(){
@@ -363,7 +354,7 @@ public class CraerContactoController implements Initializable {
         
         //cuadro2
         //telf
-        Text TelefonoPrincipal = new Text("Telefono personal:");
+        Text TelefonoPrincipal = new Text("Telefono Principal:");
         TelefonoPrincipal.setFont(new Font(16));
         VBox.setMargin(TelefonoPrincipal, new Insets(20, 0, 0, 0));
         TextField telefonoPrincipal = new TextField();
@@ -382,7 +373,7 @@ public class CraerContactoController implements Initializable {
         VBox.setMargin(telefonoProvisional, new Insets(5, 0, 0, 0));
         
         //correo
-        Text CorreoPrincipal = new Text("Correo Personal:");
+        Text CorreoPrincipal = new Text("Correo Principal:");
         CorreoPrincipal.setFont(new Font(16));
         VBox.setMargin(CorreoPrincipal, new Insets(20, 0, 0, 0));
         TextField correoPrincipal = new TextField();
@@ -464,4 +455,6 @@ public class CraerContactoController implements Initializable {
     private void retrocederPantalla(MouseEvent event) {
         regresarTContactos();
     } 
+    
+
 }

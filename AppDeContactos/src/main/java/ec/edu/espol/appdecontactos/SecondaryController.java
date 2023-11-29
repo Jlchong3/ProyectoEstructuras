@@ -49,6 +49,8 @@ public class SecondaryController implements Initializable {
     private AnchorPane redesSociales;
     @FXML
     private ScrollPane scrollPane;
+    @FXML
+    private Button editarBoton;
 
     private void switchToPrimary() throws IOException {
         App.setRoot("primary");
@@ -242,6 +244,7 @@ public class SecondaryController implements Initializable {
     }
 
     @FXML
+
     private void verContactosAsociados(MouseEvent event) {
         try{
                 App.setRoot("contactosAsociados");
@@ -250,4 +253,13 @@ public class SecondaryController implements Initializable {
 
             }
     }
+
+    private void editarContacto(MouseEvent event) {
+        try {
+            App.setRoot("craerContacto");
+        } catch (IOException e) {
+           
+        }
+    }
+    
 }

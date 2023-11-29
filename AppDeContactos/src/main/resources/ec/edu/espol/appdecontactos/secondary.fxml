@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -34,40 +35,61 @@
         </rowConstraints>
          <children>
             <VBox fx:id="FotoPerfil" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" />
-            <Button mnemonicParsing="false" onMouseClicked="#previous" prefHeight="26.0" prefWidth="42.0" GridPane.valignment="TOP">
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#previous" prefHeight="26.0" prefWidth="42.0">
+                     <graphic>
+                        <ImageView fitHeight="14.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/fotosBotones/retroceder.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="editarBoton" mnemonicParsing="false" onMouseClicked="#editarContacto">
+                     <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/fotosBotones/editar.png" />
+                           </image></ImageView>
+                     </graphic>
+                  </Button>
+               </children>
                <GridPane.margin>
-                  <Insets left="5.0" top="10.0" />
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
-               <graphic>
-                  <ImageView fitHeight="14.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@imgs/fotosBotones/retroceder.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
-            <Button mnemonicParsing="false" onMouseClicked="#delete" prefHeight="26.0" prefWidth="31.0" GridPane.columnIndex="2" GridPane.valignment="TOP">
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
+               <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#delete" prefHeight="26.0" prefWidth="31.0">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/fotosBotones/borrarTacho.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#next" prefHeight="26.0" prefWidth="39.0">
+                     <graphic>
+                        <ImageView fitHeight="13.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/fotosBotones/avanzar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
                <GridPane.margin>
-                  <Insets left="5.0" top="10.0" />
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
-               <graphic>
-                  <ImageView fitHeight="12.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@imgs/fotosBotones/borrarTacho.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button mnemonicParsing="false" onMouseClicked="#next" prefHeight="26.0" prefWidth="39.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
-               <GridPane.margin>
-                  <Insets right="5.0" top="10.0" />
-               </GridPane.margin>
-               <graphic>
-                  <ImageView fitHeight="13.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@imgs/fotosBotones/avanzar.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
+            </HBox>
          </children>
       </GridPane>
       <GridPane fx:id="gridMid" GridPane.rowIndex="1">

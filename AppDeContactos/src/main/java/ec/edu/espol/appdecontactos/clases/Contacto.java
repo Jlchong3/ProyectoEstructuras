@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class Contacto implements Serializable{
 
-    public int telefonoPrincipal;
+    public String telefonoPrincipal;
     public DoubleCircularLinkedList<String> fotos;
     public ArrayList<String> redesSociales;
     public String correoPrincipal;
@@ -26,7 +26,7 @@ public class Contacto implements Serializable{
         
     }
     
-    public Contacto(int telefonoPrincipal,ArrayList<String> redesSociales,DoubleCircularLinkedList<String> fotos, String correoPrincipal, String fechas, Contacto contactoRelacionado, String nota) {
+    public Contacto(String telefonoPrincipal,ArrayList<String> redesSociales,DoubleCircularLinkedList<String> fotos, String correoPrincipal, String fechas, Contacto contactoRelacionado, String nota) {
         this.telefonoPrincipal = telefonoPrincipal;
         this.redesSociales = redesSociales;
         this.fotos = fotos;
@@ -36,11 +36,11 @@ public class Contacto implements Serializable{
         this.nota = nota;
     }
     
-    public int getTelefonoPrincipal() {
+    public String getTelefonoPrincipal() {
         return telefonoPrincipal;
     }
 
-    public void setTelefonoPrincipal(int telefonoPrincipal) {
+    public void setTelefonoPrincipal(String telefonoPrincipal) {
         this.telefonoPrincipal = telefonoPrincipal;
     }
     

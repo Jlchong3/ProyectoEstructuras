@@ -264,5 +264,10 @@ public class DoubleCircularLinkedList<E> implements List<E>, java.io.Serializabl
         sb.append("]");
         return sb.toString();
     }
+
+    @Override
+    public List<E> sorted(Comparator<E> comp) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
 

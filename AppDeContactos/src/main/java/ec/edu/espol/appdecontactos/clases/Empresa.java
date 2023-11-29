@@ -2,8 +2,8 @@ package ec.edu.espol.appdecontactos.clases;
 
 public class Empresa extends Contacto{
     public String nombre;
-    public int telefonoWha;
-    public int telefonoProvisional;
+    public String telefonoWha;
+    public String telefonoProvisional;
 
     public String correoSecundario; 
     public String correoProvisional;
@@ -12,7 +12,7 @@ public class Empresa extends Contacto{
     public Empresa() {
     }
 
-    public Empresa(int telefonoPrincipal,ArrayList<String> redesSociales,DoubleCircularLinkedList<String> fotos, String correoPrincipal, String fechas, Contacto contactoRelacionado, String nota,String nombre, int telefonoWha, int telefonoProvisional, String correoSecundario, String correoProvisional) {
+    public Empresa(String telefonoPrincipal,ArrayList<String> redesSociales,DoubleCircularLinkedList<String> fotos, String correoPrincipal, String fechas, Contacto contactoRelacionado, String nota,String nombre, String telefonoWha, String telefonoProvisional, String correoSecundario, String correoProvisional) {
         super( telefonoPrincipal, redesSociales, fotos,  correoPrincipal,  fechas,  contactoRelacionado,  nota);
         this.nombre = nombre;
         this.telefonoWha = telefonoWha;
@@ -30,19 +30,19 @@ public class Empresa extends Contacto{
         this.nombre = nombre;
     }
 
-    public int getTelefonoWha() {
+    public String getTelefonoWha() {
         return this.telefonoWha;
     }
 
-    public void setTelefonoWha(int telefonoWha) {
+    public void setTelefonoWha(String telefonoWha) {
         this.telefonoWha = telefonoWha;
     }
 
-    public int getTelefonoProvisional() {
+    public String getTelefonoProvisional() {
         return this.telefonoProvisional;
     }
 
-    public void setTelefonoProvisional(int telefonoProvisional) {
+    public void setTelefonoProvisional(String telefonoProvisional) {
         this.telefonoProvisional = telefonoProvisional;
     }
 
