@@ -464,4 +464,9 @@ public class CraerContactoController implements Initializable {
     private void retrocederPantalla(MouseEvent event) {
         regresarTContactos();
     } 
+    
+    
+    public void editarContacto(){
+        
+    }
 }
