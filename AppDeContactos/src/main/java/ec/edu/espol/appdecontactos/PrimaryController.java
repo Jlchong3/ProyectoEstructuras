@@ -85,7 +85,7 @@ public class PrimaryController implements Initializable {
 
     @FXML
     private void recorrerContactos(MouseEvent event) {
-        SessionManager.getInstance().setContacto(null);
+        //SessionManager.getInstance().setContacto(null);
         try {
             App.setRoot("secondary");
         } catch (IOException ex) {
