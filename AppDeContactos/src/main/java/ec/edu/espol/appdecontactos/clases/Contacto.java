@@ -23,7 +23,7 @@ public class Contacto implements Serializable{
     private static final long serialVersionUID = 3499549809924434319L;
     
     public Contacto(){
-        
+        contactosRelacionados = new DoubleCircularLinkedList<>();
     }
     
     public Contacto(String telefonoPrincipal, ArrayList<String> redesSociales, DoubleCircularLinkedList<String> fotos, String correoPrincipal, String fechas, DoubleCircularLinkedList<Contacto> contactosRelacionados, String nota) {

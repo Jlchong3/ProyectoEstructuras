@@ -65,6 +65,9 @@ public class DoubleCircularLinkedList<E> implements List<E>, java.io.Serializabl
 
     @Override
     public int size() {
+        if(isEmpty()){
+            return 0;
+        }
         int i = 1;
         for(Node<E> n = last.getNext(); n != last;  n = n.getNext())
             i++;

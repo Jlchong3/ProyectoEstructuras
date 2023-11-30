@@ -167,8 +167,8 @@ public class CraerContactoController implements Initializable {
         }
     }
     
-      
-   
+    
+    
     public void registrarContacto(Contacto contactoNuevo){
         contactosActuales.addLast(contactoNuevo);
         Contacto.updateFile(contactosActuales);
@@ -177,7 +177,7 @@ public class CraerContactoController implements Initializable {
     
     @FXML
     private void confirmarContacto(MouseEvent event) {
-        DoubleCircularLinkedList<Contacto> contactosRelacionados=null;
+        DoubleCircularLinkedList<Contacto> contactosRelacionados = new DoubleCircularLinkedList<>();
         DoubleCircularLinkedList<String> listaFotos= obtenerDireccionImagen();
         
         ArrayList<String> redesSo= new ArrayList<>();

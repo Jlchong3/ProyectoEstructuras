@@ -74,8 +74,6 @@ public class PrimaryController implements Initializable {
                 return c1.getNombre().compareTo(c2.getNombre());
             };
             contactosActuales = contactos.sorted(cmp);
-            System.out.println(contactos);
-            System.out.println(contactosActuales);
             actualizarLista();
         });
         filtroCumple.addEventHandler(MouseEvent.MOUSE_CLICKED, (Event t) -> {
@@ -195,24 +193,15 @@ public class PrimaryController implements Initializable {
         filtroEmpresa.setSelected(false);
         contactosActuales = contactos.copy();
         listaDeContactos.getChildren().clear();
-        if(!contactosActuales.isEmpty() && contactosActuales.size() <= 11){
-            it = contactosActuales.CircularIterator();
-            llenarLista(contactosActuales.size(),it);
-        }
-        else if(!contactosActuales.isEmpty()){
-            it = contactosActuales.CircularIterator();
-            llenarLista(11,it);
-        }
-        else{
-            listaDeContactos.getChildren().clear();
-            Text t = new Text("\t No tienes contactos");
-            GridPane.setHalignment(t, HPos.CENTER);
-            pane.getChildren().add(t);
-        }
+        actualizarLista();
     }
     
     private void actualizarLista(){
         listaDeContactos.getChildren().clear();
+        
+        if(pane.getChildren().size() == 5){
+            pane.getChildren().remove(4);
+        }
         if(!contactosActuales.isEmpty() && contactosActuales.size() <= 11){
             it = contactosActuales.CircularIterator();
             llenarLista(contactosActuales.size(),it);
