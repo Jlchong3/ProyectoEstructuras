@@ -30,7 +30,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 public class SecondaryController implements Initializable {
-    Contacto primer = SessionManager.getInstance().getContacto();
+    private boolean isin = SessionManager.getInstance().isFromAsociados();
+    Contacto primer = (isin) ? SessionManager.getInstance().getContactoRelacionado(): SessionManager.getInstance().getContacto();
     ListIterator<Contacto> it;
     private DoubleCircularLinkedList<Contacto> contactos = (SessionManager.getInstance().getContactosFiltrados().isEmpty()) ? SessionManager.getInstance().getContactosActuales() : SessionManager.getInstance().getContactosFiltrados();
     @FXML
@@ -51,6 +52,11 @@ public class SecondaryController implements Initializable {
     private ScrollPane scrollPane;
     @FXML
     private Button editarBoton;
+    @FXML
+    private GridPane Content;
+    @FXML
+    private HBox rightTop;
+    
 
     private void switchToPrimary() throws IOException {
         App.setRoot("primary");
@@ -77,6 +83,11 @@ public class SecondaryController implements Initializable {
             Text text = new Text("No hay contactos");
             GridPane.setHalignment(text, HPos.CENTER);
             gridMid.add(text,0,1);
+        }
+        if(isin){
+            Content.getChildren().remove(Content.getChildren().size()-1);
+            rightTop.getChildren().remove(1);
+            
         }
     }
     
@@ -225,11 +236,20 @@ public class SecondaryController implements Initializable {
 
     @FXML
     private void volverPrincipal(MouseEvent event) {
-        SessionManager.getInstance().getContactosFiltrados().clear();
-        try {
-            App.setRoot("primary");
-        } catch (IOException ex) {
-           
+        if(isin){
+            SessionManager.getInstance().getContactosFiltrados().clear();
+            try{
+                App.setRoot("contactosAsociados");
+            }
+            catch(IOException e){}
+        }
+        else{
+            SessionManager.getInstance().getContactosFiltrados().clear();
+            try {
+                App.setRoot("primary");
+            } catch (IOException ex) {
+
+            }
         }
     }
 

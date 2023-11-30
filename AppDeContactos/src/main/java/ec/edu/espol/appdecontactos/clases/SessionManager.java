@@ -6,8 +6,26 @@ public class SessionManager {
     private DoubleCircularLinkedList<Contacto> contactosActuales = new DoubleCircularLinkedList<>();
     private DoubleCircularLinkedList<Contacto> contactosFiltrados = new DoubleCircularLinkedList<>();;
     private Contacto contacto;
+    private Contacto contactoRelacionado;
+    private boolean fromAsociados = false;
     
     private SessionManager(){
+    }
+
+    public boolean isFromAsociados() {
+        return fromAsociados;
+    }
+
+    public Contacto getContactoRelacionado() {
+        return contactoRelacionado;
+    }
+
+    public void setContactoRelacionado(Contacto contactoRelacionado) {
+        this.contactoRelacionado = contactoRelacionado;
+    }
+
+    public void setFromAsociados(boolean fromAsociados) {
+        this.fromAsociados = fromAsociados;
     }
 
     public DoubleCircularLinkedList<Contacto> getContactosFiltrados() {

@@ -112,6 +112,7 @@ public class ContactosAsociadosController implements Initializable {
 
     @FXML
     private void volver(MouseEvent event) {
+        SessionManager.getInstance().setFromAsociados(false);
          try {
             App.setRoot("secondary");
         } catch (IOException ex) {
@@ -156,9 +157,9 @@ public class ContactosAsociadosController implements Initializable {
                 ButtonContacto b = new ButtonContacto(c);
                 b.setStyle("-fx-font-family: 'Century Gothic'; -fx-font-size: 14; -fx-min-width: 150;");
                 b.addEventHandler(MouseEvent.MOUSE_CLICKED, (Event t) -> {
-                    SessionManager.getInstance().setContacto(c);
-                    if(filtroNombre.isSelected() || filtroCumple.isSelected() || filtroEmpresa.isSelected())
-                        SessionManager.getInstance().setContactosFiltrados(contactosActuales);
+                    SessionManager.getInstance().setContactoRelacionado(c);
+                    SessionManager.getInstance().setContactosFiltrados(contactosActuales);
+                    SessionManager.getInstance().setFromAsociados(true);
                     try {
                         App.setRoot("secondary");
                     }
