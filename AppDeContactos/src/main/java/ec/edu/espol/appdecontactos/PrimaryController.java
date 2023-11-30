@@ -59,11 +59,12 @@ public class PrimaryController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         gridPane.setStyle("-fx-background-color: linear-gradient(to bottom, #B1CFFF, #B1CFFF);");
         listaDeContactos.setStyle("-fx-spacing: 10; -fx-padding: 10;");
-        it = contactos.CircularIterator();
         if(!contactos.isEmpty() && contactos.size() <= 12){
+            it = contactos.CircularIterator();
             llenarLista(contactos.size(),it);
         }
         else if(!contactos.isEmpty()){
+            it = contactos.CircularIterator();
             llenarLista(12,it);
         }
         else{
@@ -85,7 +86,7 @@ public class PrimaryController implements Initializable {
 
     @FXML
     private void recorrerContactos(MouseEvent event) {
-        //SessionManager.getInstance().setContacto(null);
+        SessionManager.getInstance().setContacto(null);
         try {
             App.setRoot("secondary");
         } catch (IOException ex) {
