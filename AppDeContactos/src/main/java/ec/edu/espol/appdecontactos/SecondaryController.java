@@ -260,10 +260,14 @@ public class SecondaryController implements Initializable {
 
     @FXML
     private void editarContacto(MouseEvent event) {
-        try {
-            App.setRoot("editarPersona");
-        } catch (IOException e) {
-           
+        if(!contactos.isEmpty()){
+            SessionManager.getInstance().setContacto(primer);
+            try{
+                App.setRoot("editarPersona");
+            }
+            catch(IOException e){
+
+            }
         }
     }
     

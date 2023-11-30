@@ -249,7 +249,7 @@ public class EditarPersonaController implements Initializable {
             Text TelefonoProvisional = new Text("Telefono Provisional:");
             TelefonoProvisional.setFont(new Font(16));
             VBox.setMargin(TelefonoProvisional, new Insets(20, 0, 0, 0));
-            TextField telefonoProvisional = new TextField(e.getCorreoProvisional());
+            TextField telefonoProvisional = new TextField(e.getTelefonoProvisional());
             VBox.setMargin(telefonoProvisional, new Insets(5, 0, 0, 0));
 
             //correo
