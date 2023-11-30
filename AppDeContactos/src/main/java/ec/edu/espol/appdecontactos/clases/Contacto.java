@@ -18,7 +18,7 @@ public class Contacto implements Serializable{
     public ArrayList<String> redesSociales;
     public String correoPrincipal;
     public String fechas;
-    public Contacto contactoRelacionado;
+    public DoubleCircularLinkedList<Contacto> contactosRelacionados;
     public String nota;
     private static final long serialVersionUID = 3499549809924434319L;
     
@@ -26,13 +26,13 @@ public class Contacto implements Serializable{
         
     }
     
-    public Contacto(String telefonoPrincipal,ArrayList<String> redesSociales,DoubleCircularLinkedList<String> fotos, String correoPrincipal, String fechas, Contacto contactoRelacionado, String nota) {
+    public Contacto(String telefonoPrincipal,ArrayList<String> redesSociales,DoubleCircularLinkedList<String> fotos, String correoPrincipal, String fechas, DoubleCircularLinkedList<Contacto> contactosRelacionados, String nota) {
         this.telefonoPrincipal = telefonoPrincipal;
         this.redesSociales = redesSociales;
         this.fotos = fotos;
         this.correoPrincipal = correoPrincipal;
         this.fechas = fechas;
-        this.contactoRelacionado = contactoRelacionado;
+        this.contactosRelacionados = contactosRelacionados;
         this.nota = nota;
     }
     
@@ -80,13 +80,15 @@ public class Contacto implements Serializable{
         this.fechas = fechas;
     }
 
-    public Contacto getContactoRelacionado() {
-        return contactoRelacionado;
+    public DoubleCircularLinkedList<Contacto> getContactosRelacionados() {
+        return contactosRelacionados;
     }
 
-    public void setContactoRelacionado(Contacto contactoRelacionado) {
-        this.contactoRelacionado = contactoRelacionado;
+    public void setContactosRelacionados(DoubleCircularLinkedList<Contacto> contactosRelacionados) {
+        this.contactosRelacionados = contactosRelacionados;
     }
+
+   
 
     public String getNota() {
         return nota;
@@ -134,9 +136,10 @@ public class Contacto implements Serializable{
 
     @Override
     public String toString() {
-        return "Contacto{" + "telefonoPrincipal=" + telefonoPrincipal + ", fotos=" + fotos + ", redesSociales=" + redesSociales + ", correoPrincipal=" + correoPrincipal + ", fechas=" + fechas + ", contactoRelacionado=" + contactoRelacionado + ", nota=" + nota + '}';
+        return "Contacto{" + "telefonoPrincipal=" + telefonoPrincipal + ", fotos=" + fotos + ", redesSociales=" + redesSociales + ", correoPrincipal=" + correoPrincipal + ", fechas=" + fechas + ", contactosRelacionados=" + contactosRelacionados + ", nota=" + nota + '}';
     }
-    
+
+   
     
 
 }
