@@ -277,6 +277,7 @@ public class EditarPersonaController implements Initializable {
             cuadr2.getChildren().addAll(TelefonoPrincipal,telefonoPrincipal,TelefonoWha,telefonoWha,TelefonoProvisional,telefonoProvisional,Facebook,facebook,Instagram,instagram,Fecha,fecha);
             cuad3.getChildren().addAll(CorreoPrincipal,correoPrincipal,CorreoSecundario,correoSecundario,CorreoProvisional,correoProvisional,TikTok,tiktok, X,x,Nota,nota);
 
+            this.nombre = nombre;
             this.telefonoWha = telefonoWha;
             this.telefonoProvisional = telefonoProvisional;
 
