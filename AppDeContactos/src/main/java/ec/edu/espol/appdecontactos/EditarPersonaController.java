@@ -12,6 +12,8 @@ import ec.edu.espol.appdecontactos.clases.Persona;
 import ec.edu.espol.appdecontactos.clases.SessionManager;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -23,6 +25,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -82,7 +85,7 @@ public class EditarPersonaController implements Initializable {
     private TextField correoProvisional;
     private TextField correoTrabajo;
 
-    private TextField fecha;
+    private DatePicker fecha;
     private TextField nota;
 
     private TextField nombre;
@@ -151,7 +154,7 @@ public class EditarPersonaController implements Initializable {
         Text Fecha = new Text("Fecha:");
         Fecha.setFont(new Font(16));
         VBox.setMargin(Fecha, new Insets(20, 0, 0, 0));
-        TextField fecha = new TextField(c.getFechas());
+        DatePicker fecha = new DatePicker(LocalDate.parse(c.getFechas()));
         VBox.setMargin(fecha, new Insets(5, 0, 0, 0));
         
         Text Nota = new Text("Nota:");
@@ -339,7 +342,7 @@ public class EditarPersonaController implements Initializable {
                         e.setCorreoSecundario(correoSecundario.getText());
                         
                         
-                        e.setFechas(fecha.getText());
+                        e.setFechas(fecha.getValue().format(DateTimeFormatter.ISO_DATE).toString());
                         e.setNota(nota.getText());
                         
                         regresarTContactos();
@@ -361,7 +364,7 @@ public class EditarPersonaController implements Initializable {
                         p.setCorreoProvisional(correoProvisional.getText());
                         p.setCorreoTrabajo(correoTrabajo.getText());
                         
-                        p.setFechas(fecha.getText());
+                        p.setFechas(fecha.getValue().format(DateTimeFormatter.ISO_DATE).toString());
                         p.setNota(nota.getText());
                         
                         

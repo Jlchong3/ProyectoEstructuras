@@ -1,7 +1,6 @@
 package ec.edu.espol.appdecontactos.clases; 
 
 public class Empresa extends Contacto{
-    public String nombre;
     public String telefonoWha;
     public String telefonoProvisional;
 
@@ -19,11 +18,6 @@ public class Empresa extends Contacto{
         this.telefonoProvisional = telefonoProvisional;
         this.correoSecundario = correoSecundario;
         this.correoProvisional = correoProvisional;
-    }
-
-
-    public String getNombre() {
-        return this.nombre;
     }
 
     public void setNombre(String nombre) {

@@ -53,6 +53,14 @@ public class DoubleCircularLinkedList<E> implements List<E>, java.io.Serializabl
     public boolean isEmpty() {
         return  last == null;
     }
+    
+    public void clear(){
+        if(!isEmpty()){
+            last.setNext(null);
+            last.setPrevious(null);
+            last = null;
+        }
+    }
 
 
     @Override
@@ -269,15 +277,28 @@ public class DoubleCircularLinkedList<E> implements List<E>, java.io.Serializabl
     @Override
     public DoubleCircularLinkedList<E> sorted(Comparator<E> comp) {
         DoubleCircularLinkedList<E> result = new DoubleCircularLinkedList<>();
-        PriorityQueue<E> pq = new PriorityQueue<>();
-        for(int i = 0; i < this.size(); i++){
+        if(this.isEmpty())
+            return result;
+        PriorityQueue<E> pq = new PriorityQueue<>(comp);
+        int size = this.size();
+        for(int i = 0; i < size; i++){
             E e = this.get(i);
             pq.offer(e);
         }
-        for(E element: pq){
-            result.addLast(element);
+        for(int i = 0; i < size; i++){
+            result.addLast(pq.poll());
         }
         return result;
+    }
+    
+    public DoubleCircularLinkedList<E> copy(){
+        DoubleCircularLinkedList<E> copy = new DoubleCircularLinkedList<>();
+        if(this.isEmpty()){
+            return copy;
+        }
+        for(int i = 0; i < this.size(); i++)
+            copy.addLast(this.get(i));
+        return copy;
     }
 }
 

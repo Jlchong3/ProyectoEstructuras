@@ -32,7 +32,7 @@ import javafx.scene.text.Text;
 public class SecondaryController implements Initializable {
     Contacto primer = SessionManager.getInstance().getContacto();
     ListIterator<Contacto> it;
-    private DoubleCircularLinkedList<Contacto> contactos = SessionManager.getInstance().getContactosActuales();;
+    private DoubleCircularLinkedList<Contacto> contactos = (SessionManager.getInstance().getContactosFiltrados().isEmpty()) ? SessionManager.getInstance().getContactosActuales() : SessionManager.getInstance().getContactosFiltrados();
     @FXML
     private GridPane gridTop;
     @FXML
@@ -225,6 +225,7 @@ public class SecondaryController implements Initializable {
 
     @FXML
     private void volverPrincipal(MouseEvent event) {
+        SessionManager.getInstance().getContactosFiltrados().clear();
         try {
             App.setRoot("primary");
         } catch (IOException ex) {

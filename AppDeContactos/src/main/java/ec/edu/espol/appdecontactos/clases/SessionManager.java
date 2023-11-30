@@ -4,9 +4,18 @@ public class SessionManager {
 
     private static SessionManager instance = null;
     private DoubleCircularLinkedList<Contacto> contactosActuales = new DoubleCircularLinkedList<>();
+    private DoubleCircularLinkedList<Contacto> contactosFiltrados = new DoubleCircularLinkedList<>();;
     private Contacto contacto;
     
     private SessionManager(){
+    }
+
+    public DoubleCircularLinkedList<Contacto> getContactosFiltrados() {
+        return contactosFiltrados;
+    }
+
+    public void setContactosFiltrados(DoubleCircularLinkedList<Contacto> contactosFiltrados) {
+        this.contactosFiltrados = contactosFiltrados;
     }
 
     public static SessionManager getInstance(){

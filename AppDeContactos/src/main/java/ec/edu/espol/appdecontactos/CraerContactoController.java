@@ -13,6 +13,7 @@ import ec.edu.espol.appdecontactos.clases.SessionManager;
 import java.io.IOException;
 
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -22,6 +23,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -68,7 +70,7 @@ public class CraerContactoController implements Initializable {
     private TextField correoProvisional;
     private TextField correoTrabajo;
 
-    private TextField fecha;
+    private DatePicker fecha;
     private TextField nota;
 
     private TextField nombre;
@@ -159,8 +161,6 @@ public class CraerContactoController implements Initializable {
         Stage stage = (Stage) tipoContacto.getScene().getWindow();
         stage.setHeight(650);
         try {
-            
-            
             App.setRoot("primary");
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -198,14 +198,14 @@ public class CraerContactoController implements Initializable {
                 switch (s) {
                     case "Empresa":
                     {
-                        Empresa e = new Empresa(telefonoPrincipal.getText(), redesSo , listaFotos , correoPrincipal.getText(), fecha.getText(), contactosRelacionados, nota.getText(), nombre.getText(),  telefonoWha.getText(),   telefonoProvisional.getText(),  correoSecundario.getText(),  correoProvisional.getText());
+                        Empresa e = new Empresa(telefonoPrincipal.getText(), redesSo , listaFotos , correoPrincipal.getText(), fecha.getValue().format(DateTimeFormatter.ISO_DATE).toString(), contactosRelacionados, nota.getText(), nombre.getText(),  telefonoWha.getText(),   telefonoProvisional.getText(),  correoSecundario.getText(),  correoProvisional.getText());
                         registrarContacto(e);
                         regresarTContactos();
                         break;
                     }
                     case "Persona":                    
                     {
-                        Persona p = new Persona(telefonoPrincipal.getText(),redesSo,listaFotos, correoPrincipal.getText() , fecha.getText() , contactosRelacionados, nota.getText(), nombre.getText(), apellido.getText(), telefonoTrabajo.getText(), telefonoCasa.getText(), correoTrabajo.getText(), correoProvisional.getText());
+                        Persona p = new Persona(telefonoPrincipal.getText(),redesSo,listaFotos, correoPrincipal.getText() , fecha.getValue().format(DateTimeFormatter.ISO_DATE).toString() , contactosRelacionados, nota.getText(), nombre.getText(), apellido.getText(), telefonoTrabajo.getText(), telefonoCasa.getText(), correoTrabajo.getText(), correoProvisional.getText());
                         registrarContacto(p);
                         regresarTContactos();
                         break;
@@ -274,7 +274,7 @@ public class CraerContactoController implements Initializable {
         Text Fecha = new Text("Fecha:");
         Fecha.setFont(new Font(16));
         VBox.setMargin(Fecha, new Insets(20, 0, 0, 0));
-        TextField fecha = new TextField();
+        DatePicker fecha = new DatePicker();
         VBox.setMargin(fecha, new Insets(5, 0, 0, 0));
 
 //    public Contacto contactoRelacionado;

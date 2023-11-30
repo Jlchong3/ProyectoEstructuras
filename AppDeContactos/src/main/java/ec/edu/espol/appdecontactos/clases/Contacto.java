@@ -12,7 +12,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Contacto implements Serializable{
-
+    public String nombre;
     public String telefonoPrincipal;
     public DoubleCircularLinkedList<String> fotos;
     public ArrayList<String> redesSociales;
@@ -34,6 +34,10 @@ public class Contacto implements Serializable{
         this.fechas = fechas;
         this.contactosRelacionados = contactosRelacionados;
         this.nota = nota;
+    }
+    
+    public String getNombre() {
+        return this.nombre;
     }
     
     public String getTelefonoPrincipal() {

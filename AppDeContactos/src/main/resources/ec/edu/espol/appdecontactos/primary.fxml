@@ -70,16 +70,24 @@
                                  </HBox.margin>
                               </RadioButton>
                            </children>
+                           <VBox.margin>
+                              <Insets bottom="35.0" />
+                           </VBox.margin>
                         </HBox>
                         <VBox fx:id="listaDeContactos" prefHeight="534.0" prefWidth="310.0" />
                      </children>
                   </VBox>
                   <Button mnemonicParsing="false" onMouseClicked="#up" prefHeight="26.0" prefWidth="34.0" GridPane.columnIndex="1" GridPane.valignment="TOP">
                      <GridPane.margin>
-                        <Insets top="31.0" />
+                        <Insets top="50.0" />
                      </GridPane.margin>
                   </Button>
                   <Button mnemonicParsing="false" onMouseClicked="#down" prefHeight="26.0" prefWidth="34.0" GridPane.columnIndex="1" GridPane.valignment="BOTTOM" />
+                  <Button mnemonicParsing="false" onMouseClicked="#clearFilter" prefHeight="26.0" prefWidth="32.0" GridPane.columnIndex="1" GridPane.valignment="TOP">
+                     <GridPane.margin>
+                        <Insets top="10.0" />
+                     </GridPane.margin>
+                  </Button>
                </children>
             </GridPane>
         </content>
