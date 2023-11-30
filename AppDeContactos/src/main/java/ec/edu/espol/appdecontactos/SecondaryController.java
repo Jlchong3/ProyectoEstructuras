@@ -246,12 +246,16 @@ public class SecondaryController implements Initializable {
     @FXML
 
     private void verContactosAsociados(MouseEvent event) {
-        try{
+        if(!contactos.isEmpty()){
+            SessionManager.getInstance().setContacto(primer);
+            try{
                 App.setRoot("contactosAsociados");
+
             }
             catch(IOException e){
 
             }
+        }
     }
 
     @FXML
