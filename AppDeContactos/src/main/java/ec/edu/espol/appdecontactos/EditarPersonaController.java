@@ -47,7 +47,12 @@ public class EditarPersonaController implements Initializable {
     // CONTACTO EN CUESTION
     Contacto contactoEdicion = SessionManager.getInstance().getContacto();
     DoubleCircularLinkedList<Contacto> contactosActuales = SessionManager.getInstance().getContactosActuales();
-
+    ArrayList<String> redesSociales= contactoEdicion.getRedesSociales();
+    String face=redesSociales.get(0);
+    String insta=redesSociales.get(1);
+    String appX=redesSociales.get(3);
+    String appTikTok=redesSociales.get(2);
+    
     @FXML
     private VBox cuadro1;
     @FXML
@@ -121,25 +126,25 @@ public class EditarPersonaController implements Initializable {
         Text Facebook = new Text("Facebook:");
         Facebook.setFont(new Font(16));
         VBox.setMargin(Facebook, new Insets(20, 0, 0, 0));
-        TextField facebook = new TextField();
+        TextField facebook = new TextField(face);
         VBox.setMargin(facebook, new Insets(5, 0, 0, 0));
 
         Text Instagram = new Text("Instagram:");
         Instagram.setFont(new Font(16));
         VBox.setMargin(Instagram, new Insets(20, 0, 0, 0));
-        TextField instagram = new TextField();
+        TextField instagram = new TextField(insta);
         VBox.setMargin(instagram, new Insets(5, 0, 0, 0));
 
         Text TikTok = new Text("TikTok:");
         TikTok.setFont(new Font(16));
         VBox.setMargin(TikTok, new Insets(20, 0, 0, 0));
-        TextField tiktok = new TextField();
+        TextField tiktok = new TextField(appTikTok);
         VBox.setMargin(tiktok, new Insets(5, 0, 0, 0));
 
         Text X = new Text("X:");
         X.setFont(new Font(16));
         VBox.setMargin(X, new Insets(20, 0, 0, 0));
-        TextField x = new TextField();
+        TextField x = new TextField(appX);
         VBox.setMargin(x, new Insets(5, 0, 0, 0));
         
         
@@ -327,7 +332,7 @@ public class EditarPersonaController implements Initializable {
                         e.setTelefonoPrincipal(telefonoPrincipal.getText());
                         e.setTelefonoWha(telefonoWha.getText());
                         e.setTelefonoProvisional(telefonoProvisional.getText());
-                        
+                        e.setRedesSociales(redesSo);
                         e.setCorreoPrincipal(correoPrincipal.getText());
                         e.setCorreoProvisional(correoProvisional.getText());
                         e.setCorreoSecundario(correoSecundario.getText());
@@ -346,7 +351,7 @@ public class EditarPersonaController implements Initializable {
                         
                         p.setNombre(nombre.getText());
                         p.setApellido(apellido.getText());
-                        
+                        p.setRedesSociales(redesSo);
                         p.setTelefonoPrincipal(telefonoPrincipal.getText());
                         p.setTelefonoCasa(telefonoCasa.getText());
                         p.setTelefonoTrabajo(telefonoTrabajo.getText());

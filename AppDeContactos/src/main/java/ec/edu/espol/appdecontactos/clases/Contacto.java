@@ -26,7 +26,7 @@ public class Contacto implements Serializable{
         
     }
     
-    public Contacto(String telefonoPrincipal,ArrayList<String> redesSociales,DoubleCircularLinkedList<String> fotos, String correoPrincipal, String fechas, DoubleCircularLinkedList<Contacto> contactosRelacionados, String nota) {
+    public Contacto(String telefonoPrincipal, ArrayList<String> redesSociales, DoubleCircularLinkedList<String> fotos, String correoPrincipal, String fechas, DoubleCircularLinkedList<Contacto> contactosRelacionados, String nota) {
         this.telefonoPrincipal = telefonoPrincipal;
         this.redesSociales = redesSociales;
         this.fotos = fotos;
@@ -56,6 +56,10 @@ public class Contacto implements Serializable{
         this.redesSociales.addLast(redesSociales);
     }
 
+    public void setRedesSociales(ArrayList<String> redesSociales) {
+        this.redesSociales = redesSociales;
+    }
+    
     public String getFoto(int index) {
         return fotos.get(index);
     }
@@ -88,6 +92,8 @@ public class Contacto implements Serializable{
         this.contactosRelacionados = contactosRelacionados;
     }
 
+    
+    
    
 
     public String getNota() {

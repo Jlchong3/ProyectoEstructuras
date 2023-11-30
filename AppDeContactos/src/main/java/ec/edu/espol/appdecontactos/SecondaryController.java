@@ -83,9 +83,9 @@ public class SecondaryController implements Initializable {
 
     @FXML
     private void previous(MouseEvent event) {
-        Contacto c = it.previous();
+        primer = it.previous();
         clear();
-        actualizarPagina(c);
+        actualizarPagina(primer);
     }
 
     @FXML
@@ -186,7 +186,7 @@ public class SecondaryController implements Initializable {
             
             Text principal = new Text("Principal: " + e.getTelefonoPrincipal());
             Text whatsApp =  new Text("Whatsapp: " + e.getTelefonoWha());
-            Text provisional = new Text("Provisional: " + e.getCorreoProvisional());
+            Text provisional = new Text("Provisional: " + e.getTelefonoProvisional());
             
             aplicarEstiloTexto(principal);
             aplicarEstiloTexto(whatsApp);
@@ -206,15 +206,17 @@ public class SecondaryController implements Initializable {
             corrs.getChildren().addAll(principalEmpresa, secundarioEmpresa, provisionalEmpresa);
         }
         
-        Text x = new Text("X: " + c.getRedesSociales().get(0));
-        Text facebook = new Text("Facebook: " + c.getRedesSociales().get(1));
+        Text x = new Text("X: " + c.getRedesSociales().get(3));
+        Text facebook = new Text("Facebook: " + c.getRedesSociales().get(0));
         Text tiktok = new Text("Tiktok: " + c.getRedesSociales().get(2));
+        Text inst = new Text("Instagram: " + c.getRedesSociales().get(1));
         
         aplicarEstiloTexto(x);
         aplicarEstiloTexto(facebook);
-        aplicarEstiloTexto(tiktok);        
+        aplicarEstiloTexto(tiktok); 
+        aplicarEstiloTexto(inst); 
 
-        reds.getChildren().addAll(x, facebook, tiktok);
+        reds.getChildren().addAll(x, facebook, tiktok,inst);
         telefonos.getChildren().add(tels);
         correos.getChildren().add(corrs);
         redesSociales.getChildren().add(reds);
