@@ -177,7 +177,7 @@ public class CraerContactoController implements Initializable {
     
     @FXML
     private void confirmarContacto(MouseEvent event) {
-        Contacto contactoRelacionado=null;
+        DoubleCircularLinkedList<Contacto> contactosRelacionados=null;
         DoubleCircularLinkedList<String> listaFotos= obtenerDireccionImagen();
         
         ArrayList<String> redesSo= new ArrayList<>();
@@ -198,14 +198,14 @@ public class CraerContactoController implements Initializable {
                 switch (s) {
                     case "Empresa":
                     {
-                        Empresa e = new Empresa(telefonoPrincipal.getText(), redesSo , listaFotos , correoPrincipal.getText(), fecha.getText(), contactoRelacionado, nota.getText(), nombre.getText(),  telefonoWha.getText(),   telefonoProvisional.getText(),  correoSecundario.getText(),  correoProvisional.getText());
+                        Empresa e = new Empresa(telefonoPrincipal.getText(), redesSo , listaFotos , correoPrincipal.getText(), fecha.getText(), contactosRelacionados, nota.getText(), nombre.getText(),  telefonoWha.getText(),   telefonoProvisional.getText(),  correoSecundario.getText(),  correoProvisional.getText());
                         registrarContacto(e);
                         regresarTContactos();
                         break;
                     }
                     case "Persona":                    
                     {
-                        Persona p = new Persona(telefonoPrincipal.getText(),redesSo,listaFotos, correoPrincipal.getText() , fecha.getText() , contactoRelacionado, nota.getText(), nombre.getText(), apellido.getText(), telefonoTrabajo.getText(), telefonoCasa.getText(), correoTrabajo.getText(), correoProvisional.getText());
+                        Persona p = new Persona(telefonoPrincipal.getText(),redesSo,listaFotos, correoPrincipal.getText() , fecha.getText() , contactosRelacionados, nota.getText(), nombre.getText(), apellido.getText(), telefonoTrabajo.getText(), telefonoCasa.getText(), correoTrabajo.getText(), correoProvisional.getText());
                         registrarContacto(p);
                         regresarTContactos();
                         break;

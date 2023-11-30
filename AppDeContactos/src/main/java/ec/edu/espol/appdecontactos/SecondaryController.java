@@ -247,7 +247,7 @@ public class SecondaryController implements Initializable {
 
     private void verContactosAsociados(MouseEvent event) {
         try{
-                App.setRoot("contactosAsociados");
+               App.setRoot("contactosAsociados");
             }
             catch(IOException e){
 
