@@ -188,7 +188,7 @@ public class EditarPersonaController implements Initializable {
             Text TelefonoTrabajo = new Text("Telefono Trabajo:");
             TelefonoTrabajo.setFont(new Font(16));
             VBox.setMargin(TelefonoTrabajo, new Insets(20, 0, 0, 0));
-            TextField telefonoTrabajo = new TextField(p.getCorreoTrabajo());
+            TextField telefonoTrabajo = new TextField(p.getTelefonoTrabajo());
             VBox.setMargin(telefonoTrabajo, new Insets(5, 0, 0, 0));
 
             Text TelefonoCasa = new Text("Telefono Casa:");
@@ -335,7 +335,9 @@ public class EditarPersonaController implements Initializable {
                         
                         e.setFechas(fecha.getText());
                         e.setNota(nota.getText());
+                        
                         regresarTContactos();
+                        
                         break;
                     }
                     case "Persona":                    
@@ -370,6 +372,10 @@ public class EditarPersonaController implements Initializable {
                 a.show();
             }
         }
+        Contacto.updateFile(contactosActuales);
+        
     }
+    
+    
     
 }

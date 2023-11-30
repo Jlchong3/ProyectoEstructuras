@@ -11,8 +11,8 @@ public class Persona extends Contacto{
     public Persona() {
     }
 
-    public Persona(String telefonoPrincipal,ArrayList<String> redesSociales,DoubleCircularLinkedList<String> fotos, String correoPrincipal, String fechas, Contacto contactoRelacionado, String nota, String nombre, String apellido, String telefonoTrabajo, String telefonoCasa, String correoTrabajo, String correoProvisional) {
-        super( telefonoPrincipal, redesSociales, fotos,  correoPrincipal,  fechas,  contactoRelacionado,  nota);
+    public Persona(String telefonoPrincipal,ArrayList<String> redesSociales,DoubleCircularLinkedList<String> fotos, String correoPrincipal, String fechas, DoubleCircularLinkedList<Contacto> contactosRelacionados, String nota, String nombre, String apellido, String telefonoTrabajo, String telefonoCasa, String correoTrabajo, String correoProvisional) {
+        super( telefonoPrincipal, redesSociales, fotos,  correoPrincipal,  fechas,  contactosRelacionados,  nota);
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefonoTrabajo = telefonoTrabajo;

@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.ListIterator;
+import java.util.PriorityQueue;
 
 /**
  *
@@ -266,8 +267,17 @@ public class DoubleCircularLinkedList<E> implements List<E>, java.io.Serializabl
     }
 
     @Override
-    public List<E> sorted(Comparator<E> comp) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public DoubleCircularLinkedList<E> sorted(Comparator<E> comp) {
+        DoubleCircularLinkedList<E> result = new DoubleCircularLinkedList<>();
+        PriorityQueue<E> pq = new PriorityQueue<>();
+        for(int i = 0; i < this.size(); i++){
+            E e = this.get(i);
+            pq.offer(e);
+        }
+        for(E element: pq){
+            result.addLast(element);
+        }
+        return result;
     }
 }
 
