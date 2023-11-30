@@ -384,6 +384,16 @@ public class EditarPersonaController implements Initializable {
         Contacto.updateFile(contactosActuales);
         
     }
+
+    @FXML
+    private void editarFotos(MouseEvent event) {
+        try{
+            App.setRoot("editarFotos");
+        }
+        catch(IOException e){
+        }
+        
+    }
     
     
     

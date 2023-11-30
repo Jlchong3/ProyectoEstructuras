@@ -11,7 +11,7 @@
    <children>
       <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="300.0">
          <children>
-            <Label text="Editar contacto:">
+            <Label text="Editar Contacto">
                <HBox.margin>
                   <Insets right="25.0" />
                </HBox.margin>
@@ -42,12 +42,20 @@
       </HBox>
       <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="53.0" prefWidth="300.0">
          <children>
-            <Button fx:id="Guardar" mnemonicParsing="false" onMouseClicked="#guardarContacto" text="Guardar">
+            <Button fx:id="Retroceder" mnemonicParsing="false" onMouseClicked="#retrocederPantalla" text="Retroceder">
+               <HBox.margin>
+                  <Insets right="50.0" />
+               </HBox.margin></Button>
+            <Button mnemonicParsing="false" onMouseClicked="#editarFotos" text="Editar Fotos ">
                <HBox.margin>
                   <Insets right="50.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="Retroceder" mnemonicParsing="false" onMouseClicked="#retrocederPantalla" text="Retroceder" />
+            <Button fx:id="Guardar" mnemonicParsing="false" onMouseClicked="#guardarContacto" text="Guardar">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
