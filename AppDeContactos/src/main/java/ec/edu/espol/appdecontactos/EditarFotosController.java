@@ -27,7 +27,7 @@ public class EditarFotosController implements Initializable {
 
     Contacto contacto = SessionManager.getInstance().getContacto();
     //DoubleCircularLinkedList<String> fotosLista = contacto.getFotos();
-    ListIterator<String> it = contacto.getFotos().CircularIterator();
+    ListIterator<String> it = contacto.getFotosAsociadas().CircularIterator();
             
     @FXML
     private StackPane foto;

@@ -14,7 +14,8 @@ import java.util.Scanner;
 public class Contacto implements Serializable{
     public String nombre;
     public String telefonoPrincipal;
-    public DoubleCircularLinkedList<String> fotos;
+    public DoubleCircularLinkedList<String> fotosAsociadas;
+    public DoubleCircularLinkedList<String> fotoPerfil;
     public ArrayList<String> redesSociales;
     public String correoPrincipal;
     public String fechas;
@@ -26,10 +27,11 @@ public class Contacto implements Serializable{
         contactosRelacionados = new DoubleCircularLinkedList<>();
     }
     
-    public Contacto(String telefonoPrincipal, ArrayList<String> redesSociales, DoubleCircularLinkedList<String> fotos, String correoPrincipal, String fechas, DoubleCircularLinkedList<Contacto> contactosRelacionados, String nota) {
+    public Contacto(String telefonoPrincipal, ArrayList<String> redesSociales, DoubleCircularLinkedList<String> fotoPerfil, DoubleCircularLinkedList<String> fotosAsociadas, String correoPrincipal, String fechas, DoubleCircularLinkedList<Contacto> contactosRelacionados, String nota) {
         this.telefonoPrincipal = telefonoPrincipal;
         this.redesSociales = redesSociales;
-        this.fotos = fotos;
+        this.fotoPerfil = fotoPerfil;
+        this.fotosAsociadas = fotosAsociadas;
         this.correoPrincipal = correoPrincipal;
         this.fechas = fechas;
         this.contactosRelacionados = contactosRelacionados;
@@ -48,8 +50,8 @@ public class Contacto implements Serializable{
         this.telefonoPrincipal = telefonoPrincipal;
     }
     
-    public DoubleCircularLinkedList<String> getFotos(){
-        return this.fotos;
+    public DoubleCircularLinkedList<String> getFotosAsociadas(){
+        return this.fotosAsociadas;
     }
 
     public ArrayList<String> getRedesSociales() {
@@ -65,11 +67,15 @@ public class Contacto implements Serializable{
     }
     
     public String getFoto(int index) {
-        return fotos.get(index);
+        return fotosAsociadas.get(index);
+    }
+    
+    public String getFotoPerfil(int index) {
+        return fotoPerfil.get(index);
     }
 
     public void addFoto(String foto) {
-        this.fotos.addLast(foto);
+        this.fotosAsociadas.addLast(foto);
     }
 
     public String getCorreoPrincipal() {
@@ -94,6 +100,14 @@ public class Contacto implements Serializable{
 
     public void setContactosRelacionados(DoubleCircularLinkedList<Contacto> contactosRelacionados) {
         this.contactosRelacionados = contactosRelacionados;
+    }
+
+    public DoubleCircularLinkedList<String> getFotoPerfil() {
+        return fotoPerfil;
+    }
+
+    public void setFotoPerfil(DoubleCircularLinkedList<String> fotoPerfil) {
+        this.fotoPerfil = fotoPerfil;
     }
 
     
@@ -146,8 +160,10 @@ public class Contacto implements Serializable{
 
     @Override
     public String toString() {
-        return "Contacto{" + "telefonoPrincipal=" + telefonoPrincipal + ", fotos=" + fotos + ", redesSociales=" + redesSociales + ", correoPrincipal=" + correoPrincipal + ", fechas=" + fechas + ", contactosRelacionados=" + contactosRelacionados + ", nota=" + nota + '}';
+        return "Contacto{" + "nombre=" + nombre + ", telefonoPrincipal=" + telefonoPrincipal + ", fotosAsociadas=" + fotosAsociadas + ", fotoPerfil=" + fotoPerfil + ", redesSociales=" + redesSociales + ", correoPrincipal=" + correoPrincipal + ", fechas=" + fechas + ", contactosRelacionados=" + contactosRelacionados + ", nota=" + nota + '}';
     }
+
+
 
    
     

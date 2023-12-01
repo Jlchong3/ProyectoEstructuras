@@ -93,26 +93,31 @@ public class CraerContactoController implements Initializable {
         tipoContacto.getItems().addAll(categorias);
     }
     
-
-    public DoubleCircularLinkedList<String> obtenerDireccionImagen(){
-        
+    public DoubleCircularLinkedList<String> obtenerDireccionImagenPerfil()
+    {
         String directorioImagenes = "file:src/main/resources/ec/edu/espol/appdecontactos/imgs/contactos/";
-        DoubleCircularLinkedList<String> fotosDelContacto = new DoubleCircularLinkedList<>();
-        
-       
+        DoubleCircularLinkedList<String> fotoDePerfil = new DoubleCircularLinkedList<>();
         String fotoPerfil= new String("");
         switch (tipoContacto.getValue()){
             case "Empresa":
                 fotoPerfil = directorioImagenes + "DefaultEmpresaPerfil.png"; //Si el nombre no es de los predeterminados, se escoge una foto aleatoria para ese contacto
-                fotosDelContacto.addLast(fotoPerfil);
+                fotoDePerfil.addLast(fotoPerfil);
                 
             case "Persona":
                 fotoPerfil = directorioImagenes + "DefaultPersonaPerfil.png"; //Si el nombre no es de los predeterminados, se escoge una foto aleatoria para ese contacto
-                fotosDelContacto.addLast(fotoPerfil);
+                fotoDePerfil.addLast(fotoPerfil);
                 
         }
         
-        fotosDelContacto.addLast(fotoPerfil);
+        fotoDePerfil.addLast(fotoPerfil);
+        return fotoDePerfil;
+    }
+
+    public DoubleCircularLinkedList<String> obtenerDireccionImagenesAsociadas(){
+        
+        String directorioImagenes = "file:src/main/resources/ec/edu/espol/appdecontactos/imgs/contactos/";
+        DoubleCircularLinkedList<String> fotosDelContacto = new DoubleCircularLinkedList<>();
+      
         Random random = new Random();
 //        String numero = ""+(random.nextInt(4)+1);
 //        String fotoPerfil = directorioImagenes + "DefaultPerfil.png"; //Si el nombre no es de los predeterminados, se escoge una foto aleatoria para ese contacto
@@ -163,7 +168,8 @@ public class CraerContactoController implements Initializable {
     @FXML
     private void confirmarContacto(MouseEvent event) {
         DoubleCircularLinkedList<Contacto> contactosRelacionados = new DoubleCircularLinkedList<>();
-        DoubleCircularLinkedList<String> listaFotos= obtenerDireccionImagen();
+        DoubleCircularLinkedList<String> listaFotosAsociadas= obtenerDireccionImagenesAsociadas();
+        DoubleCircularLinkedList<String> listaFotoPerfil= obtenerDireccionImagenPerfil();
         
         ArrayList<String> redesSo= new ArrayList<>();
         redesSo.addLast(facebook.getText());
@@ -183,14 +189,14 @@ public class CraerContactoController implements Initializable {
                 switch (s) {
                     case "Empresa":
                     {
-                        Empresa e = new Empresa(telefonoPrincipal.getText(), redesSo , listaFotos , correoPrincipal.getText(), fecha.getValue().format(DateTimeFormatter.ISO_DATE).toString(), contactosRelacionados, nota.getText(), nombre.getText(),  telefonoWha.getText(),   telefonoProvisional.getText(),  correoSecundario.getText(),  correoProvisional.getText());
+                        Empresa e = new Empresa(telefonoPrincipal.getText(), redesSo , listaFotoPerfil,listaFotosAsociadas , correoPrincipal.getText(), fecha.getValue().format(DateTimeFormatter.ISO_DATE).toString(), contactosRelacionados, nota.getText(), nombre.getText(),  telefonoWha.getText(),   telefonoProvisional.getText(),  correoSecundario.getText(),  correoProvisional.getText());
                         registrarContacto(e);
                         regresarTContactos();
                         break;
                     }
                     case "Persona":                    
                     {
-                        Persona p = new Persona(telefonoPrincipal.getText(),redesSo,listaFotos, correoPrincipal.getText() , fecha.getValue().format(DateTimeFormatter.ISO_DATE).toString() , contactosRelacionados, nota.getText(), nombre.getText(), apellido.getText(), telefonoTrabajo.getText(), telefonoCasa.getText(), correoTrabajo.getText(), correoProvisional.getText());
+                        Persona p = new Persona(telefonoPrincipal.getText(),redesSo,listaFotoPerfil,listaFotosAsociadas, correoPrincipal.getText() , fecha.getValue().format(DateTimeFormatter.ISO_DATE).toString() , contactosRelacionados, nota.getText(), nombre.getText(), apellido.getText(), telefonoTrabajo.getText(), telefonoCasa.getText(), correoTrabajo.getText(), correoProvisional.getText());
                         registrarContacto(p);
                         regresarTContactos();
                         break;

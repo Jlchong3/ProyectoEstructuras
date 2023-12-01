@@ -11,8 +11,8 @@ public class Empresa extends Contacto{
     public Empresa() {
     }
 
-    public Empresa(String telefonoPrincipal,ArrayList<String> redesSociales,DoubleCircularLinkedList<String> fotos, String correoPrincipal, String fechas, DoubleCircularLinkedList<Contacto> contactosRelacionados, String nota,String nombre, String telefonoWha, String telefonoProvisional, String correoSecundario, String correoProvisional) {
-        super( telefonoPrincipal, redesSociales, fotos,  correoPrincipal,  fechas,  contactosRelacionados,  nota);
+    public Empresa(String telefonoPrincipal,ArrayList<String> redesSociales,DoubleCircularLinkedList<String> fotoPerfil,DoubleCircularLinkedList<String> fotosAsociadas, String correoPrincipal, String fechas, DoubleCircularLinkedList<Contacto> contactosRelacionados, String nota,String nombre, String telefonoWha, String telefonoProvisional, String correoSecundario, String correoProvisional) {
+        super( telefonoPrincipal, redesSociales, fotoPerfil,fotosAsociadas,  correoPrincipal,  fechas,  contactosRelacionados,  nota);
         this.nombre = nombre;
         this.telefonoWha = telefonoWha;
         this.telefonoProvisional = telefonoProvisional;

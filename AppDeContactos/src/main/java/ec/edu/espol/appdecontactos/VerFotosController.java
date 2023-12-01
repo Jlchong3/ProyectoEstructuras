@@ -25,7 +25,7 @@ import javafx.scene.layout.StackPane;
 public class VerFotosController implements Initializable {
     
     Contacto contacto = SessionManager.getInstance().getContacto();
-    ListIterator<String> it = contacto.getFotos().CircularIterator();
+    ListIterator<String> it = contacto.getFotosAsociadas().CircularIterator();
             
     @FXML
     private StackPane foto;

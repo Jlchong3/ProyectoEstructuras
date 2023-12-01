@@ -8,7 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.HBox;    
 import ec.edu.espol.appdecontactos.clases.*;
 import java.io.File;
 import java.net.MalformedURLException;
@@ -152,7 +152,7 @@ public class SecondaryController implements Initializable {
         gridMid.setBackground(new Background(new BackgroundFill(Color.rgb(255, 254, 206), CornerRadii.EMPTY, Insets.EMPTY)));
         notas.setBackground(new Background(new BackgroundFill(Color.rgb(255, 254, 206), CornerRadii.EMPTY, Insets.EMPTY)));
         
-        Image img = new Image(c.getFoto(0),100,100,true,true);
+        Image img = new Image(c.getFotoPerfil(0),100,100,true,true);
         imv.setImage(img);
         imv.setOnMouseClicked(event -> {
             abrirSelectorDeArchivo();
@@ -308,7 +308,7 @@ public class SecondaryController implements Initializable {
             Files.copy(archivoOrigen.toPath(), destino, StandardCopyOption.REPLACE_EXISTING);
             // Actualizar la imagen en tu aplicación
             imv.setImage(new Image(destino.toUri().toString(),100,100,true,true));
-            primer.getFotos().set(0, destino.toUri().toString());
+            primer.getFotoPerfil().set(0, destino.toUri().toString());
         } catch (IOException e) {
             e.printStackTrace();
             // Manejar el error
