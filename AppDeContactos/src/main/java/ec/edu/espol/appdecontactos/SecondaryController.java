@@ -36,7 +36,8 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 
 public class SecondaryController implements Initializable {
-    Contacto primer = SessionManager.getInstance().getContacto();
+    private boolean isin = SessionManager.getInstance().isFromAsociados();
+    Contacto primer =(isin) ? SessionManager.getInstance().getContactoRelacionado() : SessionManager.getInstance().getContacto();
     ListIterator<Contacto> it;
     private DoubleCircularLinkedList<Contacto> contactos = (SessionManager.getInstance().getContactosFiltrados().isEmpty()) ? SessionManager.getInstance().getContactosActuales() : SessionManager.getInstance().getContactosFiltrados();
     @FXML
@@ -64,6 +65,8 @@ public class SecondaryController implements Initializable {
     private Text textoNota;
     @FXML
     private Text textoFecha;
+    @FXML
+    private VBox nota;
 
     private void switchToPrimary() throws IOException {
         App.setRoot("primary");
@@ -106,11 +109,17 @@ public class SecondaryController implements Initializable {
     private void delete(MouseEvent event) {
         it.remove();
         clear();
-        Contacto.updateFile(contactos);
-        SessionManager.getInstance().setContactosActuales(contactos);
+        if(!isin){
+            Contacto.updateFile(contactos);
+            SessionManager.getInstance().setContactosActuales(contactos);
+        }
+        else{
+            SessionManager.getInstance().getContacto().setContactosRelacionados(contactos);
+        }
         if(contactos.isEmpty()){
             gridTop.getChildren().clear();
             gridMid.getChildren().clear();
+            gridTop.setBackground(Background.EMPTY);
             Text text = new Text("No hay contactos");
             gridMid.setHalignment(text, HPos.CENTER);
             gridMid.add(text,0,1);
@@ -150,7 +159,7 @@ public class SecondaryController implements Initializable {
         telefonos.setBackground(new Background(new BackgroundFill(Color.rgb(234, 234, 234), CornerRadii.EMPTY, Insets.EMPTY)));
         correos.setBackground(new Background(new BackgroundFill(Color.rgb(234, 234, 234), CornerRadii.EMPTY, Insets.EMPTY)));
         redesSociales.setBackground(new Background(new BackgroundFill(Color.rgb(234, 234, 234), CornerRadii.EMPTY, Insets.EMPTY)));
-        gridMid.setBackground(new Background(new BackgroundFill(Color.rgb(255, 254, 206), CornerRadii.EMPTY, Insets.EMPTY)));
+        nota.setBackground(new Background(new BackgroundFill(Color.rgb(255, 254, 206), CornerRadii.EMPTY, Insets.EMPTY)));
         
         Image img = new Image(c.getFotoPerfil(0),100,100,true,true);
         imv.setImage(img);
@@ -241,11 +250,24 @@ public class SecondaryController implements Initializable {
 
     @FXML
     private void volverPrincipal(MouseEvent event) {
-        SessionManager.getInstance().getContactosFiltrados().clear();
-        try {
-            App.setRoot("primary");
-        } catch (IOException ex) {
-           
+        DoubleCircularLinkedList<Contacto> filt = SessionManager.getInstance().getContactosFiltrados();
+        filt = new DoubleCircularLinkedList<>();
+        SessionManager.getInstance().setContactosFiltrados(filt);
+        if(isin){
+            SessionManager.getInstance().getContacto().setContactosRelacionados(contactos);
+            System.out.println(SessionManager.getInstance().getContacto().getContactosRelacionados());
+            try{
+                App.setRoot("contactosAsociados");
+            }
+            catch(IOException e){}
+        }
+        else{
+            try {
+                App.setRoot("primary");
+            } 
+            catch (IOException ex) {
+
+            }
         }
     }
 

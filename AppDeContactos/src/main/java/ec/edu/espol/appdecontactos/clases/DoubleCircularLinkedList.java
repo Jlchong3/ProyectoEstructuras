@@ -54,13 +54,6 @@ public class DoubleCircularLinkedList<E> implements List<E>, java.io.Serializabl
         return  last == null;
     }
     
-    public void clear(){
-        if(!isEmpty()){
-            last.setNext(null);
-            last.setPrevious(null);
-            last = null;
-        }
-    }
 
 
     @Override

@@ -92,7 +92,7 @@ public class PrimaryController implements Initializable {
             actualizarLista();
         });
         filtroEmpresa.addEventHandler(MouseEvent.MOUSE_CLICKED, (Event t) -> {
-            contactosActuales.clear();
+            contactosActuales = new DoubleCircularLinkedList<>();
             for(int i = 0; i < contactos.size(); i++){
                 Contacto c = contactos.get(i);
                 if(c instanceof Empresa){
@@ -171,7 +171,7 @@ public class PrimaryController implements Initializable {
                     cursor = c;
                 }
                 ButtonContacto b = new ButtonContacto(c);
-                b.setStyle("-fx-font-family: 'Century Gothic'; -fx-font-size: 14; -fx-min-width: 150;");
+                b.getStyleClass().add("button1");
                 b.addEventHandler(MouseEvent.MOUSE_CLICKED, (Event t) -> {
                     SessionManager.getInstance().setContacto(c);
                     if(filtroNombre.isSelected() || filtroCumple.isSelected() || filtroEmpresa.isSelected())

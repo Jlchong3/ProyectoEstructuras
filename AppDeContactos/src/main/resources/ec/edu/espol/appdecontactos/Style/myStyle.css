@@ -1,0 +1,6 @@
+.button1{
+    -fx-font-family: Century Gothic; 
+    -fx-font-size: 14; 
+    -fx-min-width: 250;
+    -fx-border-radius: 40;
+}

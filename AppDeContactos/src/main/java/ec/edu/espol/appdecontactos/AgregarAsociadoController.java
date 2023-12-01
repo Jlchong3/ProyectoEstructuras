@@ -157,7 +157,7 @@ public class AgregarAsociadoController implements Initializable {
                 if(c == seleccionado){
                     b.setSelected(true);
                 }
-                b.setStyle("-fx-font-family: 'Century Gothic'; -fx-font-size: 14; -fx-min-width: 150;");
+                b.getStyleClass().add("button1");;
                 b.addEventHandler(MouseEvent.MOUSE_CLICKED, (Event t) -> {
                     seleccionado = c;
                 });
