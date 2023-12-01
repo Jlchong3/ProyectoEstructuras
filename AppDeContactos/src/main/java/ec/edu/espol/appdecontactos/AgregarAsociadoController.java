@@ -85,7 +85,7 @@ public class AgregarAsociadoController implements Initializable {
             actualizarLista();
         });
         filtroEmpresa.addEventHandler(MouseEvent.MOUSE_CLICKED, (Event t) -> {
-            contactosActuales.clear();
+            contactosActuales = new DoubleCircularLinkedList<>();
             for(int i = 0; i < contactos.size(); i++){
                 Contacto c = contactos.get(i);
                 if(c instanceof Empresa){

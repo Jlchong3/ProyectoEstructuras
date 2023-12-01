@@ -86,8 +86,6 @@ public class SecondaryController implements Initializable {
         }
         if(isin){
             Content.getChildren().remove(Content.getChildren().size()-1);
-            rightTop.getChildren().remove(1);
-            
         }
     }
     
@@ -103,8 +101,13 @@ public class SecondaryController implements Initializable {
     private void delete(MouseEvent event) {
         it.remove();
         clear();
-        Contacto.updateFile(contactos);
-        SessionManager.getInstance().setContactosActuales(contactos);
+        if(!isin){
+            Contacto.updateFile(contactos);
+            SessionManager.getInstance().setContactosActuales(contactos);
+        }
+        else{
+            SessionManager.getInstance().getContacto().setContactosRelacionados(contactos);
+        }
         if(contactos.isEmpty()){
             gridTop.getChildren().clear();
             gridMid.getChildren().clear();
@@ -115,6 +118,7 @@ public class SecondaryController implements Initializable {
         else{
             primer = it.next();
             actualizarPagina(primer);
+            System.out.println(contactos);
         }
     }
 
@@ -236,15 +240,18 @@ public class SecondaryController implements Initializable {
 
     @FXML
     private void volverPrincipal(MouseEvent event) {
+        DoubleCircularLinkedList<Contacto> filt = SessionManager.getInstance().getContactosFiltrados();
+        filt = new DoubleCircularLinkedList<>();
+        SessionManager.getInstance().setContactosFiltrados(filt);
         if(isin){
-            SessionManager.getInstance().getContactosFiltrados().clear();
+            SessionManager.getInstance().getContacto().setContactosRelacionados(contactos);
+            System.out.println(SessionManager.getInstance().getContacto().getContactosRelacionados());
             try{
                 App.setRoot("contactosAsociados");
             }
             catch(IOException e){}
         }
         else{
-            SessionManager.getInstance().getContactosFiltrados().clear();
             try {
                 App.setRoot("primary");
             } catch (IOException ex) {
