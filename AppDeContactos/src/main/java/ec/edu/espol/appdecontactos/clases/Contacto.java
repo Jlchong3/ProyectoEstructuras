@@ -37,6 +37,12 @@ public class Contacto implements Serializable{
         this.contactosRelacionados = contactosRelacionados;
         this.nota = nota;
     }
+
+    public void setFotosAsociadas(DoubleCircularLinkedList<String> fotosAsociadas) {
+        this.fotosAsociadas = fotosAsociadas;
+    }
+    
+    
     
     public String getNombre() {
         return this.nombre;
