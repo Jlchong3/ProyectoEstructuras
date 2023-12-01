@@ -36,7 +36,7 @@ import javafx.scene.text.Text;
 public class ContactosAsociadosController implements Initializable {
     private Contacto contacto = SessionManager.getInstance().getContacto();
     private DoubleCircularLinkedList<Contacto> contactos = contacto.getContactosRelacionados();
-    private DoubleCircularLinkedList<Contacto> contactosActuales = contacto.getContactosRelacionados();
+    private DoubleCircularLinkedList<Contacto> contactosActuales = contactos.copy();
     private Contacto cursor;
     ListIterator<Contacto> it;
     @FXML
