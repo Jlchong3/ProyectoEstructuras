@@ -10,6 +10,14 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import ec.edu.espol.appdecontactos.clases.*;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ListIterator;
 import javafx.event.Event;
 import javafx.geometry.HPos;
@@ -28,10 +36,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 
 public class SecondaryController implements Initializable {
-    private boolean isin = SessionManager.getInstance().isFromAsociados();
-    Contacto primer = (isin) ? SessionManager.getInstance().getContactoRelacionado(): SessionManager.getInstance().getContacto();
+    Contacto primer = SessionManager.getInstance().getContacto();
     ListIterator<Contacto> it;
     private DoubleCircularLinkedList<Contacto> contactos = (SessionManager.getInstance().getContactosFiltrados().isEmpty()) ? SessionManager.getInstance().getContactosActuales() : SessionManager.getInstance().getContactosFiltrados();
     @FXML
@@ -52,11 +60,8 @@ public class SecondaryController implements Initializable {
     private ScrollPane scrollPane;
     @FXML
     private Button editarBoton;
-    @FXML
-    private GridPane Content;
-    @FXML
-    private HBox rightTop;
     
+    ImageView imv = new ImageView();
 
     private void switchToPrimary() throws IOException {
         App.setRoot("primary");
@@ -64,6 +69,7 @@ public class SecondaryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        imv.setTranslateY(5);
         if(!contactos.isEmpty() && primer == null){
             it = contactos.CircularIterator();
             primer = it.next();
@@ -84,9 +90,6 @@ public class SecondaryController implements Initializable {
             GridPane.setHalignment(text, HPos.CENTER);
             gridMid.add(text,0,1);
         }
-        if(isin){
-            Content.getChildren().remove(Content.getChildren().size()-1);
-        }
     }
     
 
@@ -101,13 +104,8 @@ public class SecondaryController implements Initializable {
     private void delete(MouseEvent event) {
         it.remove();
         clear();
-        if(!isin){
-            Contacto.updateFile(contactos);
-            SessionManager.getInstance().setContactosActuales(contactos);
-        }
-        else{
-            SessionManager.getInstance().getContacto().setContactosRelacionados(contactos);
-        }
+        Contacto.updateFile(contactos);
+        SessionManager.getInstance().setContactosActuales(contactos);
         if(contactos.isEmpty()){
             gridTop.getChildren().clear();
             gridMid.getChildren().clear();
@@ -118,7 +116,6 @@ public class SecondaryController implements Initializable {
         else{
             primer = it.next();
             actualizarPagina(primer);
-            System.out.println(contactos);
         }
     }
 
@@ -156,8 +153,11 @@ public class SecondaryController implements Initializable {
         notas.setBackground(new Background(new BackgroundFill(Color.rgb(255, 254, 206), CornerRadii.EMPTY, Insets.EMPTY)));
         
         Image img = new Image(c.getFoto(0),100,100,true,true);
-        ImageView imv = new ImageView(img);
-        imv.setTranslateY(5);
+        imv.setImage(img);
+        imv.setOnMouseClicked(event -> {
+            abrirSelectorDeArchivo();
+        });
+        
         sp.getChildren().add(imv);
         FotoPerfil.setAlignment(Pos.CENTER);
         FotoPerfil.getChildren().add(sp);
@@ -240,23 +240,11 @@ public class SecondaryController implements Initializable {
 
     @FXML
     private void volverPrincipal(MouseEvent event) {
-        DoubleCircularLinkedList<Contacto> filt = SessionManager.getInstance().getContactosFiltrados();
-        filt = new DoubleCircularLinkedList<>();
-        SessionManager.getInstance().setContactosFiltrados(filt);
-        if(isin){
-            SessionManager.getInstance().getContacto().setContactosRelacionados(contactos);
-            System.out.println(SessionManager.getInstance().getContacto().getContactosRelacionados());
-            try{
-                App.setRoot("contactosAsociados");
-            }
-            catch(IOException e){}
-        }
-        else{
-            try {
-                App.setRoot("primary");
-            } catch (IOException ex) {
-
-            }
+        SessionManager.getInstance().getContactosFiltrados().clear();
+        try {
+            App.setRoot("primary");
+        } catch (IOException ex) {
+           
         }
     }
 
@@ -301,5 +289,56 @@ public class SecondaryController implements Initializable {
         }
     }
     
+    private void abrirSelectorDeArchivo() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Selecciona una imagen");
+        fileChooser.getExtensionFilters().addAll(
+            new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.jpeg", "*.gif")
+        );
+
+        File archivoSeleccionado = fileChooser.showOpenDialog(null);
+        if (archivoSeleccionado != null) {
+            copiarImagenAProyecto(archivoSeleccionado);
+        }
+    }
+    
+    private void copiarImagenAProyecto(File archivoOrigen) {
+        Path destino = Paths.get("src/main/resources/ec/edu/espol/appdecontactos/imgs/contactos/", archivoOrigen.getName());
+        try {
+            Files.copy(archivoOrigen.toPath(), destino, StandardCopyOption.REPLACE_EXISTING);
+            // Actualizar la imagen en tu aplicación
+            imv.setImage(new Image(destino.toUri().toString(),100,100,true,true));
+            primer.getFotos().set(0, destino.toUri().toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Manejar el error
+        }
+    }
+//    private void copiarImagenAProyecto(File archivoOrigen) {
+//        try {
+//            // Suponiendo que 'imagenActual' es la URL de la imagen actual
+//            Path destino = convertirURLaPath(Paths.get("file:src/main/resources/ec/edu/espol/appdecontactos/imgs/contactos/", archivoOrigen.getName())); // imagenActual debe ser la URL de la imagen actual
+//            if (destino != null) {
+//                Files.copy(archivoOrigen.toPath(), destino, StandardCopyOption.REPLACE_EXISTING);
+//                imageView.setImage(new Image(destino.toUri().toString()));
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            // Manejar el error
+//        }
+//    }
+//
+//    private Path convertirURLaPath(String urlImagen) {
+//        try {
+//            URL url = new URL(urlImagen);
+//            URI uri = url.toURI();
+//            return Paths.get(uri);
+//        } catch (URISyntaxException | MalformedURLException e) {
+//            e.printStackTrace();
+//            // Manejar el error
+//            return null;
+//        }
+//    }
+
 
 }

@@ -240,9 +240,25 @@ public class DoubleCircularLinkedList<E> implements List<E>, java.io.Serializabl
     }
 
     @Override
+    
     public E set(int index, E element) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (index < 0 || index >= size()) {
+            throw new IndexOutOfBoundsException("Índice fuera de rango: " + index);
+        }
+        if (element == null) {
+            throw new NullPointerException("El elemento no puede ser nulo");
+        }
+
+        Node<E> currentNode = last.getNext();
+        for (int i = 0; i < index; i++) {
+            currentNode = currentNode.getNext();
+        }
+
+        E oldElement = currentNode.getContent();
+        currentNode.setContent(element);
+        return oldElement;
     }
+
 
     @Override
     public List<E> findALL(E e, Comparator<E> comp) {
