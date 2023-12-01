@@ -5,15 +5,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;    
 import ec.edu.espol.appdecontactos.clases.*;
 import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -31,6 +27,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -52,16 +49,21 @@ public class SecondaryController implements Initializable {
     private AnchorPane telefonos;
     @FXML
     private AnchorPane correos;
-    @FXML
-    private AnchorPane notas;
+    //private AnchorPane notas;
     @FXML
     private AnchorPane redesSociales;
-    @FXML
-    private ScrollPane scrollPane;
     @FXML
     private Button editarBoton;
     
     ImageView imv = new ImageView();
+    @FXML
+    private GridPane Content;
+    @FXML
+    private HBox rightTop;
+    @FXML
+    private Text textoNota;
+    @FXML
+    private Text textoFecha;
 
     private void switchToPrimary() throws IOException {
         App.setRoot("primary");
@@ -131,7 +133,7 @@ public class SecondaryController implements Initializable {
         telefonos.getChildren().clear();
         correos.getChildren().clear();
         redesSociales.getChildren().clear();
-        notas.getChildren().clear();
+        //notas.getChildren().clear();
     }
     
     private void aplicarEstiloTexto(Text texto){
@@ -148,9 +150,7 @@ public class SecondaryController implements Initializable {
         telefonos.setBackground(new Background(new BackgroundFill(Color.rgb(234, 234, 234), CornerRadii.EMPTY, Insets.EMPTY)));
         correos.setBackground(new Background(new BackgroundFill(Color.rgb(234, 234, 234), CornerRadii.EMPTY, Insets.EMPTY)));
         redesSociales.setBackground(new Background(new BackgroundFill(Color.rgb(234, 234, 234), CornerRadii.EMPTY, Insets.EMPTY)));
-        scrollPane.setBackground(new Background(new BackgroundFill(Color.rgb(255, 254, 206), CornerRadii.EMPTY, Insets.EMPTY)));
         gridMid.setBackground(new Background(new BackgroundFill(Color.rgb(255, 254, 206), CornerRadii.EMPTY, Insets.EMPTY)));
-        notas.setBackground(new Background(new BackgroundFill(Color.rgb(255, 254, 206), CornerRadii.EMPTY, Insets.EMPTY)));
         
         Image img = new Image(c.getFotoPerfil(0),100,100,true,true);
         imv.setImage(img);
@@ -235,7 +235,8 @@ public class SecondaryController implements Initializable {
         telefonos.getChildren().add(tels);
         correos.getChildren().add(corrs);
         redesSociales.getChildren().add(reds);
-        notas.getChildren().add(new Text(c.getNota()));
+        textoNota.setText(c.getNota());
+        textoFecha.setText(c.getFechas());
     }
 
     @FXML
@@ -271,7 +272,6 @@ public class SecondaryController implements Initializable {
 
             }
             catch(IOException e){
-
             }
         }
     }
