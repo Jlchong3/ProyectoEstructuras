@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
@@ -13,6 +18,10 @@
 <?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="624.0" prefWidth="298.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.appdecontactos.VerFotosController">
+        <stylesheets>
+            <URL value="@/ec/edu/espol/appdecontactos/Style/myStyle.css"/>
+        </stylesheets>
+
    <top>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fotos Asociadas" BorderPane.alignment="CENTER">
          <font>
