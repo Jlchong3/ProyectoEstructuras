@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -97,12 +99,33 @@
                      <GridPane.margin>
                         <Insets top="50.0" />
                      </GridPane.margin>
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+                           <image>
+                              <Image url="@imgs/fotosBotones/retroceder.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#down" prefHeight="26.0" prefWidth="34.0" GridPane.columnIndex="1" GridPane.valignment="BOTTOM" />
+                  <Button mnemonicParsing="false" onMouseClicked="#down" prefHeight="27.0" prefWidth="34.0" GridPane.columnIndex="1" GridPane.valignment="BOTTOM">
+                     <graphic>
+                        <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+                           <image>
+                              <Image url="@imgs/fotosBotones/avanzar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                   <Button mnemonicParsing="false" onMouseClicked="#clearFilter" prefHeight="26.0" prefWidth="32.0" GridPane.columnIndex="1" GridPane.valignment="TOP">
                      <GridPane.margin>
                         <Insets top="10.0" />
                      </GridPane.margin>
+                     <graphic>
+                        <ImageView fitHeight="21.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/fotosBotones/equis.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
                </children>
             </GridPane>
