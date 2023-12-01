@@ -246,6 +246,9 @@ public class SecondaryController implements Initializable {
         redesSociales.getChildren().add(reds);
         textoNota.setText(c.getNota());
         textoFecha.setText(c.getFechas());
+        if(isin && Content.getChildren().size() == 5){
+            Content.getChildren().remove(4);
+        }
     }
 
     @FXML
