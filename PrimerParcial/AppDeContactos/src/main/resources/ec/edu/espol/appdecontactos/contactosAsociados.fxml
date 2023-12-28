@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane fx:id="gridPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.appdecontactos.ContactosAsociadosController">
+        <stylesheets>
+            <URL value="@/ec/edu/espol/appdecontactos/Style/myStyle.css" />
+        </stylesheets>
+    <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="211.0" minHeight="0.0" prefHeight="50.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="570.0" minHeight="10.0" prefHeight="533.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="73.0" minHeight="10.0" prefHeight="62.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Label text="Contactos Asociados">
+         <font>
+            <Font name="Century Gothic Bold" size="19.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="5.0" left="20.0" top="20.0" />
+         </GridPane.margin>
+      </Label>
+      <Button mnemonicParsing="false" onMouseClicked="#agregarContactoAsociado" text="Agregar" GridPane.rowIndex="2">
+         <font>
+            <Font name="Century Gothic" size="15.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="10.0" left="20.0" />
+         </GridPane.margin>
+      </Button>
+      <Button mnemonicParsing="false" onMouseClicked="#volver" text="Regresar" GridPane.halignment="RIGHT">
+         <GridPane.margin>
+            <Insets bottom="5.0" right="20.0" top="20.0" />
+         </GridPane.margin>
+         <font>
+            <Font name="Century Gothic" size="12.0" />
+         </font>
+      </Button>
+      <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+         <content>
+            <GridPane fx:id="pane" prefHeight="527.0" prefWidth="341.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="333.59996337890624" minWidth="10.0" prefWidth="317.8000244140625" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="126.4000244140625" minWidth="10.0" prefWidth="28.199975585937523" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <VBox>
+                     <children>
+                        <HBox prefHeight="38.0" prefWidth="339.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Filtro:">
+                                 <HBox.margin>
+                                    <Insets left="12.0" top="12.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Text>
+                              <RadioButton fx:id="filtroNombre" mnemonicParsing="false" prefHeight="18.0" prefWidth="83.0" text="Nombre">
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="16.0" />
+                                 </HBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="filtroCumple" mnemonicParsing="false" prefHeight="18.0" prefWidth="82.0" text="Cumple">
+                                 <HBox.margin>
+                                    <Insets left="12.0" top="16.0" />
+                                 </HBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="filtroEmpresa" mnemonicParsing="false" prefHeight="18.0" prefWidth="94.0" text="Empresa">
+                                 <HBox.margin>
+                                    <Insets left="7.0" top="16.0" />
+                                 </HBox.margin>
+                              </RadioButton>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="35.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <VBox fx:id="listaDeContactos" alignment="TOP_CENTER" prefHeight="489.0" prefWidth="316.0" />
+                     </children>
+                  </VBox>
+                  <Button mnemonicParsing="false" onMouseClicked="#up" prefHeight="31.0" prefWidth="33.0" rotate="90.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.valignment="TOP">
+                     <GridPane.margin>
+                        <Insets top="50.0" />
+                     </GridPane.margin>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/fotosBotones/retroceder.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#down" prefHeight="29.0" prefWidth="32.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.valignment="BOTTOM">
+                     <graphic>
+                        <ImageView fitHeight="17.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+                           <image>
+                              <Image url="@imgs/fotosBotones/avanzar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#clearFilter" prefHeight="26.0" prefWidth="32.0" style="-fx-opacity: 0.5;" GridPane.columnIndex="1" GridPane.valignment="TOP">
+                     <GridPane.margin>
+                        <Insets top="10.0" />
+                     </GridPane.margin>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/fotosBotones/equis.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </GridPane>
+         </content>
+      </ScrollPane>
+   </children>
+</GridPane>

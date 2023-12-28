@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane fx:id="Content" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.appdecontactos.SecondaryController">
+
+        <stylesheets>
+            <URL value="@/ec/edu/espol/appdecontactos/Style/myStyle.css" />
+        </stylesheets>
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="191.60001220703126" minHeight="2.8000029563903865" prefHeight="120.6" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="481.8000244140624" minHeight="10.0" prefHeight="462.3999999999999" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="102.1999572753906" minHeight="10.0" prefHeight="46.39999999999998" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <GridPane fx:id="gridTop">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="101.20001220703125" minWidth="10.0" prefWidth="77.399951171875" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="209.60001525878909" minWidth="10.0" prefWidth="149.40004882812502" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.20001220703125" minWidth="10.0" prefWidth="91.20004882812498" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox fx:id="FotoPerfil" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" />
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#previous" prefHeight="26.0" prefWidth="42.0" style="-fx-opacity: 0.7;">
+                     <graphic>
+                        <ImageView fitHeight="14.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/fotosBotones/retroceder.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="editarBoton" mnemonicParsing="false" onMouseClicked="#editarContacto" style="-fx-opacity: 0.7;">
+                     <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/fotosBotones/editar.png" />
+                           </image></ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </HBox>
+            <HBox fx:id="rightTop" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
+               <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#delete" prefHeight="26.0" prefWidth="31.0" style="-fx-opacity: 0.7;">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/fotosBotones/borrarTacho.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#next" prefHeight="26.0" prefWidth="39.0" style="-fx-opacity: 0.7;">
+                     <graphic>
+                        <ImageView fitHeight="13.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/fotosBotones/avanzar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </HBox>
+         </children>
+      </GridPane>
+      <GridPane fx:id="gridMid" GridPane.rowIndex="1">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="140.79997787475585" minHeight="10.0" prefHeight="123.8" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="306.0" minHeight="10.0" prefHeight="126.19999999999999" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="306.0" minHeight="10.0" prefHeight="131.8" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="149.60001220703128" minHeight="10.0" prefHeight="112.00003662109378" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TitledPane prefHeight="200.0" prefWidth="200.0" text="Telefonos">
+               <content>
+                  <AnchorPane fx:id="telefonos" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font>
+            </TitledPane>
+            <TitledPane animated="false" prefHeight="121.0" prefWidth="318.0" text="Correos" GridPane.rowIndex="1">
+              <content>
+                <AnchorPane fx:id="correos" minHeight="0.0" minWidth="0.0" prefHeight="47.0" prefWidth="317.0" />
+              </content>
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font>
+            </TitledPane>
+            <TitledPane animated="false" prefHeight="344.0" prefWidth="318.0" text="Redes Sociales" GridPane.rowIndex="2">
+              <content>
+                <AnchorPane fx:id="redesSociales" minHeight="0.0" minWidth="0.0" prefHeight="186.0" prefWidth="317.0" />
+              </content>
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font>
+            </TitledPane>
+            <VBox fx:id="nota" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Notas:">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" top="5.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Century Gothic" size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="textoNota" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="5.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Century Gothic" size="13.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha:">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Century Gothic" size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="textoFecha" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <VBox.margin>
+                        <Insets left="5.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Century Gothic" size="13.0" />
+                     </font>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets left="5.0" top="1.0" />
+               </padding>
+            </VBox>
+         </children>
+      </GridPane>
+      <Button mnemonicParsing="false" onMouseClicked="#volverPrincipal" prefHeight="26.0" prefWidth="60.0" text="Volver" GridPane.rowIndex="2">
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin>
+      </Button>
+      <Button mnemonicParsing="false" onMouseClicked="#verFotos" prefHeight="26.0" prefWidth="83.0" text="VerFotos" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+         <GridPane.margin>
+            <Insets right="10.0" />
+         </GridPane.margin>
+      </Button>
+      <Button mnemonicParsing="false" onMouseClicked="#verContactosAsociados" prefHeight="31.0" prefWidth="126.0" text="Contactos Asociados" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets right="14.0" />
+         </GridPane.margin></Button>
+   </children>
+</GridPane>
