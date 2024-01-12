@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -82,42 +83,48 @@ public class TableroController implements Initializable {
      private boolean hayGanador() {
         // Verificar filas y columnas
         for (int i = 0; i < 3; i++) {
-            if (pane.getChildren().subList(i * 3, i * 3 + 3).stream()
-                    .map(node -> ((Button) node).getText())
-                    .distinct()
-                    .count() == 1
-                    && !((Button) pane.getChildren().get(i * 3)).getText().isEmpty()) {
+            if (esGanador(((Button) pane.getChildren().get(i * 3)).getText(),
+                           ((Button) pane.getChildren().get(i * 3 + 1)).getText(),
+                           ((Button) pane.getChildren().get(i * 3 + 2)).getText())) {
                 return true; // Ganador en fila i
             }
 
-            if (pane.getChildren().subList(i, i + 7).stream()
-                    .map(node -> ((Button) node).getText())
-                    .distinct()
-                    .count() == 1
-                    && !((Button) pane.getChildren().get(i)).getText().isEmpty()) {
+            if (esGanador(((Button) pane.getChildren().get(i)).getText(),
+                           ((Button) pane.getChildren().get(i + 3)).getText(),
+                           ((Button) pane.getChildren().get(i + 6)).getText())) {
                 return true; // Ganador en columna i
             }
         }
 
         // Verificar diagonales
-        if (((Button) pane.getChildren().get(0)).getText().equals(((Button) pane.getChildren().get(4)).getText())
-                && ((Button) pane.getChildren().get(0)).getText().equals(((Button) pane.getChildren().get(8)).getText())
-                && !((Button) pane.getChildren().get(0)).getText().isEmpty()) {
+        if (esGanador(((Button) pane.getChildren().get(0)).getText(),
+                       ((Button) pane.getChildren().get(4)).getText(),
+                       ((Button) pane.getChildren().get(8)).getText())) {
             return true; // Ganador en diagonal principal
         }
 
-        if (((Button) pane.getChildren().get(2)).getText().equals(((Button) pane.getChildren().get(4)).getText())
-                && ((Button) pane.getChildren().get(2)).getText().equals(((Button) pane.getChildren().get(6)).getText())
-                && !((Button) pane.getChildren().get(2)).getText().isEmpty()) {
+        if (esGanador(((Button) pane.getChildren().get(2)).getText(),
+                       ((Button) pane.getChildren().get(4)).getText(),
+                       ((Button) pane.getChildren().get(6)).getText())) {
             return true; // Ganador en diagonal secundaria
         }
 
         return false;
     }
 
+    // Función auxiliar para verificar si tres valores son iguales y no están vacíos
+    private boolean esGanador(String a, String b, String c) {
+        return a.equals(b) && b.equals(c) && !a.isEmpty();
+    }
+    
+
     private boolean hayEmpate() {
-        // Implementar lógica para verificar si hay un empate
-        return false;
+        for (Node node : pane.getChildren()) {
+            if (((Button) node).getText().isEmpty()) {
+                return false; // Todavía hay al menos un espacio vacío, no hay empate
+            }
+        }
+        return true; // Todos los espacios están ocupados, hay empate
     }
     
 }
