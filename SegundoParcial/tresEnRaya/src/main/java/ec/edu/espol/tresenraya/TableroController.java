@@ -4,15 +4,18 @@
  */
 package ec.edu.espol.tresenraya;
 
+import clases.Tablero;
 import clases.Tipo;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
@@ -26,6 +29,7 @@ public class TableroController implements Initializable {
 
     @FXML
     private BorderPane mainpane;
+    private Tablero tablero;
     private final int tamañoBoton = 100; // Cambié el tamaño para que se vea mejor en un tablero más pequeño
     private String estiloBoton = "";
     private Tipo turno = Tipo.EQUIS; // Cambié a Tipo en lugar de Jugador
@@ -36,6 +40,7 @@ public class TableroController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         pane = new GridPane();
+        tablero = new Tablero();
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -50,7 +55,7 @@ public class TableroController implements Initializable {
 
                 // Configurar evento de clic para manejar la jugada
                 boton.setOnAction(e -> manejarJugada(boton, filaFinal, columnaFinal));
-
+               
                 pane.add(boton, j, i);
             }
         }
@@ -64,48 +69,51 @@ public class TableroController implements Initializable {
 }
 
      private void manejarJugada(Button boton, int fila, int columna) {
-        if (!juegoTerminado && boton.getText().isEmpty()) {
+        if (!juegoTerminado && tablero.getFicha(fila, columna) == null) {
             // Realizar la jugada si el botón está vacío
             boton.setText(turno.toString());
-
+            tablero.setFicha(fila, columna, turno);
+            
             // Verificar si hay un ganador o empate
-            if (hayGanador() || hayEmpate()) {
+            if (hayGanador()) {
                 // Implementar lógica para manejar el final del juego
-                System.out.println("Juego terminado");
-                juegoTerminado = true; // Marcar el juego como terminado
-            } else {
-                // Cambiar el turno al siguiente jugador
-                turno = (turno == Tipo.EQUIS) ? Tipo.CIRCULO : Tipo.EQUIS;
+                System.out.println("Fichas ganadoras: " + turno );
+                juegoTerminado = true;// Marcar el juego como terminado 
             }
+            else if(tablero.isFull()){
+                System.out.println("Empate");
+                juegoTerminado = true;
+            }
+            turno = (turno == Tipo.EQUIS) ? Tipo.CIRCULO : Tipo.EQUIS;
         }
     }
     
      private boolean hayGanador() {
         // Verificar filas y columnas
         for (int i = 0; i < 3; i++) {
-            if (esGanador(((Button) pane.getChildren().get(i * 3)).getText(),
-                           ((Button) pane.getChildren().get(i * 3 + 1)).getText(),
-                           ((Button) pane.getChildren().get(i * 3 + 2)).getText())) {
+            if (esGanador(tablero.getFicha(i, 0),
+                           tablero.getFicha(i, 1),
+                           tablero.getFicha(i, 2))){
                 return true; // Ganador en fila i
             }
 
-            if (esGanador(((Button) pane.getChildren().get(i)).getText(),
-                           ((Button) pane.getChildren().get(i + 3)).getText(),
-                           ((Button) pane.getChildren().get(i + 6)).getText())) {
+            if (esGanador(tablero.getFicha(0, i),
+                           tablero.getFicha(1, i),
+                           tablero.getFicha(2, i))) {
                 return true; // Ganador en columna i
             }
         }
 
         // Verificar diagonales
-        if (esGanador(((Button) pane.getChildren().get(0)).getText(),
-                       ((Button) pane.getChildren().get(4)).getText(),
-                       ((Button) pane.getChildren().get(8)).getText())) {
+        if (esGanador(tablero.getFicha(0, 0),
+                       tablero.getFicha(1, 1),
+                       tablero.getFicha(2, 2))) {
             return true; // Ganador en diagonal principal
         }
 
-        if (esGanador(((Button) pane.getChildren().get(2)).getText(),
-                       ((Button) pane.getChildren().get(4)).getText(),
-                       ((Button) pane.getChildren().get(6)).getText())) {
+        if (esGanador(tablero.getFicha(0, 2),
+                       tablero.getFicha(1, 1),
+                       tablero.getFicha(2, 0))) {
             return true; // Ganador en diagonal secundaria
         }
 
@@ -113,18 +121,7 @@ public class TableroController implements Initializable {
     }
 
     // Función auxiliar para verificar si tres valores son iguales y no están vacíos
-    private boolean esGanador(String a, String b, String c) {
-        return a.equals(b) && b.equals(c) && !a.isEmpty();
+    private boolean esGanador(Tipo a, Tipo b, Tipo c) {
+        return a == b && b == c && a != null;
     }
-    
-
-    private boolean hayEmpate() {
-        for (Node node : pane.getChildren()) {
-            if (((Button) node).getText().isEmpty()) {
-                return false; // Todavía hay al menos un espacio vacío, no hay empate
-            }
-        }
-        return true; // Todos los espacios están ocupados, hay empate
-    }
-    
 }
