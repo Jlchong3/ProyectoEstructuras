@@ -11,5 +11,15 @@ package clases;
 public class Tablero {
     public Ficha[][] fichas;
 
+    public Tablero() {
+        this.fichas = new Ficha[3][3];
+    }
     
+    public Ficha[][] getFichas() {
+        return fichas;
+    }
+    
+    public void setFichas(Ficha[][] fichas) {
+        this.fichas = fichas;
+    }
 }
