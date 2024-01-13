@@ -9,10 +9,12 @@ package clases;
  * @author mariu
  */
 public class Tablero {
-    public Tipo[][] fichas;
+    private Tipo[][] fichas;
+    private int[] ultimoMovimiento;
 
     public Tablero() {
         this.fichas = new Tipo[3][3];
+        this.ultimoMovimiento = new int[2];
     }
     
     public Tipo[][] getFichas() {
@@ -29,6 +31,8 @@ public class Tablero {
     
     public void setFicha(int i, int j, Tipo ficha) {
         this.fichas[i][j] = ficha;
+        this.ultimoMovimiento[0] = i;
+        this.ultimoMovimiento[1] = j;
     }
     
     public boolean isFull(){
@@ -39,5 +43,19 @@ public class Tablero {
             }
         }
         return true;
+    }
+
+    public int[] getUltimoMovimiento() {
+        return ultimoMovimiento;
+    }
+    
+    public Tablero copy(){
+        Tablero copy = new Tablero();
+        for(int i = 0; i < 3; i++){
+            for(int j = 0 ; j < 3; j++){
+                copy.fichas[i][j] = this.fichas[i][j];
+            }
+        }
+        return copy;
     }
 }

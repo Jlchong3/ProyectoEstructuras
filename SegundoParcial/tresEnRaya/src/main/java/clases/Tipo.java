@@ -19,5 +19,9 @@ public enum Tipo {
             return "O";
     }
     
+    public Tipo opuesto(){
+        return (this == Tipo.EQUIS) ? Tipo.CIRCULO : Tipo.EQUIS;
+    }
+    
     
 }
