@@ -1,6 +1,8 @@
 
 package trees;
 
+import clases.Tablero;
+
 public class Tree<E> {
     
     private TreeNode<E> root;
@@ -32,5 +34,7 @@ public class Tree<E> {
     public boolean isLeaf () {
         return this.root.getChildren().isEmpty();
     }
+    
+
     
 }
