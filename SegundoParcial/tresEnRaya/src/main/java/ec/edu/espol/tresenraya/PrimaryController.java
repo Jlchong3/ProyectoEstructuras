@@ -20,6 +20,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.geometry.Insets;
 
 public class PrimaryController implements Initializable {
 
@@ -40,7 +41,9 @@ public class PrimaryController implements Initializable {
         String[] categorias = {"Un jugador" , "Dos jugadores", "IA vs. IA"};
         
         opcJug.getItems().addAll(categorias);
-        System.out.println("a");
+        // Aplicar la fuente 'Lucida Console' al ComboBox
+        opcJug.setStyle("-fx-font-family: 'Lucida Console';");
+       
     }
 
     @FXML
@@ -68,11 +71,17 @@ public class PrimaryController implements Initializable {
         opcion1.setOnAction(event -> opcionSeleccionada(opcion1, opcion2));
         opcion2.setOnAction(event -> opcionSeleccionada(opcion2, opcion1));
 
+        // Aplicar la fuente 'Lucida Console' a los ToggleButton
+        Font lucidaConsoleFont = Font.font("Lucida Console");
+        opcion1.setFont(lucidaConsoleFont);
+        opcion2.setFont(lucidaConsoleFont);
+
         HBox hbox = new HBox(10, opcion1, opcion2);
         hbox.setAlignment(Pos.CENTER);
         hbox.setPadding(new Insets(20));
         return hbox;
     }
+
     private HBox crearOpciones2() {
         ToggleButton opcion1 = new ToggleButton("Circulo");
         ToggleButton opcion2 = new ToggleButton("Equis");
@@ -83,6 +92,11 @@ public class PrimaryController implements Initializable {
 
         opcion1.setOnAction(event -> opcionSeleccionada2(opcion1, opcion2));
         opcion2.setOnAction(event -> opcionSeleccionada2(opcion2, opcion1));
+
+        // Aplicar la fuente 'Lucida Console' a los ToggleButton
+        Font lucidaConsoleFont = Font.font("Lucida Console");
+        opcion1.setFont(lucidaConsoleFont);
+        opcion2.setFont(lucidaConsoleFont);
 
         HBox hbox = new HBox(10, opcion1, opcion2);
         hbox.setAlignment(Pos.CENTER);
@@ -110,40 +124,41 @@ public class PrimaryController implements Initializable {
     }
 
 
-    public void registroGeneral(){        
+    public void registroGeneral() {
         String s = valor;
         System.out.println("aaaa");
+
+        // Crear un componente de texto para mostrar mensajes con la fuente 'Lucida Console'
+        mensajeText = new Text("Seleccione una opción para cada jugador.");
+        Font lucidaConsoleFont = Font.font("Lucida Console");
+        mensajeText.setFont(lucidaConsoleFont);
+
+        // Ajustar el interlineado del texto (lineSpacing)
+        mensajeText.setLineSpacing(10); // Puedes ajustar este valor según tus preferencias
+
         switch (s) {
-            case "Un jugador":
-            {
+            case "Un jugador": {
                 HBox hbox = crearOpciones();
-
-                // Crear un componente de texto para mostrar mensajes
-                mensajeText = new Text("Seleccione una opción para cada jugador.");
-
+                // Agregar el componente de texto a la HBox
+                hbox.getChildren().add(mensajeText);
                 // Crear la escena y mostrarla
-                vbox.getChildren().addAll(hbox, mensajeText);
-
+                vbox.getChildren().addAll(hbox);
                 break;
             }
-            case "Dos jugadores":                    
-            {
+            case "Dos jugadores": {
                 HBox hbox = crearOpciones2();
-                // Crear un componente de texto para mostrar mensajes
-                mensajeText = new Text("Seleccione una opción para cada jugador.");
+                // Agregar el componente de texto a la HBox
+                hbox.getChildren().add(mensajeText);
                 // Crear la escena y mostrarla
-                vbox.getChildren().addAll(hbox, mensajeText);
-
+                vbox.getChildren().addAll(hbox);
                 break;
             }
-            case "IA vs. IA":                    
-            {
+            case "IA vs. IA": {
                 break;
             }
             default:
                 break;
-        }  
-     }
-    
+        }
+    }
     
 }
