@@ -26,8 +26,13 @@ public class Tree<E> {
         return root.getContent();
     }
     
-    private TreeNode getRootNode () {
-        return this.root;
+
+    public void setUtilidad(int utilidad){
+        this.utilidad = utilidad;
+    }
+
+    public Integer getUtilidad(){
+        return utilidad;
     }
 
     
@@ -47,5 +52,6 @@ public class Tree<E> {
         Tree<E> child = new Tree<>(content);
         this.root.getChildren().add(child);
     } 
+
     
 }
