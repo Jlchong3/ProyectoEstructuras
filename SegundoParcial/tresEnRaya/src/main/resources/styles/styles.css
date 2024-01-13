@@ -1,0 +1,33 @@
+
+.button1 {
+    -fx-font-family: 'Century Gothic';
+    -fx-font-size: 50;
+    -fx-min-width: 125;
+    -fx-min-height: 125;
+    -fx-background-color: transparent; /* Fondo transparente */
+    -fx-text-fill: #000000;
+    -fx-border-color: #000000;
+    -fx-border-width: 3;
+    -fx-border-radius: 3;
+    -fx-background-radius: 0;
+    -fx-opacity: 0.9;
+    -fx-padding: 10;
+}
+
+.button1:hover {
+    -fx-opacity: 1.0;
+    -fx-background-color: #bdc3c7; /* Gris claro en hover */
+}
+
+#mainpane {
+    -fx-background-color: #ffffff; /* Blanco */
+    -fx-padding: 20;
+    -fx-border-color: #34495e;
+    -fx-border-width: 5;
+    -fx-border-radius: 10;
+}
+
+#pane {
+    -fx-background-color: #ffffff; /* Blanco */
+    -fx-spacing: 40; /* Aumentar el espacio entre botones */
+}

@@ -21,7 +21,9 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
+
 
 /**
  * FXML Controller class
@@ -40,7 +42,8 @@ public class TableroController implements Initializable {
     private String estiloBoton = "";
     private GridPane pane;
     private boolean juegoTerminado = false;
-
+    
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -49,12 +52,14 @@ public class TableroController implements Initializable {
         tipoJugador = Tipo.CIRCULO; //Por ahora hasta que se pueda 
         maquina = new Computer(tablero, tipoJugador.opuesto());
 
+       
+        
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 Button boton = new Button();
                 boton.setMinSize(tamañoBoton, tamañoBoton);
-                boton.setStyle(estiloBoton);
-                boton.setFont(Font.font(24)); // Ajusté el tamaño de la fuente
+                boton.getStyleClass().add("button1");
+                boton.setFont(Font.font(30)); // Ajusté el tamaño de la fuente
 
                 // Crear variables finales para usar en la expresión lambda
                 final int filaFinal = i;
@@ -62,17 +67,20 @@ public class TableroController implements Initializable {
 
                 // Configurar evento de clic para manejar la jugada
                 boton.setOnAction(e -> manejarJugada(boton, filaFinal, columnaFinal));
+                
+                boton.setOnMouseEntered(e -> boton.setOpacity(1.0));
+                boton.setOnMouseExited(e -> boton.setOpacity(0.7));
                
                 pane.add(boton, j, i);
             }
         }
-
+ 
         // Centrar el GridPane en el BorderPane
         mainpane.setCenter(pane);
 
         // Configurar alineación en el BorderPane
         BorderPane.setAlignment(pane, Pos.CENTER);
-        BorderPane.setMargin(pane, new Insets(50)); // Ajusta este valor según sea necesario
+        BorderPane.setMargin(pane, new Insets(100)); // Ajusta este valor según sea necesario
         if(turno == maquina.getTipo()){
             try {
                 TimeUnit.SECONDS.sleep(4);
@@ -81,7 +89,7 @@ public class TableroController implements Initializable {
             }
             movimientoMaquina();
         }
-}
+    }
 
     private void manejarJugada(Button boton, int fila, int columna) {
         if (!juegoTerminado && tablero.getFicha(fila, columna) == null) {
