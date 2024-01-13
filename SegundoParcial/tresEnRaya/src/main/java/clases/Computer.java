@@ -48,9 +48,12 @@ public class Computer {
         return posibilidades;
     }
     
-    private int[] mejorOpcion(){
+    public int[] mejorOpcion(){
         PriorityQueue<Tree<Tablero>> max = new PriorityQueue<>((t1, t2) -> t2.getUtilidad() - t1.getUtilidad());
         List<Tree<Tablero>> opciones = crearPosibilidades(tipo).getChildren();
+        if(opciones.size() == 1){
+            return opciones.get(0).getRoot().getUltimoMovimiento();
+        } 
         
         for(Tree<Tablero> opcion : opciones){
             List<Tree<Tablero>> posibilidades = opcion.getChildren();
@@ -59,17 +62,10 @@ public class Computer {
             for(Tree<Tablero> posibilidad : posibilidades){
                 min.offer(calcularUtilidad(posibilidad.getRoot()));
             }
-            
             opcion.setUtilidad(min.poll());
             max.offer(opcion);
         }
-        
         return max.poll().getRoot().getUltimoMovimiento();
-    }
-    
-    public void jugarMovimiento(){
-        int[] move = mejorOpcion();
-        tablero.setFicha(move[0], move[1], tipo);
     }
     
     private int calcularUtilidad(Tablero tablero){
@@ -100,30 +96,37 @@ public class Computer {
         return totalComputer - totalJugador;
     }
     
-    public boolean filaDisponible(Tablero tablero, Tipo tipo, int fila){
-        return tablero.getFicha(fila, 0) == tipo || tablero.getFicha(fila, 0) == null &&
-               tablero.getFicha(fila, 1) == tipo || tablero.getFicha(fila, 1) == null &&
-               tablero.getFicha(fila, 2) == tipo || tablero.getFicha(fila, 2) == null;
+    private boolean filaDisponible(Tablero tablero, Tipo tipo, int fila){
+        return (tablero.getFicha(fila, 0) == tipo || tablero.getFicha(fila, 0) == null) &&
+               (tablero.getFicha(fila, 1) == tipo || tablero.getFicha(fila, 1) == null) &&
+               (tablero.getFicha(fila, 2) == tipo || tablero.getFicha(fila, 2) == null);
     }
     
-    public boolean columnaDisponible(Tablero tablero, Tipo tipo, int columna){
-        return tablero.getFicha(0, columna) == tipo || tablero.getFicha(0, columna) == null &&
-               tablero.getFicha(1, columna) == tipo || tablero.getFicha(1, columna) == null &&
-               tablero.getFicha(2, columna) == tipo || tablero.getFicha(2, columna) == null;
+    private boolean columnaDisponible(Tablero tablero, Tipo tipo, int columna){
+        return (tablero.getFicha(0, columna) == tipo || tablero.getFicha(0, columna) == null) &&
+               (tablero.getFicha(1, columna) == tipo || tablero.getFicha(1, columna) == null) &&
+               (tablero.getFicha(2, columna) == tipo || tablero.getFicha(2, columna) == null);
     }
     
-    public boolean diagonalPrincipalDisponible(Tablero tablero, Tipo tipo){
-        return tablero.getFicha(0, 0) == tipo || tablero.getFicha(0, 0) == null &&
-               tablero.getFicha(1, 1) == tipo || tablero.getFicha(1, 1) == null &&
-               tablero.getFicha(2, 2) == tipo || tablero.getFicha(2, 2) == null;
+    private boolean diagonalPrincipalDisponible(Tablero tablero, Tipo tipo){
+        return (tablero.getFicha(0, 0) == tipo || tablero.getFicha(0, 0) == null) &&
+               (tablero.getFicha(1, 1) == tipo || tablero.getFicha(1, 1) == null) &&
+               (tablero.getFicha(2, 2) == tipo || tablero.getFicha(2, 2) == null);
     }
     
-    public boolean diagonalSecundariaDisponible(Tablero tablero, Tipo tipo){
-        return tablero.getFicha(0, 2) == tipo || tablero.getFicha(0, 0) == null &&
-               tablero.getFicha(1, 1) == tipo || tablero.getFicha(1, 1) == null &&
-               tablero.getFicha(2, 0) == tipo || tablero.getFicha(2, 2) == null;
+    private boolean diagonalSecundariaDisponible(Tablero tablero, Tipo tipo){
+        return (tablero.getFicha(0, 2) == tipo || tablero.getFicha(0, 2) == null) &&
+               (tablero.getFicha(1, 1) == tipo || tablero.getFicha(1, 1) == null) &&
+               (tablero.getFicha(2, 0) == tipo || tablero.getFicha(2, 0) == null);
+    }
+
+    public Tipo getTipo() {
+        return tipo;
     }
     
+    public Tablero getTablero(){
+        return tablero;
+    }
     
     
 }

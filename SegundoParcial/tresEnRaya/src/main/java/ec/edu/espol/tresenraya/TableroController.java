@@ -4,11 +4,13 @@
  */
 package ec.edu.espol.tresenraya;
 
+import clases.Computer;
 import clases.Tablero;
 import clases.Tipo;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
+import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -31,9 +33,11 @@ public class TableroController implements Initializable {
     @FXML
     private BorderPane mainpane;
     private Tablero tablero;
+    private Computer maquina;
+    private Tipo tipoJugador;
+    private Tipo turno = Tipo.EQUIS;
     private final int tamañoBoton = 100; // Cambié el tamaño para que se vea mejor en un tablero más pequeño
     private String estiloBoton = "";
-    private Tipo turno = Tipo.EQUIS; // Cambié a Tipo en lugar de Jugador
     private GridPane pane;
     private boolean juegoTerminado = false;
 
@@ -42,6 +46,8 @@ public class TableroController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         pane = new GridPane();
         tablero = new Tablero();
+        tipoJugador = Tipo.CIRCULO; //Por ahora hasta que se pueda 
+        maquina = new Computer(tablero, tipoJugador.opuesto());
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -67,29 +73,44 @@ public class TableroController implements Initializable {
         // Configurar alineación en el BorderPane
         BorderPane.setAlignment(pane, Pos.CENTER);
         BorderPane.setMargin(pane, new Insets(50)); // Ajusta este valor según sea necesario
+        if(turno == maquina.getTipo()){
+            try {
+                TimeUnit.SECONDS.sleep(4);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+            movimientoMaquina();
+        }
 }
 
-     private void manejarJugada(Button boton, int fila, int columna) {
+    private void manejarJugada(Button boton, int fila, int columna) {
         if (!juegoTerminado && tablero.getFicha(fila, columna) == null) {
             // Realizar la jugada si el botón está vacío
-            boton.setText(turno.toString());
-            tablero.setFicha(fila, columna, turno);
-            
-            // Verificar si hay un ganador o empate
-            if (hayGanador()) {
-                // Implementar lógica para manejar el final del juego
-                System.out.println("Fichas ganadoras: " + turno );
-                juegoTerminado = true;// Marcar el juego como terminado 
+            if(turno == tipoJugador){
+                boton.setText(tipoJugador.toString());
+                tablero.setFicha(fila, columna, tipoJugador);
+                estadoDeJuego(tipoJugador);
+                if(!juegoTerminado)
+                    movimientoMaquina();
             }
-            else if(tablero.isFull()){
-                System.out.println("Empate");
-                juegoTerminado = true;
-            }
-            turno = (turno == Tipo.EQUIS) ? Tipo.CIRCULO : Tipo.EQUIS;
+
         }
+     }
+    
+    private void estadoDeJuego(Tipo tipo){
+        if (hayGanador()) {
+                // Implementar lógica para manejar el final del juego
+                System.out.println("Fichas ganadoras: " + tipo );
+                juegoTerminado = true;// Marcar el juego como terminado 
+        }
+        else if(tablero.isFull()){
+            System.out.println("Empate");
+            juegoTerminado = true;
+        }
+        turno = (turno == Tipo.EQUIS) ? tipo.CIRCULO : tipo.EQUIS;
     }
     
-     private boolean hayGanador() {
+    private boolean hayGanador() {
         // Verificar filas y columnas
         for (int i = 0; i < 3; i++) {
             if (esGanador(tablero.getFicha(i, 0),
@@ -124,5 +145,13 @@ public class TableroController implements Initializable {
     // Función auxiliar para verificar si tres valores son iguales y no están vacíos
     private boolean esGanador(Tipo a, Tipo b, Tipo c) {
         return a == b && b == c && a != null;
+    }
+        
+    public void movimientoMaquina(){
+        int[] move = maquina.mejorOpcion();
+        Button b = (Button) pane.getChildren().get(move[0]*3 + move[1]);
+        b.setText(maquina.getTipo().toString()); 
+        tablero.setFicha(move[0], move[1], maquina.getTipo());
+        estadoDeJuego(maquina.getTipo());
     }
 }

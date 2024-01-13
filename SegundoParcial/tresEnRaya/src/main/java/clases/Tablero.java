@@ -58,4 +58,28 @@ public class Tablero {
         }
         return copy;
     }
+    
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                Tipo ficha = getFicha(i, j);
+                if (ficha == null) {
+                    sb.append("   "); // Espacios para celdas vacías
+                } else {
+                    sb.append(ficha).append(" "); // Agrega la ficha seguida de un espacio
+                }
+
+                if (j < 2) {
+                    sb.append("|"); // Separador entre columnas
+                }
+            }
+            sb.append("\n");
+
+            if (i < 2) {
+                sb.append("-----------\n"); // Separador entre filas
+            }
+        }
+        return sb.toString();
+    }
 }
