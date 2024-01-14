@@ -1,5 +1,8 @@
 package ec.edu.espol.tresenraya;
 
+import clases.Jugador;
+import clases.SessionManager;
+import clases.Tipo;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,6 +24,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.geometry.Insets;
+import javafx.scene.input.MouseEvent;
 
 public class PrimaryController implements Initializable {
 
@@ -37,6 +41,8 @@ public class PrimaryController implements Initializable {
     @FXML
     private Text titulo;
 
+    private Jugador jugador1 = SessionManager.getInstance().getJug1();
+    private Jugador jugador2 = SessionManager.getInstance().getJug2();
 
 
     @Override
@@ -59,7 +65,6 @@ public class PrimaryController implements Initializable {
         
         Stage stage = (Stage) opcJug.getScene().getWindow();
         stage.setHeight(600);
-        System.out.println("b");
         registroGeneral();
         
     }
@@ -111,8 +116,21 @@ public class PrimaryController implements Initializable {
     private void opcionSeleccionada(ToggleButton seleccionada, ToggleButton otra) {
         if (seleccionada.isSelected()) {
             otra.setSelected(false);
-            mensajeText.setText("Jugador tiene la ficha: " + seleccionada.getText() +
-                                "\nMaquina tiene la ficha: " + otra.getText());
+            mensajeText.setText("Jugador tiene la ficha: " + seleccionada.getText() + "\nMaquina tiene la ficha: " + otra.getText());
+            
+            String tipo1= seleccionada.getText().toUpperCase();
+            Tipo tipoEnum1 = Tipo.valueOf(tipo1);
+
+            String tipo2= otra.getText().toUpperCase();
+            Tipo tipoEnum2 = Tipo.valueOf(tipo2);
+                                
+            jugador1.setTipoJ(tipoEnum1);
+            
+            jugador2.setTipoJ(tipoEnum2);
+            
+            System.out.println("jugador: "+ tipoEnum1);
+            System.out.println("maquina: "+ tipoEnum2);
+
         } else {
             otra.setSelected(true);
         }
@@ -120,8 +138,19 @@ public class PrimaryController implements Initializable {
     private void opcionSeleccionada2(ToggleButton seleccionada, ToggleButton otra) {
         if (seleccionada.isSelected()) {
             otra.setSelected(false);
-            mensajeText.setText("Jugador 1 tiene la ficha: " + seleccionada.getText() +
-                                "\nJugador 2 tiene la ficha: " + otra.getText());
+            mensajeText.setText("Jugador 1 tiene la ficha: " + seleccionada.getText() + "\nJugador 2 tiene la ficha: " + otra.getText());
+            
+            String tipo1= seleccionada.getText().toUpperCase();
+            Tipo tipoEnum1 = Tipo.valueOf(tipo1);
+
+            String tipo2= otra.getText().toUpperCase();
+            Tipo tipoEnum2 = Tipo.valueOf(tipo2);
+                    
+            jugador1.setTipoJ(tipoEnum1);
+            jugador2.setTipoJ(tipoEnum2);
+            System.out.println("jugador 1: "+ tipoEnum1);
+            System.out.println("jugador 2: "+ tipoEnum2);
+
         } else {
             otra.setSelected(true);
         }
@@ -130,7 +159,6 @@ public class PrimaryController implements Initializable {
 
     public void registroGeneral() {
         String s = valor;
-        System.out.println("aaaa");
 
         // Crear un componente de texto para mostrar mensajes con la fuente 'Lucida Console'
         mensajeText = new Text("Seleccione una opción para cada jugador.");
@@ -139,22 +167,21 @@ public class PrimaryController implements Initializable {
 
         // Ajustar el interlineado del texto (lineSpacing)
         mensajeText.setLineSpacing(10); // Puedes ajustar este valor según tus preferencias
+        Button botonCom = new Button("Comenzar juego");
 
         switch (s) {
             case "Un jugador": {
                 HBox hbox = crearOpciones();
-                // Agregar el componente de texto a la HBox
-                hbox.getChildren().add(mensajeText);
-                // Crear la escena y mostrarla
-                vbox.getChildren().addAll(hbox);
+                botonCom.setOnMouseClicked(event -> comenzarJuego(event, "tablero"));
+         
+                vbox.getChildren().addAll(hbox,mensajeText,botonCom);
                 break;
             }
             case "Dos jugadores": {
                 HBox hbox = crearOpciones2();
-                // Agregar el componente de texto a la HBox
-                hbox.getChildren().add(mensajeText);
-                // Crear la escena y mostrarla
-                vbox.getChildren().addAll(hbox);
+                botonCom.setOnMouseClicked(event -> comenzarJuego(event, "tablero2Jug"));
+
+                vbox.getChildren().addAll(hbox,mensajeText,botonCom);
                 break;
             }
             case "IA vs. IA": {
@@ -162,6 +189,14 @@ public class PrimaryController implements Initializable {
             }
             default:
                 break;
+        }
+    }
+    
+    private void comenzarJuego(MouseEvent event, String root) {
+        try {
+            App.setRoot(root);
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
     
