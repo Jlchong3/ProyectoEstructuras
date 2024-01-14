@@ -20,7 +20,6 @@ public class App extends Application {
         scene = new Scene(loadFXML("tablero"), 640, 480);
         stage.setScene(scene);
         stage.show();
-        System.out.println(getClass().getResource("/styles/tablero.css"));
 
     }
 
