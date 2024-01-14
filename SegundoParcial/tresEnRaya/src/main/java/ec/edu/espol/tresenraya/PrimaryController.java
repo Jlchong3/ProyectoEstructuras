@@ -32,6 +32,10 @@ public class PrimaryController implements Initializable {
     private VBox vbox;
     private String valor; 
         private Text mensajeText;
+    @FXML
+    private VBox vb;
+    @FXML
+    private Text titulo;
 
 
 

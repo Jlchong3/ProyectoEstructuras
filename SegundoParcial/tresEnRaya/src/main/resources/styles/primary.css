@@ -1,0 +1,59 @@
+/* Estilo para el VBox principal */
+#vb {
+    -fx-background-color:
+        linear-gradient(to right, #f5f5f5, #d0d0d0); /* Degradado vertical desde blanco a gris claro */
+    -fx-border-color: #333333; /* Borde gris oscuro */
+    -fx-border-width: 2; /* Ancho del borde en píxeles */
+    -fx-padding: 20; /* Relleno interno reducido */
+    -fx-spacing: 10; /* Espacio entre elementos hijos del VBox */
+    -fx-background-radius: 10; /* Radio de las esquinas en píxeles */
+}
+
+/* Estilo para el Texto del Título */
+#titulo {
+    -fx-fill: #000000; /* Color del texto, ahora es negro */
+    -fx-stroke: #000000; /* Color del borde, también negro */
+    -fx-stroke-width: 1; /* Ancho del borde reducido */
+    -fx-underline: false; /* Desactiva el subrayado */
+    -fx-font-family: 'Arial'; /* Cambia la fuente según tus preferencias */
+    -fx-font-size: 60; /* Tamaño de la fuente reducido */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 5, 0, 0, 0); /* Efecto de sombra suavizado */
+}
+
+/* Estilo para el ComboBox */
+#opcJug {
+    -fx-font-family: 'Lucida Console'; /* Fuente */
+    -fx-font-size: 16; /* Tamaño de fuente */
+    -fx-background-color: #ecf0f1; /* Color de fondo */
+}
+
+/* Estilo para el Botón "Comenzar" */
+#comenzar {
+    -fx-font-family: 'Lucida Console'; /* Fuente */
+    -fx-font-size: 18; /* Tamaño de fuente */
+    -fx-background-color: #2ecc71; /* Color de fondo */
+    -fx-text-fill: white; /* Color del texto */
+}
+
+/* Estilo para el ToggleButton */
+.toggle-button {
+    -fx-font-family: 'Lucida Console'; /* Fuente */
+    -fx-font-size: 14; /* Tamaño de fuente */
+    -fx-background-color: #ffffff; /* Fondo blanco */
+    -fx-text-fill: #000000; /* Color del texto predeterminado */
+    -fx-border-color: #000000; /* Borde negro */
+    -fx-border-width: 1; /* Ancho del borde */
+}
+
+/* Estilo para el ToggleButton seleccionado */
+.toggle-button:selected {
+    -fx-background-color: #e0e0e0; /* Gris más claro al seleccionar */
+    -fx-text-fill: #ffffff; /* Color del texto al seleccionar */
+}
+
+/* Estilo para el Text */
+.text {
+    -fx-font-family: 'Lucida Console'; /* Fuente */
+    -fx-font-size: 16; /* Tamaño de fuente */
+    -fx-fill: #2c3e50; /* Color del texto */
+}

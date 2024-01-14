@@ -8,9 +8,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.tresenraya.PrimaryController">
+<VBox fx:id="vb" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" stylesheets="@../../../../styles/primary.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.tresenraya.PrimaryController">
    <children>
-      <Text fill="#4900cf" strokeType="OUTSIDE" strokeWidth="0.0" text="TRES EN RAYA" textAlignment="CENTER" underline="true">
+      <Text fx:id="titulo" fill="#4900cf" strokeType="OUTSIDE" strokeWidth="0.0" text="TRES EN RAYA" textAlignment="CENTER" underline="true">
          <font>
             <Font name="Sitka Heading Bold" size="45.0" />
          </font>
@@ -22,7 +22,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="42.0" prefWidth="600.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Jugadores:">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modo de juego:">
                      <font>
                         <Font name="Lucida Console" size="22.0" />
                      </font>
@@ -36,7 +36,7 @@
             <VBox fx:id="vbox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
          </children>
       </VBox>
-      <Button fx:id="comenzar" mnemonicParsing="false" text="Comenzar">
+      <Button fx:id="comenzar" mnemonicParsing="false" prefHeight="39.0" prefWidth="119.0" text="Comenzar">
          <font>
             <Font name="Lucida Console" size="18.0" />
          </font></Button>
