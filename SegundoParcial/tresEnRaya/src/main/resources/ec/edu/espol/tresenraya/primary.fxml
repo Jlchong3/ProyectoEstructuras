@@ -10,7 +10,7 @@
 
 <VBox fx:id="vb" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" stylesheets="@../../../../styles/primary.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.tresenraya.PrimaryController">
    <children>
-      <Text fx:id="titulo" fill="#4900cf" strokeType="OUTSIDE" strokeWidth="0.0" text="TRES EN RAYA" textAlignment="CENTER" underline="true">
+      <Text fx:id="titulo" fill="#4900cf" strokeType="OUTSIDE" strokeWidth="0.0" text="TIC TAC TOE" textAlignment="CENTER" underline="true">
          <font>
             <Font name="Sitka Heading Bold" size="45.0" />
          </font>

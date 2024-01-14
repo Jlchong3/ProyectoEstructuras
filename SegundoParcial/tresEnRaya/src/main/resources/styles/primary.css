@@ -15,7 +15,7 @@
     -fx-stroke: #000000; /* Color del borde, también negro */
     -fx-stroke-width: 1; /* Ancho del borde reducido */
     -fx-underline: false; /* Desactiva el subrayado */
-    -fx-font-family: 'Arial'; /* Cambia la fuente según tus preferencias */
+    -fx-font-family: 'cursive'; /* Cambia la fuente según tus preferencias */
     -fx-font-size: 60; /* Tamaño de la fuente reducido */
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 5, 0, 0, 0); /* Efecto de sombra suavizado */
 }
