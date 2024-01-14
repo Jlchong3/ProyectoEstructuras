@@ -1,4 +1,4 @@
-/* Estilo para el VBox principal */
+
 #vb {
     -fx-background-color:
         linear-gradient(to right, #f5f5f5, #d0d0d0); /* Degradado vertical desde blanco a gris claro */
@@ -9,7 +9,7 @@
     -fx-background-radius: 10; /* Radio de las esquinas en píxeles */
 }
 
-/* Estilo para el Texto del Título */
+
 #titulo {
     -fx-fill: #000000; /* Color del texto, ahora es negro */
     -fx-stroke: #000000; /* Color del borde, también negro */
@@ -20,14 +20,14 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 5, 0, 0, 0); /* Efecto de sombra suavizado */
 }
 
-/* Estilo para el ComboBox */
+
 #opcJug {
     -fx-font-family: 'Lucida Console'; /* Fuente */
     -fx-font-size: 16; /* Tamaño de fuente */
     -fx-background-color: #ecf0f1; /* Color de fondo */
 }
 
-/* Estilo para el Botón "Comenzar" */
+
 #comenzar {
     -fx-font-family: 'Lucida Console'; /* Fuente */
     -fx-font-size: 18; /* Tamaño de fuente */
@@ -35,23 +35,26 @@
     -fx-text-fill: white; /* Color del texto */
 }
 
-/* Estilo para el ToggleButton */
+
 .toggle-button {
     -fx-font-family: 'Lucida Console'; /* Fuente */
     -fx-font-size: 14; /* Tamaño de fuente */
     -fx-background-color: #ffffff; /* Fondo blanco */
-    -fx-text-fill: #000000; /* Color del texto predeterminado */
     -fx-border-color: #000000; /* Borde negro */
     -fx-border-width: 1; /* Ancho del borde */
 }
 
-/* Estilo para el ToggleButton seleccionado */
+
 .toggle-button:selected {
-    -fx-background-color: #e0e0e0; /* Gris más claro al seleccionar */
-    -fx-text-fill: #ffffff; /* Color del texto al seleccionar */
+    -fx-background-color: #666666; /* Gris oscuro al seleccionar */
 }
 
-/* Estilo para el Text */
+/* Estilo para el Text dentro del ToggleButton */
+.toggle-button:selected .text {
+    -fx-fill: #ffffff; /* Color del texto al seleccionar */
+}
+
+
 .text {
     -fx-font-family: 'Lucida Console'; /* Fuente */
     -fx-font-size: 16; /* Tamaño de fuente */
