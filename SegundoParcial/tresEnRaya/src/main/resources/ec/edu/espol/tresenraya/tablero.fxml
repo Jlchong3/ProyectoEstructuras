@@ -2,7 +2,11 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane fx:id="mainpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.tresenraya.TableroController">
    <top>
@@ -12,4 +16,29 @@
          </BorderPane.margin>
       </Button>
    </top>
+   <right>
+      <HBox prefHeight="189.0" prefWidth="170.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TURNO: " wrappingWidth="84.75">
+               <HBox.margin>
+                  <Insets left="15.0" top="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Lucida Console" size="20.0" />
+               </font>
+            </Text>
+            <Label fx:id="turnoTxt" text="X" />
+         </children>
+         <BorderPane.margin>
+            <Insets top="60.0" />
+         </BorderPane.margin>
+      </HBox>
+   </right>
+   <bottom>
+      <Label text="Las X siempre comienzan ;)" BorderPane.alignment="BOTTOM_RIGHT">
+         <font>
+            <Font name="Lucida Console" size="16.0" />
+         </font>
+      </Label>
+   </bottom>
 </BorderPane>

@@ -25,6 +25,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -53,6 +54,8 @@ public class TableroController implements Initializable {
     private Timeline timeline;
     @FXML
     private Button regresar;
+    @FXML
+    private Label turnoTxt;
     
     
     
@@ -134,7 +137,8 @@ public class TableroController implements Initializable {
                     timeline.play();
                 }
             }
-
+        if (!juegoTerminado) 
+            turnoTxt.setText(""+turno);
         }
      }
     

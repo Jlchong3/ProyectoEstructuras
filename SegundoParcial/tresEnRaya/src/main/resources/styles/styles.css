@@ -12,11 +12,13 @@
     -fx-background-radius: 0;
     -fx-opacity: 0.9;
     -fx-padding: 10;
+     -fx-background-color: linear-gradient(to bottom, #ffffff, #e0e0e0);
 }
 
 .button1:hover {
     -fx-opacity: 1.0;
     -fx-background-color: #bdc3c7; /* Gris claro en hover */
+     -fx-background-color: linear-gradient(to bottom, #bdc3c7, #a5adbb);
 }
 
 #mainpane {
@@ -33,15 +35,15 @@
 }
 
 #regresar {
-    -fx-font-family: 'Lucida Console'; /* Fuente */
-    -fx-font-size: 14; /* Tamaño de fuente */
-    -fx-background-color: #ffffff; /* Fondo blanco */
-    -fx-border-color: #000000; /* Borde negro */
-    -fx-border-width: 1; /* Ancho del borde */
+    -fx-font-family: 'Lucida Console';
+    -fx-font-size: 14;
+    -fx-background-color: #2ecc71;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-background-radius: 5; /* Bordes redondos */
 }
 
 #regresar:hover {
-    -fx-background-color: #dddddd; /* Cambia el color de fondo al pasar el ratón (puedes ajustar el color) */
     -fx-cursor: hand; /* Cambia el cursor al de una mano al pasar el ratón */
 }
 
@@ -53,4 +55,9 @@
 /* Estilo para el Text dentro del ToggleButton */
 #regresar:selected .text {
     -fx-fill: #ffffff; /* Color del texto al seleccionar */
+}
+
+#turnoTxt {
+    -fx-font-family: 'Lucida Console'; /* Fuente */
+    -fx-font-size: 34; /* Tamaño de fuente */
 }
