@@ -4,11 +4,12 @@
  */
 package ec.edu.espol.tresenraya;
 
-import clases.*;
+import clases.Tablero;
+import clases.Computer;
+import clases.Tipo;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.concurrent.TimeUnit;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -40,7 +41,6 @@ public class Tablero2JugController implements Initializable {
     private Tablero tablero;
     private final int tamañoBoton = 100; // Cambié el tamaño para que se vea mejor en un tablero más pequeño
     private GridPane pane;
-    private boolean juegoTerminado = false;
     private Tipo turno = Tipo.EQUIS;
     private Timeline timeline;
     @FXML
@@ -70,10 +70,6 @@ public class Tablero2JugController implements Initializable {
                 boton.getStyleClass().add("button1");
                 boton.setFont(Font.font(30)); // Ajusté el tamaño de la fuente
 
-                // Crear variables finales para usar en la expresión lambda
-                final int filaFinal = i;
-                final int columnaFinal = j;
-
                 boton.setOnMouseEntered(e -> boton.setOpacity(1.0));
                 boton.setOnMouseExited(e -> boton.setOpacity(0.7));
 
@@ -99,14 +95,12 @@ public class Tablero2JugController implements Initializable {
         if (hayGanador()) {
             // Implementar lógica para manejar el final del juego
             System.out.println("Fichas ganadoras: " + tipo);
-            juegoTerminado = true; // Marcar el juego como terminado
             timeline.stop();
         } else if (tablero.isFull()) {
             Platform.runLater(() -> mostrarEmpateAlerta());
-            juegoTerminado = true;
             timeline.stop();
         }
-        turno = (turno == Tipo.EQUIS) ? tipo.CIRCULO : tipo.EQUIS;
+        turno = (turno == Tipo.EQUIS) ? Tipo.CIRCULO : Tipo.EQUIS;
     }
 
     private void mostrarEmpateAlerta() {

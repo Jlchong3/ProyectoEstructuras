@@ -12,7 +12,7 @@ import trees.Tree;
  *
  * @author josel
  */
-public class Computer {
+public class Computer{
     private Tablero tablero;
     private Tipo tipo;
     

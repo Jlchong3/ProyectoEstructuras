@@ -11,10 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
@@ -41,7 +38,6 @@ public class PrimaryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO        
         String[] categorias = {"Un jugador" , "Dos jugadores", "IA vs. IA"};
         
         opcJug.getItems().addAll(categorias);
@@ -53,14 +49,13 @@ public class PrimaryController implements Initializable {
     @FXML
     private void filtrarTipo(ActionEvent event) {
         vbox.getChildren().clear();
-        ComboBox cb = (ComboBox)event.getSource();
-        String s = (String)cb.getValue();
+        ComboBox<String> cb = (ComboBox<String>)event.getSource();
+        String s = cb.getValue();
         valor = s;
         
         Stage stage = (Stage) opcJug.getScene().getWindow();
         stage.setHeight(600);
         registroGeneral();
-        
     }
     
     private HBox crearOpciones(String valor) {
