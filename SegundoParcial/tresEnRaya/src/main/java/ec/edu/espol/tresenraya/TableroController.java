@@ -227,7 +227,8 @@ public class TableroController implements Initializable {
         tablero.setFicha(move[0], move[1], maquina.getTipo());
         timeline.stop();
         estadoDeJuego(maquina.getTipo());
-        turnoTxt.setText("" + turno);
+        if(!juegoTerminado)
+            turnoTxt.setText("" + turno);
     }
 
     @FXML
