@@ -11,7 +11,7 @@
 
 <BorderPane fx:id="mainpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../../styles/styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.tresenraya.TableroController">
    <bottom>
-      <Label text="Las X siempre comienzan ;)" BorderPane.alignment="BOTTOM_RIGHT">
+      <Label text="Las X siempre comienzan!" BorderPane.alignment="BOTTOM_RIGHT">
          <font>
             <Font name="Lucida Console" size="16.0" />
          </font>
