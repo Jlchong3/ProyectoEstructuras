@@ -168,6 +168,7 @@ public class Tablero2JugController implements Initializable {
     private void volver(MouseEvent event) {
         try {
             App.setRoot("primary");
+            timeline.stop();
         } catch (IOException ex) {
             ex.printStackTrace();
         }

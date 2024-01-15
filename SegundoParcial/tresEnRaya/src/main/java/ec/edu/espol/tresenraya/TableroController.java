@@ -233,6 +233,7 @@ public class TableroController implements Initializable {
     @FXML
     private void volver(MouseEvent event) {
         try {
+            timeline.stop();
             App.setRoot("primary");
         } catch (IOException ex) {
             ex.printStackTrace();
