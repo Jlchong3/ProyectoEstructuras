@@ -26,6 +26,9 @@
     -fx-font-size: 16; /* Tamaño de fuente */
     -fx-background-color: #ecf0f1; /* Color de fondo */
     -fx-cursor: hand;
+    
+    -fx-pref-width: 200; /* Ancho preferido del ComboBox */
+
 }
 
 
