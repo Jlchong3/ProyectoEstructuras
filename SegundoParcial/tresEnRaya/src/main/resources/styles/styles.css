@@ -31,3 +31,26 @@
     -fx-background-color: #ffffff; /* Blanco */
     -fx-spacing: 40; /* Aumentar el espacio entre botones */
 }
+
+#regresar {
+    -fx-font-family: 'Lucida Console'; /* Fuente */
+    -fx-font-size: 14; /* Tamaño de fuente */
+    -fx-background-color: #ffffff; /* Fondo blanco */
+    -fx-border-color: #000000; /* Borde negro */
+    -fx-border-width: 1; /* Ancho del borde */
+}
+
+#regresar:hover {
+    -fx-background-color: #dddddd; /* Cambia el color de fondo al pasar el ratón (puedes ajustar el color) */
+    -fx-cursor: hand; /* Cambia el cursor al de una mano al pasar el ratón */
+}
+
+#regresar:selected {
+    -fx-background-color: #666666; /* Gris oscuro al seleccionar */
+    -fx-cursor: default; /* Cambia el cursor de nuevo al predeterminado al seleccionar */
+}
+
+/* Estilo para el Text dentro del ToggleButton */
+#regresar:selected .text {
+    -fx-fill: #ffffff; /* Color del texto al seleccionar */
+}

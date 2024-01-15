@@ -5,6 +5,7 @@
 package ec.edu.espol.tresenraya;
 
 import clases.*;
+import java.io.IOException;
 import java.net.URL;
 import javafx.util.Duration;
 import java.util.ResourceBundle;
@@ -13,18 +14,23 @@ import java.util.concurrent.TimeUnit;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
 
 /**
@@ -45,6 +51,8 @@ public class TableroController implements Initializable {
     private GridPane pane;
     private boolean juegoTerminado = false;
     private Timeline timeline;
+    @FXML
+    private Button regresar;
     
     
     
@@ -188,4 +196,14 @@ public class TableroController implements Initializable {
         timeline.stop();
         estadoDeJuego(maquina.getTipo());
     }
+
+    @FXML
+    private void volver(MouseEvent event) {
+        try {
+            App.setRoot("primary");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
 }

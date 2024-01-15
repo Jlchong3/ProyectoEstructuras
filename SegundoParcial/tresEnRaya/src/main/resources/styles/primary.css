@@ -25,6 +25,7 @@
     -fx-font-family: 'Lucida Console'; /* Fuente */
     -fx-font-size: 16; /* Tamaño de fuente */
     -fx-background-color: #ecf0f1; /* Color de fondo */
+    -fx-cursor: hand;
 }
 
 
@@ -33,6 +34,7 @@
     -fx-font-size: 18; /* Tamaño de fuente */
     -fx-background-color: #2ecc71; /* Color de fondo */
     -fx-text-fill: white; /* Color del texto */
+    -fx-cursor: hand;
 }
 
 
@@ -42,11 +44,13 @@
     -fx-background-color: #ffffff; /* Fondo blanco */
     -fx-border-color: #000000; /* Borde negro */
     -fx-border-width: 1; /* Ancho del borde */
+    -fx-cursor: hand;
 }
 
 
 .toggle-button:selected {
     -fx-background-color: #666666; /* Gris oscuro al seleccionar */
+    -fx-cursor: default;
 }
 
 /* Estilo para el Text dentro del ToggleButton */

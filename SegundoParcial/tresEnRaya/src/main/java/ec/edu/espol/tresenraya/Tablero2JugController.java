@@ -5,6 +5,7 @@
 package ec.edu.espol.tresenraya;
 
 import clases.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
@@ -16,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
@@ -37,6 +39,8 @@ public class Tablero2JugController implements Initializable {
     private boolean juegoTerminado = false;
     private Tipo turno = Tipo.EQUIS;
     private Timeline timeline;
+    @FXML
+    private Button regresar;
     
     
     
@@ -143,6 +147,15 @@ public class Tablero2JugController implements Initializable {
         b.setText(maquina.getTipo().toString()); 
         tablero.setFicha(move[0], move[1], maquina.getTipo());
         estadoDeJuego(maquina.getTipo());
+    }
+
+    @FXML
+    private void volver(MouseEvent event) {
+        try {
+            App.setRoot("primary");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
 }

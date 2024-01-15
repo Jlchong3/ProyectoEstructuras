@@ -108,6 +108,8 @@ public class PrimaryController implements Initializable {
             
             System.out.println(jug1 + ": "+ tipoEnum1);
             System.out.println(jug2 + ": "+ tipoEnum1.opuesto());
+            
+            mensajeText.setStyle("-fx-font-size: 16;");
 
         } else {
             otra.setSelected(true);
@@ -121,10 +123,18 @@ public class PrimaryController implements Initializable {
         mensajeText = new Text("Seleccione una opción para cada jugador.");
         Font lucidaConsoleFont = Font.font("Lucida Console");
         mensajeText.setFont(lucidaConsoleFont);
+        mensajeText.setStyle("-fx-font-size: 16;");
 
         // Ajustar el interlineado del texto (lineSpacing)
         mensajeText.setLineSpacing(10); // Puedes ajustar este valor según tus preferencias
         Button botonCom = new Button("Comenzar juego");
+        botonCom.setStyle(
+            "-fx-font-family: 'Lucida Console'; " +
+            "-fx-font-size: 18; " +
+            "-fx-background-color: #2ecc71; " +
+            "-fx-text-fill: black; " +
+            "-fx-cursor: hand;"
+        );
         HBox hbox = crearOpciones(valor);
 
         switch (s) {

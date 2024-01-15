@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -33,13 +32,9 @@
                   <ComboBox fx:id="opcJug" onAction="#filtrarTipo" prefWidth="150.0" promptText="Seleccionar..." />
                </children>
             </HBox>
-            <VBox fx:id="vbox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
+            <VBox fx:id="vbox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="40.0" />
          </children>
       </VBox>
-      <Button fx:id="comenzar" mnemonicParsing="false" prefHeight="39.0" prefWidth="119.0" text="Comenzar">
-         <font>
-            <Font name="Lucida Console" size="18.0" />
-         </font></Button>
    </children>
    <opaqueInsets>
       <Insets />
