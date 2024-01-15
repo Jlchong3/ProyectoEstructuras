@@ -1,6 +1,5 @@
 package ec.edu.espol.tresenraya;
 
-import clases.Jugador;
 import clases.SessionManager;
 import clases.Tipo;
 import java.io.IOException;
@@ -23,7 +22,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.geometry.Insets;
 import javafx.scene.input.MouseEvent;
 
 public class PrimaryController implements Initializable {
@@ -35,15 +33,11 @@ public class PrimaryController implements Initializable {
     @FXML
     private VBox vbox;
     private String valor; 
-        private Text mensajeText;
+    private Text mensajeText;
     @FXML
     private VBox vb;
     @FXML
     private Text titulo;
-
-    private Jugador jugador1 = SessionManager.getInstance().getJug1();
-    private Jugador jugador2 = SessionManager.getInstance().getJug2();
-
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -69,7 +63,7 @@ public class PrimaryController implements Initializable {
         
     }
     
-    private HBox crearOpciones() {
+    private HBox crearOpciones(String valor) {
         ToggleButton opcion1 = new ToggleButton("Circulo");
         ToggleButton opcion2 = new ToggleButton("Equis");
 
@@ -77,8 +71,8 @@ public class PrimaryController implements Initializable {
         opcion1.setToggleGroup(grupoOpciones);
         opcion2.setToggleGroup(grupoOpciones);
 
-        opcion1.setOnAction(event -> opcionSeleccionada(opcion1, opcion2));
-        opcion2.setOnAction(event -> opcionSeleccionada(opcion2, opcion1));
+        opcion1.setOnAction(event -> opcionSeleccionada(opcion1, opcion2,valor));
+        opcion2.setOnAction(event -> opcionSeleccionada(opcion2, opcion1,valor));
 
         // Aplicar la fuente 'Lucida Console' a los ToggleButton
         Font lucidaConsoleFont = Font.font("Lucida Console");
@@ -91,71 +85,34 @@ public class PrimaryController implements Initializable {
         return hbox;
     }
 
-    private HBox crearOpciones2() {
-        ToggleButton opcion1 = new ToggleButton("Circulo");
-        ToggleButton opcion2 = new ToggleButton("Equis");
+    private void opcionSeleccionada(ToggleButton seleccionada, ToggleButton otra, String valor) {
+        String jug1;
+        String jug2;
+        if(valor == "Un jugador"){
+            jug1 = "Jugador";
+            jug2 = "Manquina";
+        }
+        else{
+            jug1 = "Jugador 1";
+            jug2 = "Jugador 2"; 
+        }
 
-        ToggleGroup grupoOpciones = new ToggleGroup();
-        opcion1.setToggleGroup(grupoOpciones);
-        opcion2.setToggleGroup(grupoOpciones);
-
-        opcion1.setOnAction(event -> opcionSeleccionada2(opcion1, opcion2));
-        opcion2.setOnAction(event -> opcionSeleccionada2(opcion2, opcion1));
-
-        // Aplicar la fuente 'Lucida Console' a los ToggleButton
-        Font lucidaConsoleFont = Font.font("Lucida Console");
-        opcion1.setFont(lucidaConsoleFont);
-        opcion2.setFont(lucidaConsoleFont);
-
-        HBox hbox = new HBox(10, opcion1, opcion2);
-        hbox.setAlignment(Pos.CENTER);
-        hbox.setPadding(new Insets(20));
-        return hbox;
-    }
-
-    private void opcionSeleccionada(ToggleButton seleccionada, ToggleButton otra) {
         if (seleccionada.isSelected()) {
             otra.setSelected(false);
-            mensajeText.setText("Jugador tiene la ficha: " + seleccionada.getText() + "\nMaquina tiene la ficha: " + otra.getText());
+            mensajeText.setText(jug1 + " tiene la ficha: " + seleccionada.getText() + "\n" + jug2 +" tiene la ficha: " + otra.getText());
             
             String tipo1= seleccionada.getText().toUpperCase();
             Tipo tipoEnum1 = Tipo.valueOf(tipo1);
 
-            String tipo2= otra.getText().toUpperCase();
-            Tipo tipoEnum2 = Tipo.valueOf(tipo2);
-                                
-            jugador1.setTipoJ(tipoEnum1);
+            SessionManager.getInstance().setTipo(tipoEnum1);
             
-            jugador2.setTipoJ(tipoEnum2);
-            
-            System.out.println("jugador: "+ tipoEnum1);
-            System.out.println("maquina: "+ tipoEnum2);
+            System.out.println(jug1 + ": "+ tipoEnum1);
+            System.out.println(jug2 + ": "+ tipoEnum1.opuesto());
 
         } else {
             otra.setSelected(true);
         }
     }
-    private void opcionSeleccionada2(ToggleButton seleccionada, ToggleButton otra) {
-        if (seleccionada.isSelected()) {
-            otra.setSelected(false);
-            mensajeText.setText("Jugador 1 tiene la ficha: " + seleccionada.getText() + "\nJugador 2 tiene la ficha: " + otra.getText());
-            
-            String tipo1= seleccionada.getText().toUpperCase();
-            Tipo tipoEnum1 = Tipo.valueOf(tipo1);
-
-            String tipo2= otra.getText().toUpperCase();
-            Tipo tipoEnum2 = Tipo.valueOf(tipo2);
-                    
-            jugador1.setTipoJ(tipoEnum1);
-            jugador2.setTipoJ(tipoEnum2);
-            System.out.println("jugador 1: "+ tipoEnum1);
-            System.out.println("jugador 2: "+ tipoEnum2);
-
-        } else {
-            otra.setSelected(true);
-        }
-    }
-
 
     public void registroGeneral() {
         String s = valor;
@@ -168,27 +125,22 @@ public class PrimaryController implements Initializable {
         // Ajustar el interlineado del texto (lineSpacing)
         mensajeText.setLineSpacing(10); // Puedes ajustar este valor según tus preferencias
         Button botonCom = new Button("Comenzar juego");
+        HBox hbox = crearOpciones(valor);
 
         switch (s) {
-            case "Un jugador": {
-                HBox hbox = crearOpciones();
-                botonCom.setOnMouseClicked(event -> comenzarJuego(event, "tablero"));
-         
-                vbox.getChildren().addAll(hbox,mensajeText,botonCom);
-                break;
-            }
-            case "Dos jugadores": {
-                HBox hbox = crearOpciones2();
+            case "IA vs. IA": 
                 botonCom.setOnMouseClicked(event -> comenzarJuego(event, "tablero2Jug"));
-
-                vbox.getChildren().addAll(hbox,mensajeText,botonCom);
+                vbox.getChildren().addAll(botonCom);
                 break;
-            }
-            case "IA vs. IA": {
-                break;
-            }
             default:
-                break;
+                if(valor == "Dos jugadores"){
+                    SessionManager.getInstance().setPvp(true);
+                }
+                else{
+                    SessionManager.getInstance().setPvp(false);
+                }
+                botonCom.setOnMouseClicked(event -> comenzarJuego(event, "tablero"));
+                vbox.getChildren().addAll(hbox,mensajeText,botonCom);
         }
     }
     

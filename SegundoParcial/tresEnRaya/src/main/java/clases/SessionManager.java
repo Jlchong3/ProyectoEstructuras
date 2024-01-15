@@ -4,43 +4,43 @@
  */
 package clases;
 
-import clases.Tipo;
-
 /**
  *
  * @author mariu
  */
 public class SessionManager {
- private static clases.SessionManager instance = null;
 
-    private clases.Jugador jug1 = new clases.Jugador(Tipo.EQUIS);    
-    private clases.Jugador jug2 = new clases.Jugador(Tipo.CIRCULO);
+    private static SessionManager instance = null;
+
+    private Tipo tipo = null;
+
+    private boolean pvp = false;
 
     public SessionManager() {
     }
-    
-    public static clases.SessionManager getInstance(){
+
+    public static SessionManager getInstance(){
         if (instance == null)
         {
-            instance = new clases.SessionManager();
+            instance = new SessionManager();
         }
         return instance;
     }
-
-    public clases.Jugador getJug1() {
-        return jug1;
+    
+    public Tipo getTipo(){
+        return tipo;
     }
 
-    public void setJug1(clases.Jugador jug1) {
-        this.jug1 = jug1;
+    public void setTipo(Tipo tipo){
+        this.tipo = tipo; 
     }
 
-    public clases.Jugador getJug2() {
-        return jug2;
+    public boolean getPvp(){
+        return pvp;
+    }
+    
+    public void setPvp(boolean state){
+        pvp = state;
     }
 
-    public void setJug2(clases.Jugador jug2) {
-        this.jug2 = jug2;
-    }
-        
 }

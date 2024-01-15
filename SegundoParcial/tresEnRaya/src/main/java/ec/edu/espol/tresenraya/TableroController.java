@@ -4,14 +4,14 @@
  */
 package ec.edu.espol.tresenraya;
 
-import clases.Computer;
-import clases.Jugador;
-import clases.SessionManager;
-import clases.Tablero;
-import clases.Tipo;
+import clases.*;
 import java.net.URL;
+import javafx.util.Duration;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
+
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -38,32 +38,41 @@ public class TableroController implements Initializable {
     private BorderPane mainpane;
     private Tablero tablero;
     private Computer maquina;
-    
-    private Jugador jugador1 = SessionManager.getInstance().getJug1();
-    private Jugador jugador2 = SessionManager.getInstance().getJug2();
-    
-    private Tipo tipoJugador = jugador1.getTipoJ();
-    private Tipo turno = jugador2.getTipoJ();
-    
+    private Tipo tipoJugador = SessionManager.getInstance().getTipo();
+    private Tipo turno = Tipo.EQUIS;
+    private boolean pvp = SessionManager.getInstance().getPvp();
     private final int tamañoBoton = 100; // Cambié el tamaño para que se vea mejor en un tablero más pequeño
-    private String estiloBoton = "";
     private GridPane pane;
     private boolean juegoTerminado = false;
+    private Timeline timeline;
     
     
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("persona:" + tipoJugador);
-        System.out.println("maquina:" + turno);
+        String jug1;
+        String jug2;
+        if(pvp){
+            jug1 = "Jugador 1";
+            jug2 = "Jugador 2"; 
+        }
+        else{
+            jug1 = "Jugador";
+            jug2 = "Manquina";
+        }
 
-        
         pane = new GridPane();
         tablero = new Tablero();
-        //tipoJugador = Tipo.CIRCULO; //Por ahora hasta que se pueda 
-        maquina = new Computer(tablero, turno);
+        if(!pvp){
+            maquina = new Computer(tablero, tipoJugador.opuesto());
+            timeline = new Timeline(
+                new KeyFrame(Duration.seconds(1), e -> movimientoMaquina())
+            );
+        }
 
+        System.out.println(jug1 + ":" + tipoJugador);
+        System.out.println(jug2 + ":" + tipoJugador.opuesto());
        
         
         for (int i = 0; i < 3; i++) {
@@ -94,27 +103,28 @@ public class TableroController implements Initializable {
         BorderPane.setAlignment(pane, Pos.CENTER);
         BorderPane.setMargin(pane, new Insets(100)); // Ajusta este valor según sea necesario
         
-        if(turno == maquina.getTipo()){
-            movimientoMaquina();
-        }
         
-        //aARREGLAR PARA QUE EMPIECE EN EQUIS
-//        if(maquina.getTipo().equals(Tipo.EQUIS)){
-//            movimientoMaquina();
-//        }
-//        else
-            
+        if(!pvp && maquina.getTipo().equals(Tipo.EQUIS)){
+            timeline.play();
+        }
     }
 
     private void manejarJugada(Button boton, int fila, int columna) {
         if (!juegoTerminado && tablero.getFicha(fila, columna) == null) {
             // Realizar la jugada si el botón está vacío
-            if(turno == tipoJugador){
+            
+            if(pvp){
+                boton.setText(turno.toString());
+                tablero.setFicha(fila, columna, turno);
+                estadoDeJuego(turno);
+            }
+            else if(turno == tipoJugador){
                 boton.setText(tipoJugador.toString());
                 tablero.setFicha(fila, columna, tipoJugador);
                 estadoDeJuego(tipoJugador);
-                if(!juegoTerminado)
-                    movimientoMaquina();
+                if(!juegoTerminado){
+                    timeline.play();
+                }
             }
 
         }
@@ -175,6 +185,7 @@ public class TableroController implements Initializable {
         Button b = (Button) pane.getChildren().get(move[0]*3 + move[1]);
         b.setText(maquina.getTipo().toString()); 
         tablero.setFicha(move[0], move[1], maquina.getTipo());
+        timeline.stop();
         estadoDeJuego(maquina.getTipo());
     }
 }
