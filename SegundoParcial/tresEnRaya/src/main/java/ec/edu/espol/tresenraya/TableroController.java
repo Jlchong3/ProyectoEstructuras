@@ -24,13 +24,17 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
@@ -56,6 +60,12 @@ public class TableroController implements Initializable {
     private Button regresar;
     @FXML
     private Label turnoTxt;
+    @FXML
+    private Text jugadores;
+    @FXML
+    private VBox info;
+    @FXML
+    private Text modoJuego;
     
     
     
@@ -70,7 +80,7 @@ public class TableroController implements Initializable {
         }
         else{
             jug1 = "Jugador";
-            jug2 = "Manquina";
+            jug2 = "Maquina";
         }
 
         pane = new GridPane();
@@ -84,6 +94,10 @@ public class TableroController implements Initializable {
 
         System.out.println(jug1 + ":" + tipoJugador);
         System.out.println(jug2 + ":" + tipoJugador.opuesto());
+        jugadores.setLineSpacing(40);
+        jugadores.setText(jug1 + ": " + tipoJugador+"\n"+jug2 + ": " + tipoJugador.opuesto());
+                
+        
        
         
         for (int i = 0; i < 3; i++) {
@@ -144,15 +158,29 @@ public class TableroController implements Initializable {
     
     private void estadoDeJuego(Tipo tipo){
         if (hayGanador()) {
-                // Implementar lógica para manejar el final del juego
-                System.out.println("Fichas ganadoras: " + tipo );
-                juegoTerminado = true;// Marcar el juego como terminado 
-        }
-        else if(tablero.isFull()){
-            System.out.println("Empate");
+            Platform.runLater(() -> mostrarGanadorAlerta(tipo));
+            juegoTerminado = true; // Marcar el juego como terminado
+        } else if (tablero.isFull()) {
+            Platform.runLater(this::mostrarEmpateAlerta);
             juegoTerminado = true;
         }
         turno = (turno == Tipo.EQUIS) ? tipo.CIRCULO : tipo.EQUIS;
+    }
+
+    private void mostrarGanadorAlerta(Tipo tipo) {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("¡Felicidades!");
+        alert.setHeaderText(null);
+        alert.setContentText("Las fichas " + tipo + " han ganado.");
+        alert.showAndWait();
+    }
+
+    private void mostrarEmpateAlerta() {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Empate");
+        alert.setHeaderText(null);
+        alert.setContentText("El juego ha terminado en empate.");
+        alert.showAndWait();
     }
     
     private boolean hayGanador() {

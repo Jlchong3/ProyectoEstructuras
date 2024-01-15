@@ -61,3 +61,40 @@
     -fx-font-family: 'Lucida Console'; /* Fuente */
     -fx-font-size: 34; /* Tamaño de fuente */
 }
+
+#info {
+    -fx-background-color: linear-gradient(to bottom right, #f4f4f4, #e0e0e0); /* Fondo degradado en tonos grises suaves */
+    -fx-border-color: #dcdcdc, #b0b0b0, #a0a0a0; /* Colores para el borde degradado */
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+}
+
+#modoJuego {
+    -fx-fill: #000000; /* Color del texto, ahora es negro */
+    -fx-stroke: #000000; /* Color del borde, también negro */
+    -fx-stroke-width: 1; /* Ancho del borde reducido */
+    -fx-underline: false; /* Desactiva el subrayado */
+    -fx-font-family: 'cursive'; /* Cambia la fuente según tus preferencias */
+    -fx-font-size: 50; /* Tamaño de la fuente reducido */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 5, 0, 0, 0); /* Efecto de sombra suavizado */
+}
+
+
+.alert {
+    -fx-font-family: 'Lucida Console';
+    -fx-font-size: 14;
+    -fx-background-color: #2ecc71; /* Fondo verde */
+    -fx-text-fill: black;
+}
+
+.alert .header-panel {
+    -fx-background-color: #2ecc71; /* Fondo verde para el encabezado */
+}
+
+.alert .content {
+    -fx-text-fill: black;
+}
+
+.alert .button-bar {
+    -fx-background-color: #2ecc71; /* Fondo verde para la barra de botones */
+}

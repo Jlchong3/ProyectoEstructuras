@@ -12,15 +12,19 @@ import java.util.concurrent.TimeUnit;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 
@@ -41,6 +45,8 @@ public class Tablero2JugController implements Initializable {
     private Timeline timeline;
     @FXML
     private Button regresar;
+    @FXML
+    private Text modoJuego;
     
     
     
@@ -89,20 +95,29 @@ public class Tablero2JugController implements Initializable {
     }
 
     
-    private void estadoDeJuego(Tipo tipo){
+    private void estadoDeJuego(Tipo tipo) {
         if (hayGanador()) {
-                // Implementar lógica para manejar el final del juego
-                System.out.println("Fichas ganadoras: " + tipo );
-                juegoTerminado = true;// Marcar el juego como terminado 
-                timeline.stop();
-        }
-        else if(tablero.isFull()){
-            System.out.println("Empate");
+            // Implementar lógica para manejar el final del juego
+            System.out.println("Fichas ganadoras: " + tipo);
+            juegoTerminado = true; // Marcar el juego como terminado
+            timeline.stop();
+        } else if (tablero.isFull()) {
+            Platform.runLater(() -> mostrarEmpateAlerta());
             juegoTerminado = true;
             timeline.stop();
         }
         turno = (turno == Tipo.EQUIS) ? tipo.CIRCULO : tipo.EQUIS;
     }
+
+    private void mostrarEmpateAlerta() {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Empate");
+        alert.setHeaderText(null);
+        alert.setContentText("El juego ha terminado en empate.\n El mundo no será destruido!");
+        alert.showAndWait();
+    }
+    
+    
     
     private boolean hayGanador() {
         // Verificar filas y columnas
