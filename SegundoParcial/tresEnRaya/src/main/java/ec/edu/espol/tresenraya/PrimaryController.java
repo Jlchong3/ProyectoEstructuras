@@ -101,9 +101,6 @@ public class PrimaryController implements Initializable {
 
             SessionManager.getInstance().setTipo(tipoEnum1);
             
-            System.out.println(jug1 + ": "+ tipoEnum1);
-            System.out.println(jug2 + ": "+ tipoEnum1.opuesto());
-            
             mensajeText.setStyle("-fx-font-size: 16;");
 
         } else {

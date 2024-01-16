@@ -58,9 +58,6 @@ public class TableroController implements Initializable {
     @FXML
     private Text modoJuego;
     
-    
-    
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         String jug1;
@@ -83,8 +80,6 @@ public class TableroController implements Initializable {
             );
         }
 
-        System.out.println(jug1 + ":" + tipoJugador);
-        System.out.println(jug2 + ":" + tipoJugador.opuesto());
         jugadores.setLineSpacing(40);
         jugadores.setText(jug1 + ": " + tipoJugador+"\n"+jug2 + ": " + tipoJugador.opuesto());
                 
@@ -224,8 +219,10 @@ public class TableroController implements Initializable {
 
     @FXML
     private void volver(MouseEvent event) {
-        try {
+        if(!pvp)
             timeline.stop();
+        SessionManager.getInstance().setTipo(null);
+        try {
             App.setRoot("primary");
         } catch (IOException ex) {
             ex.printStackTrace();

@@ -59,9 +59,6 @@ public class Tablero2JugController implements Initializable {
         Computer maquina1 = new Computer(tablero, Tipo.EQUIS);
         Computer maquina2 = new Computer(tablero, Tipo.CIRCULO);
 
-        System.out.println("maquina1:" + maquina1.getTipo());
-        System.out.println("maquina2:" + maquina2.getTipo());
-
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -94,7 +91,6 @@ public class Tablero2JugController implements Initializable {
     private void estadoDeJuego(Tipo tipo) {
         if (hayGanador()) {
             // Implementar lógica para manejar el final del juego
-            System.out.println("Fichas ganadoras: " + tipo);
             timeline.stop();
         } else if (tablero.isFull()) {
             Platform.runLater(() -> mostrarEmpateAlerta());

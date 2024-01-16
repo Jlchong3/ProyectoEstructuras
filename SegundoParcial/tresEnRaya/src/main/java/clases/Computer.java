@@ -83,11 +83,12 @@ public class Computer{
             if(columnaDisponible(tablero, this.tipo.opuesto(), i))
                 totalJugador++;
         }
-        //diagonales de computadora
+        //computadora
         if(diagonalPrincipalDisponible(tablero, this.tipo))
             totalComputer++;
         if(diagonalSecundariaDisponible(tablero, this.tipo))
             totalComputer++;
+        //jugador
         if(diagonalPrincipalDisponible(tablero, this.tipo.opuesto()))
             totalJugador++;
         if(diagonalSecundariaDisponible(tablero, this.tipo.opuesto()))
