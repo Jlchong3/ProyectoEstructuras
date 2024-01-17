@@ -85,7 +85,7 @@ public class PrimaryController implements Initializable {
         String jug2;
         if(valor == "Un jugador"){
             jug1 = "Jugador";
-            jug2 = "Manquina";
+            jug2 = "Maquina";
         }
         else{
             jug1 = "Jugador 1";
